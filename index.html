@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>document.documentElement.classList.add("js-enabled");</script>
+<title data-i18n-title="home.hero.title">The Financial Talk</title>
+<meta name="description" content="Bilingual financial coaching rooted in culture." />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png" />
+<link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="site-header" data-site-header>
+  <div class="header-inner container">
+    <a href="index.html" class="logo"><img class="logo-mark" src="assets/images/logo-mark.png" alt="The Financial Talk" /> <span data-i18n="brand.name">The Financial Talk</span></a>
+
+    <nav class="main-nav" data-nav>
+      <a href="index.html" aria-current="page" data-i18n="nav.home">Home</a>
+      <a href="about.html" data-i18n="nav.about">About</a>
+      <a href="services.html" data-i18n="nav.services">Services</a>
+      <a href="resources.html" data-i18n="nav.resources">Resources</a>
+      <a href="contact.html" data-i18n="nav.contact">Contact</a>
+      <a href="contact.html#book" class="btn btn-outline" data-i18n="nav.cta" style="padding:10px 22px;">Book a Consultation</a>
+      <div class="nav-theme-row">
+        <span class="nav-theme-label" data-i18n="theme.label">Color palette</span>
+        <div class="theme-switcher" data-theme-switcher></div>
+      </div>
+    </nav>
+
+    <div class="header-actions">
+      <div class="lang-switcher" role="group" aria-label="Language">
+        <button type="button" data-lang-option="en">EN</button>
+        <button type="button" data-lang-option="es">ES</button>
+      </div>
+      <div class="theme-switcher" data-theme-switcher role="group" aria-label="Color palette"></div>
+      <button type="button" class="nav-toggle" data-nav-toggle aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <span class="hero-blob hero-blob-a" data-parallax="0.12" aria-hidden="true"></span>
+    <span class="hero-blob hero-blob-b" data-parallax="-0.08" aria-hidden="true"></span>
+    <div class="container hero-inner">
+      <span class="eyebrow" data-i18n="home.hero.eyebrow">Financial coaching, rooted in culture</span>
+      <h1 data-i18n="home.hero.title">Your money story, told in your own voice.</h1>
+      <p class="hero-subtitle" data-i18n="home.hero.subtitle">Bilingual financial coaching.</p>
+      <div class="hero-actions">
+        <a href="contact.html#book" class="btn btn-primary" data-i18n="home.hero.ctaPrimary">Book a Consultation</a>
+        <a href="services.html" class="btn btn-secondary" data-i18n="home.hero.ctaSecondary">Explore Services</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card" data-reveal="scale">
+        <h3 data-i18n="home.stats.0.title">Bilingual</h3>
+        <p data-i18n="home.stats.0.desc">Coaching available in English and Spanish</p>
+      </div>
+      <div class="stat-card" data-reveal="scale">
+        <h3 data-i18n="home.stats.1.title">Culturally Rooted</h3>
+        <p data-i18n="home.stats.1.desc">Advice that respects family and community values</p>
+      </div>
+      <div class="stat-card" data-reveal="scale">
+        <h3 data-i18n="home.stats.2.title">Judgment-Free</h3>
+        <p data-i18n="home.stats.2.desc">A safe space to ask every money question</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="decor-section room-section">
+    <span class="bg-blob bg-blob--secondary" data-parallax="0.15" style="width:280px;height:280px;top:10%;left:-100px;" aria-hidden="true"></span>
+    <div class="container split">
+      <div class="room-photo" data-reveal="scale">
+        <img src="assets/images/home-about.jpg" data-i18n-attr="alt:home.about.photoAlt" alt="Financial coach portrait" width="1200" height="1500" loading="lazy" />
+      </div>
+      <div data-reveal>
+        <span class="eyebrow" data-i18n="home.about.eyebrow">Meet your coach</span>
+        <h2 class="section-title" data-i18n="home.about.title">Breaking cycles. Building legacies.</h2>
+        <p data-i18n="home.about.body">Placeholder about text.</p>
+        <a href="about.html" class="btn btn-outline" data-i18n="home.about.cta">Read the full story</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--color-bg-alt);">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-i18n="home.services.eyebrow">How we work together</span>
+        <h2 class="section-title" data-i18n="home.services.title">Support for every stage of your money journey</h2>
+        <p class="section-subtitle" data-i18n="home.services.subtitle">From your first budget to your first investment portfolio.</p>
+      </div>
+      <div class="card-grid">
+        <div class="card" data-reveal="scale">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3 data-i18n="home.services.items.0.title">1:1 Coaching</h3>
+          <p data-i18n="home.services.items.0.desc">Personalized sessions.</p>
+        </div>
+        <div class="card" data-reveal="scale">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 data-i18n="home.services.items.1.title">Group Workshops</h3>
+          <p data-i18n="home.services.items.1.desc">Community learning.</p>
+        </div>
+        <div class="card" data-reveal="scale">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <h3 data-i18n="home.services.items.2.title">Digital Guides</h3>
+          <p data-i18n="home.services.items.2.desc">Bilingual worksheets.</p>
+        </div>
+      </div>
+      <div class="text-center mt-lg" data-reveal>
+        <a href="services.html" class="btn btn-primary" data-i18n="home.services.cta">See all services</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-i18n="home.testimonials.eyebrow">Community voices</span>
+        <h2 class="section-title" data-i18n="home.testimonials.title">Real stories, real progress</h2>
+      </div>
+      <div class="card-grid">
+        <div class="testimonial-card" data-reveal="scale">
+          <p class="testimonial-quote" data-i18n="home.testimonials.items.0.quote">Quote</p>
+          <div class="testimonial-author" data-i18n="home.testimonials.items.0.name">Sample Client</div>
+          <div class="testimonial-role" data-i18n="home.testimonials.items.0.role">Role</div>
+        </div>
+        <div class="testimonial-card" data-reveal="scale">
+          <p class="testimonial-quote" data-i18n="home.testimonials.items.1.quote">Quote</p>
+          <div class="testimonial-author" data-i18n="home.testimonials.items.1.name">Sample Client</div>
+          <div class="testimonial-role" data-i18n="home.testimonials.items.1.role">Role</div>
+        </div>
+        <div class="testimonial-card" data-reveal="scale">
+          <p class="testimonial-quote" data-i18n="home.testimonials.items.2.quote">Quote</p>
+          <div class="testimonial-author" data-i18n="home.testimonials.items.2.name">Sample Client</div>
+          <div class="testimonial-role" data-i18n="home.testimonials.items.2.role">Role</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--color-bg-alt);">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-i18n="home.updates.eyebrow">Latest updates</span>
+        <h2 class="section-title" data-i18n="home.updates.title">What's new</h2>
+      </div>
+      <div class="card-grid" data-announcements-list></div>
+      <p class="notice text-center" data-announcements-empty hidden data-i18n="home.updates.empty">No announcements yet — check back soon.</p>
+    </div>
+  </section>
+
+  <section class="decor-section">
+    <span class="bg-blob bg-blob--accent" data-parallax="-0.1" style="width:240px;height:240px;bottom:-40px;right:-60px;" aria-hidden="true"></span>
+    <div class="cta-banner" data-reveal="scale">
+      <h2 data-i18n="home.ctaBanner.title">Ready to write your own money story?</h2>
+      <p data-i18n="home.ctaBanner.subtitle">Your first consultation is on us.</p>
+      <a href="contact.html#book" class="btn btn-primary" data-i18n="home.ctaBanner.button">Book a Free Consultation</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img class="logo-mark" src="assets/images/logo-mark.png" alt="The Financial Talk" /> <span data-i18n="brand.name">The Financial Talk</span></a>
+        <p data-i18n="footer.tagline">Financial coaching, rooted in culture.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4 data-i18n="nav.home">Site</h4>
+          <ul>
+            <li><a href="about.html" data-i18n="nav.about">About</a></li>
+            <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+            <li><a href="resources.html" data-i18n="nav.resources">Resources</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="contact.social.title">Follow along</h4>
+          <div class="social-list">
+            <a href="https://www.instagram.com/thefinancialtalk" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+            <a href="https://www.tiktok.com/@thefinancialtalk" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.6 2.4 2.2 4 4.7 4.2v3c-1.7 0-3.2-.5-4.5-1.4v6.7A6.5 6.5 0 1 1 9.7 9v3.2a3.3 3.3 0 1 0 2.3 3.1V3z"/></svg></a>
+            <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M7 10v7M7 7v.01M11 17v-4.5a2.5 2.5 0 0 1 5 0V17"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span data-current-year>2026</span> <span data-i18n="brand.name">The Financial Talk</span>. <span data-i18n="footer.rights">All rights reserved.</span></span>
+      <span data-i18n="footer.placeholderNotice">Sample site — content and branding are placeholders.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/translations.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/main.js"></script>
+<script src="js/announcements.js"></script>
+
+<!-- Netlify Identity: handles the login/invite flow for the /admin content
+     editor. Harmless if the site isn't on Netlify or Identity isn't set up
+     yet — it just never triggers. -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", (user) => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
+</body>
+</html>

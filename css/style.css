@@ -1,0 +1,658 @@
+/* ==========================================================================
+   The Financial Talk — base styles
+   Color values below are defaults; js/theme.js overrides them at runtime
+   via CSS custom properties so the palette can be swapped live.
+   ========================================================================== */
+
+:root {
+  --color-primary: #c6146c;
+  --color-primary-dark: #8e0f52;
+  --color-primary-light: #f7d6e6;
+  --color-secondary: #f2a73b;
+  --color-secondary-dark: #c87f1c;
+  --color-accent: #6c2a83;
+  --color-bg: #fff8f1;
+  --color-bg-alt: #ffefdf;
+  --color-surface: #ffffff;
+  --color-text: #2b1330;
+  --color-text-muted: #6b5468;
+  --gradient-hero: linear-gradient(135deg, #c6146c 0%, #8e1e7a 45%, #6c2a83 100%);
+
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "Poppins", "Segoe UI", sans-serif;
+
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 12px 30px -12px rgba(43, 19, 48, 0.25);
+  --shadow-lift: 0 20px 45px -15px rgba(43, 19, 48, 0.35);
+
+  --container-width: 1140px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; margin: 0; padding: 0; }
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+  font-weight: 600;
+}
+p { margin: 0 0 1em; color: var(--color-text-muted); }
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section { padding: 96px 0; }
+@media (max-width: 640px) {
+  section { padding: 64px 0; }
+}
+
+.section-head {
+  max-width: 640px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+.section-head.align-left { margin-left: 0; text-align: left; }
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 16px;
+}
+
+.section-title { font-size: clamp(1.8rem, 3vw, 2.6rem); }
+.section-subtitle { font-size: 1.05rem; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 14px 30px;
+  border-radius: var(--radius-pill);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+  box-shadow: var(--shadow-soft);
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); background: var(--color-primary-dark); }
+
+.btn-secondary {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.7);
+  color: #fff;
+}
+.btn-secondary:hover { background: rgba(255, 255, 255, 0.15); transform: translateY(-3px); }
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.btn-outline:hover { background: var(--color-primary); color: #fff; transform: translateY(-3px); }
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 248, 241, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.site-header.is-scrolled {
+  box-shadow: 0 8px 24px -16px rgba(43, 19, 48, 0.3);
+  border-bottom-color: rgba(43, 19, 48, 0.06);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 24px;
+  max-width: 1320px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
+}
+.logo-mark {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.main-nav a {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  position: relative;
+  padding: 4px 0;
+}
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 2px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+.main-nav a:hover::after,
+.main-nav a[aria-current="page"]::after { transform: scaleX(1); }
+.main-nav a[aria-current="page"] { color: var(--color-primary); }
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.lang-switcher {
+  display: inline-flex;
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-pill);
+  padding: 4px;
+  gap: 2px;
+}
+.lang-switcher button {
+  border: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  color: var(--color-text-muted);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.lang-switcher button.is-active { background: var(--color-primary); color: #fff; }
+
+.theme-switcher { display: inline-flex; gap: 8px; }
+.theme-swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--color-surface);
+  box-shadow: 0 0 0 1px rgba(43, 19, 48, 0.15);
+  cursor: pointer;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.theme-swatch__half { flex: 1; }
+.theme-swatch__half:first-child { background: var(--swatch-a); }
+.theme-swatch__half:last-child { background: var(--swatch-b); }
+.theme-swatch:hover { transform: scale(1.12); }
+.theme-swatch.is-active { box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-primary); }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+}
+.nav-toggle span { width: 22px; height: 2px; background: var(--color-text); border-radius: 2px; }
+
+.nav-theme-row { display: none; }
+
+@media (max-width: 860px) {
+  .main-nav {
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    background: var(--color-surface);
+    padding: 20px 24px;
+    gap: 18px;
+    box-shadow: var(--shadow-soft);
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  .main-nav.is-open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .nav-toggle { display: flex; }
+  .header-actions .lang-switcher { display: inline-flex; }
+
+  /* Theme swatches move into the nav dropdown at this width so the
+     header row (logo + lang pills + hamburger) doesn't overflow. */
+  .header-actions > .theme-switcher { display: none; }
+  .nav-theme-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 14px;
+    border-top: 1px solid var(--color-bg-alt);
+    width: 100%;
+  }
+  .nav-theme-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+}
+
+@media (max-width: 400px) {
+  .header-inner { gap: 10px; padding: 14px 16px; }
+  .logo { font-size: 1rem; gap: 8px; }
+  .logo-mark { height: 34px; }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--gradient-hero);
+  color: #fff;
+  padding: 120px 0 140px;
+}
+.hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(10px);
+  pointer-events: none;
+}
+.hero-blob-a { width: 420px; height: 420px; background: var(--color-secondary); opacity: 0.35; top: -140px; right: -100px; }
+.hero-blob-b { width: 320px; height: 320px; background: #ffffff; opacity: 0.12; bottom: -160px; left: -80px; }
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero .eyebrow { background: rgba(255, 255, 255, 0.18); color: #fff; }
+.hero h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); }
+.hero p.hero-subtitle { color: rgba(255, 255, 255, 0.88); font-size: 1.15rem; max-width: 560px; margin: 0 auto 32px; }
+.hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+.page-hero {
+  background: var(--gradient-hero);
+  color: #fff;
+  padding: 96px 0 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero .eyebrow { background: rgba(255, 255, 255, 0.18); color: #fff; }
+.page-hero p { color: rgba(255, 255, 255, 0.88); max-width: 560px; margin: 0 auto; }
+.page-hero > .container { position: relative; z-index: 1; }
+
+/* ---------- Depth: parallax background layers ----------
+   Decorative, non-interactive shapes that drift at a different
+   speed than the content as the page scrolls (js/main.js writes
+   the --parallax-y custom property on scroll). */
+.decor-section { position: relative; overflow: hidden; }
+.decor-section > .container { position: relative; z-index: 1; }
+
+.bg-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(8px);
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 0;
+}
+.bg-blob--primary { background: var(--color-primary); }
+.bg-blob--secondary { background: var(--color-secondary); }
+.bg-blob--accent { background: var(--color-accent); }
+
+[data-parallax] {
+  transform: translate3d(0, var(--parallax-y, 0px), 0);
+  will-change: transform;
+}
+
+/* ---------- Stats ---------- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: -72px;
+  position: relative;
+  z-index: 2;
+}
+@media (max-width: 760px) { .stats-grid { grid-template-columns: 1fr; } }
+
+.stat-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+}
+.stat-card h3 { font-size: 1.15rem; color: var(--color-primary); margin-bottom: 8px; }
+.stat-card p { margin: 0; font-size: 0.95rem; }
+
+/* ---------- Split (about preview) ---------- */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.story-copy p { text-align: justify; }
+@media (max-width: 860px) { .split { grid-template-columns: 1fr; gap: 40px; } }
+
+/* "Room" treatment for real photos: the section behind sits at the same
+   neutral tone as the photo's own studio backdrop (sampled directly
+   from the photos), so the white behind her reads as continuous page
+   space rather than a mismatched box — she looks like she's standing in
+   a large room. The oval frame itself also gets that same background,
+   so even the clipped edge has no seam. */
+.room-section { background: #F7F7F6; }
+
+.room-photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 48% 52% 58% 42% / 44% 48% 52% 56%;
+  overflow: hidden;
+  background: #F7F7F6;
+}
+.room-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---------- Card grids ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.card-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 960px) { .card-grid, .card-grid.cols-4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .card-grid, .card-grid.cols-4 { grid-template-columns: 1fr; } }
+
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); }
+
+.card-icon {
+  width: 52px; height: 52px;
+  border-radius: 16px;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+
+.card-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-secondary-dark);
+  background: rgba(242, 167, 59, 0.18);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 14px;
+}
+
+/* ---------- Testimonials ---------- */
+.testimonial-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+}
+.testimonial-quote {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--color-text);
+  margin-bottom: 20px;
+}
+.testimonial-author { font-weight: 600; font-size: 0.9rem; color: var(--color-primary); }
+.testimonial-role { font-size: 0.82rem; color: var(--color-text-muted); }
+
+/* ---------- CTA banner ---------- */
+.cta-banner {
+  position: relative;
+  z-index: 1;
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-lg);
+  padding: 64px 40px;
+  text-align: center;
+  margin: 0 24px;
+}
+.cta-banner h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+
+/* ---------- Steps (services process) ---------- */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  counter-reset: step;
+}
+@media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
+.step {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-soft);
+}
+.step::before {
+  counter-increment: step;
+  content: counter(step);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--gradient-hero);
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+/* ---------- Contact ---------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 32px;
+  align-items: start;
+}
+@media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
+
+.contact-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: var(--shadow-soft);
+}
+.form-field { margin-bottom: 18px; }
+.form-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+.form-input {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1.5px solid var(--color-bg-alt);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  resize: vertical;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+.contact-card .btn { margin-top: 4px; }
+
+.social-list { display: flex; gap: 14px; margin-top: 16px; }
+.social-list a {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.social-list a:hover { background: var(--color-primary); color: #fff; transform: translateY(-3px); }
+
+.notice {
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-md);
+  padding: 18px 22px;
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  border-left: 4px solid var(--color-secondary);
+}
+
+/* ---------- Values (about) ---------- */
+.value-item { display: flex; gap: 16px; align-items: flex-start; }
+.value-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--color-accent);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 56px 0 28px;
+}
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+.footer-brand .logo { color: #fff; }
+.footer-brand p { color: rgba(255, 255, 255, 0.7); max-width: 280px; margin-top: 12px; }
+.footer-links { display: flex; gap: 48px; flex-wrap: wrap; }
+.footer-col h4 { color: #fff; font-size: 0.9rem; margin-bottom: 14px; }
+.footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+.footer-col a { color: rgba(255, 255, 255, 0.75); font-size: 0.9rem; }
+.footer-col a:hover { color: #fff; }
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ---------- Scroll reveal ----------
+   Only hidden pre-reveal when JS has run (see the early
+   `js-enabled` class in <head>) so content stays visible by
+   default if JS fails or is disabled. Siblings revealed together
+   (e.g. cards in a grid) stagger via --reveal-i, set in main.js. */
+.js-enabled [data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition-delay: calc(var(--reveal-i, 0) * 90ms);
+}
+.js-enabled [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+
+/* "scale" variant: elements emerge from slightly behind/below the
+   page, for sections that want a stronger sense of depth than a
+   plain fade (cards, testimonials, steps). */
+.js-enabled [data-reveal="scale"] {
+  transform: translateY(36px) scale(0.92);
+  transition-duration: 0.7s;
+  transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.js-enabled [data-reveal="scale"].is-visible { transform: translateY(0) scale(1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .js-enabled [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  [data-parallax] { transform: none !important; }
+}
+
+/* ---------- Misc utilities ---------- */
+.text-center { text-align: center; }
+.mt-lg { margin-top: 48px; }

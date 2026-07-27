@@ -1,0 +1,34 @@
+# Decap CMS configuration.
+# Setup this depends on (see README.md "Content editing (Decap CMS)"):
+#   1. Site is deployed on Netlify (git-gateway backend needs it).
+#   2. Netlify Identity is enabled, with Git Gateway enabled under
+#      Identity > Services.
+#   3. The editor (e.g. financialtalk@gmail.com) has been invited as an
+#      Identity user from the Netlify dashboard.
+
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+collections:
+  - name: "announcements"
+    label: "Announcements"
+    description: "Shows on the homepage under 'Latest updates'."
+    files:
+      - file: "content/announcements.json"
+        label: "Announcements"
+        name: "announcements"
+        fields:
+          - label: "Announcements"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.date}} — {{fields.title_en}}"
+            fields:
+              - { label: "Date", name: "date", widget: "date", format: "YYYY-MM-DD" }
+              - { label: "Title (English)", name: "title_en", widget: "string" }
+              - { label: "Title (Spanish)", name: "title_es", widget: "string", required: false, hint: "Optional — leave blank to reuse the English title" }
+              - { label: "Message (English)", name: "body_en", widget: "text" }
+              - { label: "Message (Spanish)", name: "body_es", widget: "text", required: false, hint: "Optional — leave blank to reuse the English message" }

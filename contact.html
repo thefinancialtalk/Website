@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>document.documentElement.classList.add("js-enabled");</script>
+<title data-i18n-title="contact.hero.title">The Financial Talk</title>
+<meta name="description" content="Bilingual financial coaching rooted in culture." />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png" />
+<link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="site-header" data-site-header>
+  <div class="header-inner container">
+    <a href="index.html" class="logo"><img class="logo-mark" src="assets/images/logo-mark.png" alt="The Financial Talk" /> <span data-i18n="brand.name">The Financial Talk</span></a>
+
+    <nav class="main-nav" data-nav>
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="about.html" data-i18n="nav.about">About</a>
+      <a href="services.html" data-i18n="nav.services">Services</a>
+      <a href="resources.html" data-i18n="nav.resources">Resources</a>
+      <a href="contact.html" aria-current="page" data-i18n="nav.contact">Contact</a>
+      <a href="contact.html#book" class="btn btn-outline" data-i18n="nav.cta" style="padding:10px 22px;">Book a Consultation</a>
+      <div class="nav-theme-row">
+        <span class="nav-theme-label" data-i18n="theme.label">Color palette</span>
+        <div class="theme-switcher" data-theme-switcher></div>
+      </div>
+    </nav>
+
+    <div class="header-actions">
+      <div class="lang-switcher" role="group" aria-label="Language">
+        <button type="button" data-lang-option="en">EN</button>
+        <button type="button" data-lang-option="es">ES</button>
+      </div>
+      <div class="theme-switcher" data-theme-switcher role="group" aria-label="Color palette"></div>
+      <button type="button" class="nav-toggle" data-nav-toggle aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-hero">
+    <span class="hero-blob hero-blob-a" data-parallax="0.1" aria-hidden="true"></span>
+    <span class="hero-blob hero-blob-b" data-parallax="-0.07" aria-hidden="true"></span>
+    <div class="container">
+      <span class="eyebrow" data-i18n="contact.hero.eyebrow">Contact</span>
+      <h1 data-i18n="contact.hero.title">Let's talk money, your way</h1>
+      <p data-i18n="contact.hero.subtitle">Reach out in whichever language feels most comfortable.</p>
+    </div>
+  </section>
+
+  <section class="decor-section" id="book">
+    <span class="bg-blob bg-blob--primary" data-parallax="0.15" style="width:260px;height:260px;top:-40px;left:-90px;" aria-hidden="true"></span>
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-i18n="contact.schedule.eyebrow">Schedule</span>
+        <h2 class="section-title" data-i18n="contact.schedule.title">Book your consultation</h2>
+        <p data-i18n="contact.schedule.subtitle">Pick a day and session type below — pricing is shown at checkout.</p>
+      </div>
+      <div class="calendly-inline-widget" data-url="https://calendly.com/thefinancialtalk/discovery-call" style="min-width:280px;height:700px;" data-reveal="scale"></div>
+    </div>
+  </section>
+
+  <section class="decor-section">
+    <span class="bg-blob bg-blob--accent" data-parallax="0.15" style="width:240px;height:240px;bottom:-60px;left:-80px;" aria-hidden="true"></span>
+    <div class="container contact-grid">
+      <form class="contact-card" data-reveal="scale" action="https://formspree.io/f/xzdnyodk" method="POST">
+        <h2 style="font-size:1.4rem;" data-i18n="contact.card.title">Get in touch</h2>
+        <p data-i18n="contact.card.body">Send a message with a bit about your goals.</p>
+
+        <div class="form-field">
+          <label class="form-label" for="contact-name" data-i18n="contact.form.nameLabel">Name</label>
+          <input class="form-input" type="text" id="contact-name" name="name" autocomplete="name" required />
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="contact-email" data-i18n="contact.form.emailLabel">Email</label>
+          <input class="form-input" type="email" id="contact-email" name="email" autocomplete="email" required />
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="contact-message" data-i18n="contact.form.messageLabel">Message</label>
+          <textarea class="form-input" id="contact-message" name="message" rows="4" required></textarea>
+        </div>
+
+        <input type="hidden" name="_subject" value="New message from The Financial Talk website" />
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+        <button type="submit" class="btn btn-primary" data-i18n="contact.form.submit">Send Message</button>
+      </form>
+
+      <div>
+        <div class="card" data-reveal="scale">
+          <h3 style="font-size:1.1rem;" data-i18n="contact.social.title">Follow along</h3>
+          <p data-i18n="contact.social.body">Replace the links below with real social profiles.</p>
+          <div class="social-list">
+            <a href="https://www.instagram.com/thefinancialtalk" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+            <a href="https://www.tiktok.com/@thefinancialtalk" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.6 2.4 2.2 4 4.7 4.2v3c-1.7 0-3.2-.5-4.5-1.4v6.7A6.5 6.5 0 1 1 9.7 9v3.2a3.3 3.3 0 1 0 2.3 3.1V3z"/></svg></a>
+            <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M7 10v7M7 7v.01M11 17v-4.5a2.5 2.5 0 0 1 5 0V17"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img class="logo-mark" src="assets/images/logo-mark.png" alt="The Financial Talk" /> <span data-i18n="brand.name">The Financial Talk</span></a>
+        <p data-i18n="footer.tagline">Financial coaching, rooted in culture.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4 data-i18n="nav.home">Site</h4>
+          <ul>
+            <li><a href="about.html" data-i18n="nav.about">About</a></li>
+            <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+            <li><a href="resources.html" data-i18n="nav.resources">Resources</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="contact.social.title">Follow along</h4>
+          <div class="social-list">
+            <a href="https://www.instagram.com/thefinancialtalk" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+            <a href="https://www.tiktok.com/@thefinancialtalk" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.6 2.4 2.2 4 4.7 4.2v3c-1.7 0-3.2-.5-4.5-1.4v6.7A6.5 6.5 0 1 1 9.7 9v3.2a3.3 3.3 0 1 0 2.3 3.1V3z"/></svg></a>
+            <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M7 10v7M7 7v.01M11 17v-4.5a2.5 2.5 0 0 1 5 0V17"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span data-current-year>2026</span> <span data-i18n="brand.name">The Financial Talk</span>. <span data-i18n="footer.rights">All rights reserved.</span></span>
+      <span data-i18n="footer.placeholderNotice">Sample site — content and branding are placeholders.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/translations.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/main.js"></script>
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</body>
+</html>
