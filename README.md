@@ -77,10 +77,12 @@ visible seam. Three more portraits are in `assets/images/`
 text is a translation key (e.g. `home.about.photoAlt` in
 `js/translations.js`).
 
-**Social links** — the `#` placeholders in the footer and contact page
-social icons still need real URLs (LinkedIn, Instagram, TikTok, etc.) —
-just find/replace the `href="#"` attributes in `index.html`, `about.html`,
-`services.html`, and `contact.html`.
+**Social links** — Instagram (`@thefinancialtalk`) and TikTok
+(`@thefinancialtalk`) point at the real accounts in the footer/contact
+social icons across every page. The LinkedIn icon has been removed for now
+(no page yet); to re-add it, drop an `<a>` back into each `.social-list`
+block in `index.html`, `about.html`, `services.html`, `resources.html`, and
+`contact.html`.
 
 ## Contact form (Formspree)
 
