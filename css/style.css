@@ -675,7 +675,7 @@ h1, h2, h3, h4 { letter-spacing: -0.015em; }
 
 /* ---- Hero: bigger type, animated gradient, gold accent, soft glow ---- */
 .hero h1 { font-size: clamp(2.6rem, 5.4vw, 4rem); font-weight: 700; }
-.hero-inner { max-width: 760px; }
+.hero-inner { max-width: 980px; }
 .hero p.hero-subtitle { font-size: 1.18rem; }
 .hero .accent { color: var(--color-secondary); }
 
@@ -816,41 +816,90 @@ body.preloading { overflow: hidden; }
   .preloader.is-done { transform: none; }
 }
 
-/* ---- Custom cursor (added only on fine-pointer devices by JS) ---- */
-.cursor-dot, .cursor-ring {
-  position: fixed; top: 0; left: 0; z-index: 9998;
-  border-radius: 50%; pointer-events: none;
-  will-change: transform; opacity: 1;
-  transition: opacity 0.25s ease;
+/* ---- Space starfield canvas (js/effects.js) ---- */
+.hero-space {
+  position: absolute; inset: 0; z-index: 0;
+  pointer-events: none;
 }
-.cursor-dot { width: 8px; height: 8px; margin: -4px 0 0 -4px; background: var(--color-secondary); }
-.cursor-ring {
-  width: 40px; height: 40px; margin: -20px 0 0 -20px;
-  border: 1.5px solid var(--color-primary);
-  transition: width 0.25s ease, height 0.25s ease, margin 0.25s ease, border-color 0.25s ease, background 0.25s ease, opacity 0.25s ease;
-}
-body.cursor-hover .cursor-ring {
-  width: 62px; height: 62px; margin: -31px 0 0 -31px;
-  border-color: var(--color-secondary);
-  background: rgba(255, 255, 255, 0.06);
-}
-body.cursor-hidden .cursor-dot, body.cursor-hidden .cursor-ring { opacity: 0; }
-body.has-custom-cursor,
-body.has-custom-cursor a,
-body.has-custom-cursor button,
-body.has-custom-cursor summary { cursor: none; }
-body.has-custom-cursor input,
-body.has-custom-cursor textarea { cursor: text; }
 
-/* ---- Interactive hero glow (follows the cursor via --mx/--my) ---- */
-.hero { --mx: 50%; --my: 28%; }
-.hero::before {
+/* Center the "Latest updates" announcements so a single card isn't
+   stranded in the left column of the 3-up grid. Cards wrap and stay
+   centered for any count. */
+.card-grid[data-announcements-list] {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card-grid[data-announcements-list] .card {
+  flex: 0 1 360px;
+  max-width: 440px;
+}
+
+/* ---- Distinct per-page hero ("header") backgrounds ----
+   Each inner page gets its own on-brand gradient so the pages feel varied.
+   Built from the palette vars, so they still adapt to the theme switcher.
+   The floating blobs keep the motion, so the gradient itself stays put. */
+.page-hero--about,
+.page-hero--services,
+.page-hero--resources,
+.page-hero--contact { animation: none; }
+
+.page-hero--about {
+  background:
+    radial-gradient(85% 120% at 88% -10%, rgba(232, 201, 122, 0.22), transparent 55%),
+    linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 55%, var(--color-accent) 100%);
+}
+.page-hero--services {
+  background:
+    radial-gradient(70% 120% at 12% 0%, rgba(255, 255, 255, 0.12), transparent 55%),
+    linear-gradient(120deg, var(--color-accent) 0%, var(--color-primary-dark) 65%, var(--color-primary) 120%);
+}
+.page-hero--resources {
+  background:
+    radial-gradient(75% 110% at 92% 15%, rgba(232, 201, 122, 0.28), transparent 58%),
+    linear-gradient(160deg, var(--color-primary-dark) 0%, var(--color-accent) 78%);
+}
+.page-hero--contact {
+  background:
+    radial-gradient(95% 130% at 22% -10%, var(--color-primary) 0%, transparent 52%),
+    linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary-dark) 50%, var(--color-primary) 115%);
+}
+
+/* ---- About: extended story (welcome + detail sections) ---- */
+.room-section > .container { max-width: 1300px; }
+.story-intro { grid-template-columns: 1.5fr 0.8fr; gap: 48px; }
+.story-detail {
+  max-width: 1160px;
+  margin: 60px auto 0;
+}
+.story-detail h3 {
+  font-size: clamp(1.4rem, 2.4vw, 1.7rem);
+  margin-top: 44px;
+  margin-bottom: 14px;
+}
+.story-detail > h3:first-child { margin-top: 0; }
+.story-detail p { color: var(--color-text-muted); }
+.story-list {
+  margin: 4px 0 22px;
+  display: grid;
+  gap: 14px;
+}
+.story-list li {
+  position: relative;
+  padding-left: 30px;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+.story-list li::before {
   content: "";
-  position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background: radial-gradient(360px circle at var(--mx) var(--my), rgba(255, 255, 255, 0.16), transparent 62%);
-  opacity: 0; transition: opacity 0.4s ease;
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  flex-shrink: 0;
 }
-.hero:hover::before { opacity: 1; }
-@media (prefers-reduced-motion: reduce) {
-  .hero::before { display: none; }
-}
+.story-list li strong { color: var(--color-text); font-weight: 600; }
+
