@@ -54,24 +54,6 @@
     setTimeout(finish, duration + 4000); // hard fallback so it can never get stuck
   }
 
-  /* ---------- Interactive hero glow (follows the cursor) ---------- */
-  function initGlow() {
-    if (reduce) return;
-    var hero = document.querySelector(".hero");
-    if (!hero) return;
-    var queued = false;
-    hero.addEventListener("mousemove", function (e) {
-      if (queued) return;
-      queued = true;
-      requestAnimationFrame(function () {
-        var r = hero.getBoundingClientRect();
-        hero.style.setProperty("--mx", ((e.clientX - r.left) / r.width * 100).toFixed(1) + "%");
-        hero.style.setProperty("--my", ((e.clientY - r.top) / r.height * 100).toFixed(1) + "%");
-        queued = false;
-      });
-    });
-  }
-
   /* ---------- Space background: drifting, twinkling starfield ---------- */
   function initSpace() {
     var hero = document.querySelector(".hero");
@@ -199,7 +181,6 @@
 
   initPreloader();
   document.addEventListener("DOMContentLoaded", function () {
-    initGlow();
     initSpace();
   });
 })();

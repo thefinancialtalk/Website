@@ -675,7 +675,7 @@ h1, h2, h3, h4 { letter-spacing: -0.015em; }
 
 /* ---- Hero: bigger type, animated gradient, gold accent, soft glow ---- */
 .hero h1 { font-size: clamp(2.6rem, 5.4vw, 4rem); font-weight: 700; }
-.hero-inner { max-width: 760px; }
+.hero-inner { max-width: 980px; }
 .hero p.hero-subtitle { font-size: 1.18rem; }
 .hero .accent { color: var(--color-secondary); }
 
@@ -822,15 +822,3 @@ body.preloading { overflow: hidden; }
   pointer-events: none;
 }
 
-/* ---- Interactive hero glow (follows the cursor via --mx/--my) ---- */
-.hero { --mx: 50%; --my: 28%; }
-.hero::before {
-  content: "";
-  position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background: radial-gradient(360px circle at var(--mx) var(--my), rgba(255, 255, 255, 0.16), transparent 62%);
-  opacity: 0; transition: opacity 0.4s ease;
-}
-.hero:hover::before { opacity: 1; }
-@media (prefers-reduced-motion: reduce) {
-  .hero::before { display: none; }
-}
