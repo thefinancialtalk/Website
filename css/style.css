@@ -816,31 +816,11 @@ body.preloading { overflow: hidden; }
   .preloader.is-done { transform: none; }
 }
 
-/* ---- Custom cursor (added only on fine-pointer devices by JS) ---- */
-.cursor-dot, .cursor-ring {
-  position: fixed; top: 0; left: 0; z-index: 9998;
-  border-radius: 50%; pointer-events: none;
-  will-change: transform; opacity: 1;
-  transition: opacity 0.25s ease;
+/* ---- Space starfield canvas (js/effects.js) ---- */
+.hero-space {
+  position: absolute; inset: 0; z-index: 0;
+  pointer-events: none;
 }
-.cursor-dot { width: 8px; height: 8px; margin: -4px 0 0 -4px; background: var(--color-secondary); }
-.cursor-ring {
-  width: 40px; height: 40px; margin: -20px 0 0 -20px;
-  border: 1.5px solid var(--color-primary);
-  transition: width 0.25s ease, height 0.25s ease, margin 0.25s ease, border-color 0.25s ease, background 0.25s ease, opacity 0.25s ease;
-}
-body.cursor-hover .cursor-ring {
-  width: 62px; height: 62px; margin: -31px 0 0 -31px;
-  border-color: var(--color-secondary);
-  background: rgba(255, 255, 255, 0.06);
-}
-body.cursor-hidden .cursor-dot, body.cursor-hidden .cursor-ring { opacity: 0; }
-body.has-custom-cursor,
-body.has-custom-cursor a,
-body.has-custom-cursor button,
-body.has-custom-cursor summary { cursor: none; }
-body.has-custom-cursor input,
-body.has-custom-cursor textarea { cursor: text; }
 
 /* ---- Interactive hero glow (follows the cursor via --mx/--my) ---- */
 .hero { --mx: 50%; --my: 28%; }
