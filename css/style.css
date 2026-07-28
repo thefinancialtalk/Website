@@ -835,3 +835,33 @@ body.preloading { overflow: hidden; }
   max-width: 440px;
 }
 
+/* ---- Distinct per-page hero ("header") backgrounds ----
+   Each inner page gets its own on-brand gradient so the pages feel varied.
+   Built from the palette vars, so they still adapt to the theme switcher.
+   The floating blobs keep the motion, so the gradient itself stays put. */
+.page-hero--about,
+.page-hero--services,
+.page-hero--resources,
+.page-hero--contact { animation: none; }
+
+.page-hero--about {
+  background:
+    radial-gradient(85% 120% at 88% -10%, rgba(232, 201, 122, 0.22), transparent 55%),
+    linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 55%, var(--color-accent) 100%);
+}
+.page-hero--services {
+  background:
+    radial-gradient(70% 120% at 12% 0%, rgba(255, 255, 255, 0.12), transparent 55%),
+    linear-gradient(120deg, var(--color-accent) 0%, var(--color-primary-dark) 65%, var(--color-primary) 120%);
+}
+.page-hero--resources {
+  background:
+    radial-gradient(75% 110% at 92% 15%, rgba(232, 201, 122, 0.28), transparent 58%),
+    linear-gradient(160deg, var(--color-primary-dark) 0%, var(--color-accent) 78%);
+}
+.page-hero--contact {
+  background:
+    radial-gradient(95% 130% at 22% -10%, var(--color-primary) 0%, transparent 52%),
+    linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary-dark) 50%, var(--color-primary) 115%);
+}
+
