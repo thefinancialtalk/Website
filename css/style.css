@@ -865,3 +865,39 @@ body.preloading { overflow: hidden; }
     linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary-dark) 50%, var(--color-primary) 115%);
 }
 
+/* ---- About: extended story (welcome + detail sections) ---- */
+.story-detail {
+  max-width: 820px;
+  margin: 60px auto 0;
+}
+.story-detail h3 {
+  font-size: clamp(1.4rem, 2.4vw, 1.7rem);
+  margin-top: 44px;
+  margin-bottom: 14px;
+}
+.story-detail > h3:first-child { margin-top: 0; }
+.story-detail p { color: var(--color-text-muted); }
+.story-list {
+  margin: 4px 0 22px;
+  display: grid;
+  gap: 14px;
+}
+.story-list li {
+  position: relative;
+  padding-left: 30px;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+.story-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  flex-shrink: 0;
+}
+.story-list li strong { color: var(--color-text); font-weight: 600; }
+

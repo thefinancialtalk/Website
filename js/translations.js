@@ -134,20 +134,34 @@ const TRANSLATIONS = {
     about: {
       hero: {
         eyebrow: "About",
-        title: "Financial confidence, culturally rooted",
+        title: "Empowering Your Financial Future",
         subtitle:
           "A bicultural approach to money that honors where you come from and where you're going.",
       },
       story: {
         eyebrow: "My story",
-        title: "Why this matters to me",
-        body1:
-          "Ten years ago, I embraced a beautiful new beginning when I immigrated from Guayaquil, Ecuador, to Canada. To build my future, I dedicated myself to earning a Bachelor of Business Economics with Honours, an achievement that ultimately nurtured my passion for financial empowerment.",
-        body2:
-          "Navigating an unfamiliar economic system was a daunting path, yet mastering the intricacies of Canadian taxation, pension programs, smart investments, and the proud milestone of buying my first home became my true calling.",
-        body3:
-          "Today, I pour my heart into uplifting both Canadians and my cherished Latino community, transforming complex financial concepts into clear, graceful, and accessible stepping stones toward security and peace of mind.",
+        title: "Welcome — I'm glad you're here",
+        intro1:
+          "Ten years ago, I embarked on a transformative journey by immigrating from the vibrant coastal city of Guayaquil, Ecuador, to Canada. Relocating to a new country required immense resilience, as I adapted to an unfamiliar culture and economic system. Rather than viewing these initial challenges as barriers, I embraced them as opportunities for personal growth.",
+        intro2:
+          "To build a strong foundation for my future, I dedicated myself to academic excellence, earning a Bachelor of Business Economics with Honours. This rigorous programme deepened my understanding of market dynamics, economic theory, and fiscal structures. More importantly, it ignited my passion for financial empowerment and revealed the vital role that financial literacy plays in personal stability.",
         photoAlt: "Portrait of Nathaly, founder of The Financial Talk, smiling, seated",
+        masteringTitle: "Mastering the landscape",
+        masteringBody:
+          "Navigating an unfamiliar economic system presented a steep learning curve. My determination drove me to thoroughly master the intricacies of Canadian personal finance, including:",
+        masteringItems: [
+          "<strong>Taxation:</strong> optimizing personal taxation strategies under federal and provincial frameworks.",
+          "<strong>Retirement planning:</strong> maximizing government pension programmes and private savings plans.",
+          "<strong>Wealth building:</strong> navigating smart, strategic investment vehicles tailored to individual goals.",
+          "<strong>Real estate:</strong> securing homeownership, marked by the proud milestone of buying my first home in Canada.",
+        ],
+        masteringClose:
+          "Achieving these milestones served as tangible proof that dedication yields success. It also confirmed my true calling: guiding others through the exact financial system I worked so hard to understand.",
+        missionTitle: "My mission and vision",
+        missionBody1:
+          "Today, I pour my heart into uplifting both the broader Canadian community and my cherished Latino community. I believe that financial clarity should be accessible to everyone, regardless of their background.",
+        missionBody2:
+          "My mission is to transform complex financial concepts into clear, graceful, and manageable stepping stones. By replacing uncertainty with structured knowledge, I help individuals and families build lasting security, financial independence, and genuine peace of mind.",
       },
       values: {
         eyebrow: "What guides us",
@@ -411,20 +425,34 @@ const TRANSLATIONS = {
     about: {
       hero: {
         eyebrow: "Nosotras",
-        title: "Confianza financiera, con raíces culturales",
+        title: "Empoderando tu Futuro Financiero",
         subtitle:
           "Un enfoque bicultural sobre el dinero que honra de dónde vienes y hacia dónde vas.",
       },
       story: {
         eyebrow: "Mi historia",
-        title: "Por qué esto me importa",
-        body1:
-          "Hace diez años, abracé un hermoso nuevo comienzo al emigrar de Guayaquil, Ecuador, a Canadá. Para construir mi futuro, me dediqué a obtener mi licenciatura en Economía y Negocios con Honores, un logro que terminó por alimentar mi pasión por el empoderamiento financiero.",
-        body2:
-          "Navegar un sistema económico desconocido fue un camino desafiante, pero dominar los entresijos de los impuestos canadienses, los programas de pensión, las inversiones inteligentes y el orgulloso logro de comprar mi primera casa se convirtió en mi verdadera vocación.",
-        body3:
-          "Hoy, entrego mi corazón a impulsar tanto a los canadienses como a mi querida comunidad latina, transformando conceptos financieros complejos en pasos claros, elegantes y accesibles hacia la seguridad y la tranquilidad.",
+        title: "Bienvenida — me alegra que estés aquí",
+        intro1:
+          "Hace diez años emprendí un viaje transformador al emigrar de la vibrante ciudad costera de Guayaquil, Ecuador, a Canadá. Mudarme a un nuevo país exigió una resiliencia inmensa, mientras me adaptaba a una cultura y un sistema económico desconocidos. En lugar de ver esos primeros desafíos como barreras, los abracé como oportunidades de crecimiento personal.",
+        intro2:
+          "Para construir una base sólida para mi futuro, me dediqué a la excelencia académica y obtuve una Licenciatura en Economía y Negocios con Honores. Ese riguroso programa profundizó mi comprensión de la dinámica del mercado, la teoría económica y las estructuras fiscales. Más importante aún, encendió mi pasión por el empoderamiento financiero y me reveló el papel vital que la educación financiera juega en la estabilidad personal.",
         photoAlt: "Retrato de Nathaly, fundadora de The Financial Talk, sonriendo, sentada",
+        masteringTitle: "Dominando el terreno",
+        masteringBody:
+          "Navegar un sistema económico desconocido presentó una curva de aprendizaje empinada. Mi determinación me llevó a dominar a fondo los detalles de las finanzas personales en Canadá, incluyendo:",
+        masteringItems: [
+          "<strong>Impuestos:</strong> optimizar estrategias fiscales personales bajo los marcos federal y provincial.",
+          "<strong>Planificación de la jubilación:</strong> maximizar los programas de pensión del gobierno y los planes de ahorro privados.",
+          "<strong>Construcción de riqueza:</strong> elegir vehículos de inversión inteligentes y estratégicos según cada meta.",
+          "<strong>Bienes raíces:</strong> lograr la compra de vivienda, marcada por el orgulloso hito de comprar mi primera casa en Canadá.",
+        ],
+        masteringClose:
+          "Alcanzar estos logros fue prueba tangible de que la dedicación da frutos. También confirmó mi verdadera vocación: guiar a otras personas por el mismo sistema financiero que tanto me esforcé en entender.",
+        missionTitle: "Mi misión y visión",
+        missionBody1:
+          "Hoy entrego mi corazón a impulsar tanto a la comunidad canadiense en general como a mi querida comunidad latina. Creo que la claridad financiera debe ser accesible para todos, sin importar su origen.",
+        missionBody2:
+          "Mi misión es transformar conceptos financieros complejos en pasos claros, elegantes y manejables. Al reemplazar la incertidumbre con conocimiento estructurado, ayudo a personas y familias a construir seguridad duradera, independencia financiera y verdadera tranquilidad.",
       },
       values: {
         eyebrow: "Lo que nos guía",
