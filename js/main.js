@@ -82,6 +82,18 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("resize", onParallaxScroll);
   }
 
+  // FAQ accordion — open one, close the rest (single-open behavior).
+  const faqItems = document.querySelectorAll("[data-faq] details");
+  faqItems.forEach((item) => {
+    item.addEventListener("toggle", () => {
+      if (item.open) {
+        faqItems.forEach((other) => {
+          if (other !== item) other.open = false;
+        });
+      }
+    });
+  });
+
   // Footer year
   document.querySelectorAll("[data-current-year]").forEach((el) => {
     el.textContent = new Date().getFullYear();

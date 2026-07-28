@@ -30,10 +30,12 @@ const TRANSLATIONS = {
       hero: {
         eyebrow: "Financial coaching, rooted in culture",
         title: "Your money story, told in your own voice.",
+        titleHtml: "Your money story, told in <span class=\"accent\">your own voice.</span>",
         subtitle:
           "Bilingual financial coaching that blends smart modern money tools with the values your family raised you on — so you can build wealth without losing who you are.",
         ctaPrimary: "Book a Consultation",
         ctaSecondary: "Explore Services",
+        trust: ["Bilingual (EN / ES)", "Judgment-free space", "Culturally rooted"],
       },
       stats: [
         { title: "Bilingual", desc: "Coaching available in English and Spanish" },
@@ -95,6 +97,33 @@ const TRANSLATIONS = {
         eyebrow: "Latest updates",
         title: "What's new",
         empty: "No announcements yet — check back soon.",
+      },
+      faq: {
+        eyebrow: "FAQ",
+        title: "Questions? Answered.",
+        subtitle: "The things people usually ask before we start working together.",
+        items: [
+          {
+            q: "Do I need to be “good with money” to start?",
+            a: "Not at all. Most people I work with feel behind or overwhelmed — that's exactly why coaching helps. We start wherever you are, with zero judgment.",
+          },
+          {
+            q: "Can we meet in Spanish?",
+            a: "Yes. Every session, worksheet, and resource is available in English and Spanish — whatever feels most comfortable for you and your family.",
+          },
+          {
+            q: "How much does it cost?",
+            a: "It depends on the format you choose. The easiest way to see options and pricing is to book a free consultation — session types and prices are shown when you pick a time.",
+          },
+          {
+            q: "What happens on the first call?",
+            a: "It's a relaxed, no-pressure conversation about where you are, what you want, and whether working together feels like the right fit. No commitment required.",
+          },
+          {
+            q: "Do you offer workshops for groups?",
+            a: "Absolutely. I run bilingual group workshops for teams, community organizations, and families on budgeting, credit, and investing — reach out and we'll tailor one.",
+          },
+        ],
       },
       ctaBanner: {
         title: "Ready to write your own money story?",
@@ -278,10 +307,12 @@ const TRANSLATIONS = {
       hero: {
         eyebrow: "Asesoría financiera, con raíces culturales",
         title: "La historia de tu dinero, contada con tu propia voz.",
+        titleHtml: "La historia de tu dinero, contada <span class=\"accent\">con tu propia voz.</span>",
         subtitle:
           "Asesoría financiera bilingüe que combina herramientas modernas con los valores que tu familia te enseñó — para que construyas riqueza sin dejar de ser quien eres.",
         ctaPrimary: "Agenda una Consulta",
         ctaSecondary: "Ver Servicios",
+        trust: ["Bilingüe (EN / ES)", "Espacio sin juicios", "Con raíces culturales"],
       },
       stats: [
         { title: "Bilingüe", desc: "Asesoría disponible en inglés y español" },
@@ -343,6 +374,33 @@ const TRANSLATIONS = {
         eyebrow: "Últimas novedades",
         title: "Qué hay de nuevo",
         empty: "Aún no hay anuncios — vuelve pronto.",
+      },
+      faq: {
+        eyebrow: "Preguntas frecuentes",
+        title: "¿Preguntas? Respondidas.",
+        subtitle: "Lo que la gente suele preguntar antes de comenzar a trabajar juntas.",
+        items: [
+          {
+            q: "¿Necesito ser “buena con el dinero” para empezar?",
+            a: "Para nada. La mayoría de las personas con quienes trabajo se sienten atrasadas o abrumadas — por eso la asesoría ayuda. Empezamos donde estés, sin ningún juicio.",
+          },
+          {
+            q: "¿Podemos reunirnos en español?",
+            a: "Sí. Cada sesión, hoja de trabajo y recurso está disponible en inglés y español — lo que sea más cómodo para ti y tu familia.",
+          },
+          {
+            q: "¿Cuánto cuesta?",
+            a: "Depende del formato que elijas. La forma más fácil de ver las opciones y precios es agendar una consulta gratuita — los tipos de sesión y precios se muestran al elegir tu horario.",
+          },
+          {
+            q: "¿Qué pasa en la primera llamada?",
+            a: "Es una conversación relajada y sin presión sobre dónde estás, qué quieres lograr y si trabajar juntas es la opción correcta. Sin compromiso.",
+          },
+          {
+            q: "¿Ofreces talleres para grupos?",
+            a: "¡Claro! Ofrezco talleres grupales bilingües para equipos, organizaciones comunitarias y familias sobre presupuesto, crédito e inversión — escríbeme y lo diseñamos a tu medida.",
+          },
+        ],
       },
       ctaBanner: {
         title: "¿Lista para escribir tu propia historia financiera?",
