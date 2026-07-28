@@ -866,9 +866,10 @@ body.preloading { overflow: hidden; }
 }
 
 /* ---- About: extended story (welcome + detail sections) ---- */
-.story-intro { grid-template-columns: 1.35fr 0.85fr; gap: 48px; }
+.room-section > .container { max-width: 1300px; }
+.story-intro { grid-template-columns: 1.5fr 0.8fr; gap: 48px; }
 .story-detail {
-  max-width: 1000px;
+  max-width: 1160px;
   margin: 60px auto 0;
 }
 .story-detail h3 {
