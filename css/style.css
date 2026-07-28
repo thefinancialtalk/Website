@@ -777,3 +777,80 @@ h1, h2, h3, h4 { letter-spacing: -0.015em; }
   .btn-primary::after { display: none; }
   .faq-item[open] .faq-answer { animation: none; }
 }
+
+/* ==========================================================================
+   Visual flourishes (js/effects.js): intro preloader, custom cursor,
+   interactive hero glow. Hidden/disabled by default so no-JS and
+   touch/reduced-motion users are unaffected.
+   ========================================================================== */
+
+/* ---- Intro preloader ---- */
+.preloader { display: none; }
+.js-enabled .preloader {
+  display: flex;
+  position: fixed; inset: 0; z-index: 10000;
+  flex-direction: column; align-items: center; justify-content: center; gap: 24px;
+  background: var(--gradient-hero);
+  transition: transform 0.75s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.5s ease;
+}
+.preloader.is-done { transform: translateY(-100%); opacity: 0; pointer-events: none; }
+.preloader-logo {
+  width: 66px; height: auto;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.35));
+  animation: ftPrePulse 1.6s ease-in-out infinite;
+}
+@keyframes ftPrePulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+.preloader-bar {
+  width: 180px; height: 3px; border-radius: 3px;
+  background: rgba(255, 255, 255, 0.22); overflow: hidden;
+}
+.preloader-bar span { display: block; height: 100%; width: 0; background: var(--color-secondary); transition: width 0.2s ease; }
+.preloader-pct { color: rgba(255, 255, 255, 0.85); font-family: var(--font-body); font-size: 0.78rem; letter-spacing: 0.14em; }
+body.preloading { overflow: hidden; }
+@media (prefers-reduced-motion: reduce) {
+  .preloader-logo { animation: none; }
+  .js-enabled .preloader { transition: opacity 0.3s ease; }
+  .preloader.is-done { transform: none; }
+}
+
+/* ---- Custom cursor (added only on fine-pointer devices by JS) ---- */
+.cursor-dot, .cursor-ring {
+  position: fixed; top: 0; left: 0; z-index: 9998;
+  border-radius: 50%; pointer-events: none;
+  will-change: transform; opacity: 1;
+  transition: opacity 0.25s ease;
+}
+.cursor-dot { width: 8px; height: 8px; margin: -4px 0 0 -4px; background: var(--color-secondary); }
+.cursor-ring {
+  width: 40px; height: 40px; margin: -20px 0 0 -20px;
+  border: 1.5px solid var(--color-primary);
+  transition: width 0.25s ease, height 0.25s ease, margin 0.25s ease, border-color 0.25s ease, background 0.25s ease, opacity 0.25s ease;
+}
+body.cursor-hover .cursor-ring {
+  width: 62px; height: 62px; margin: -31px 0 0 -31px;
+  border-color: var(--color-secondary);
+  background: rgba(255, 255, 255, 0.06);
+}
+body.cursor-hidden .cursor-dot, body.cursor-hidden .cursor-ring { opacity: 0; }
+body.has-custom-cursor,
+body.has-custom-cursor a,
+body.has-custom-cursor button,
+body.has-custom-cursor summary { cursor: none; }
+body.has-custom-cursor input,
+body.has-custom-cursor textarea { cursor: text; }
+
+/* ---- Interactive hero glow (follows the cursor via --mx/--my) ---- */
+.hero { --mx: 50%; --my: 28%; }
+.hero::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(360px circle at var(--mx) var(--my), rgba(255, 255, 255, 0.16), transparent 62%);
+  opacity: 0; transition: opacity 0.4s ease;
+}
+.hero:hover::before { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .hero::before { display: none; }
+}
