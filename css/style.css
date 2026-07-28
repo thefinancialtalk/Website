@@ -822,3 +822,16 @@ body.preloading { overflow: hidden; }
   pointer-events: none;
 }
 
+/* Center the "Latest updates" announcements so a single card isn't
+   stranded in the left column of the 3-up grid. Cards wrap and stay
+   centered for any count. */
+.card-grid[data-announcements-list] {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card-grid[data-announcements-list] .card {
+  flex: 0 1 360px;
+  max-width: 440px;
+}
+
