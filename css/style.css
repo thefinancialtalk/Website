@@ -842,7 +842,12 @@ body.preloading { overflow: hidden; }
 .page-hero--about,
 .page-hero--services,
 .page-hero--resources,
-.page-hero--contact { animation: none; }
+.page-hero--contact,
+.page-hero--getinvolved { animation: none; }
+
+/* Center a card grid when it holds fewer cards than its column count. */
+.card-grid.is-centered { display: flex; flex-wrap: wrap; justify-content: center; }
+.card-grid.is-centered > .card { flex: 0 1 340px; max-width: 400px; }
 
 .page-hero--about {
   background:
@@ -863,6 +868,11 @@ body.preloading { overflow: hidden; }
   background:
     radial-gradient(95% 130% at 22% -10%, var(--color-primary) 0%, transparent 52%),
     linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary-dark) 50%, var(--color-primary) 115%);
+}
+.page-hero--getinvolved {
+  background:
+    radial-gradient(80% 120% at 12% -10%, rgba(232, 201, 122, 0.20), transparent 55%),
+    linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 55%, var(--color-accent) 115%);
 }
 
 /* ---- About: extended story (welcome + detail sections) ---- */
