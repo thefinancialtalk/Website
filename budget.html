@@ -41,6 +41,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 .login-success.show{display:block}
 .login-back{background:none;border:none;color:var(--accent-text);font-size:13px;cursor:pointer;padding:0;margin-top:10px}
 .otp-input{letter-spacing:6px;font-size:22px;font-weight:600;text-align:center}
+/* Invite / referral gate */
+.follow-row{display:flex;gap:8px;margin-bottom:14px}
+.follow-btn{flex:1;text-align:center;font-size:13px;font-weight:600;padding:10px;border:1px solid var(--border);border-radius:var(--radius);color:var(--text);text-decoration:none;background:var(--surface)}
+.follow-btn:hover{border-color:var(--accent);color:var(--accent-text)}
+.follow-check{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--text-2);margin-bottom:16px;cursor:pointer;line-height:1.4}
+.follow-check input{margin-top:2px;flex-shrink:0}
+.ref-row{display:flex;gap:8px;margin-bottom:12px}
+.ref-row .login-input{margin-bottom:0}
+.ref-copy{flex-shrink:0;padding:0 16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:13px;font-weight:600;color:var(--text);cursor:pointer}
+.ref-copy:hover{border-color:var(--accent)}
+.progress-wrap{margin-bottom:16px}
+.progress-bar{height:8px;background:var(--border);border-radius:99px;overflow:hidden;margin-bottom:8px}
+.progress-fill{height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .3s}
+.progress-text{font-size:12px;color:var(--text-2);text-align:center}
 
 /* Dashboard shell */
 #dashboard{display:none}
@@ -338,14 +352,57 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
       <div class="login-logo-mark">TF</div>
       <div class="login-logo-name">The Financial Talk</div>
     </div>
-    <div id="step-email">
-      <h1 class="login-title">Budget Dashboard</h1>
-      <p class="login-sub">Enter your email to receive a secure 6-digit access code. No password needed.</p>
-      <div id="email-error" class="login-error"></div>
-      <label class="login-label" for="email-input">Email address</label>
-      <input type="email" id="email-input" class="login-input" placeholder="you@example.com" autocomplete="email">
-      <button class="login-btn" id="send-code-btn">Send access code</button>
+    <!-- STEP 1: Unlock (follow + register) -->
+    <div id="step-unlock">
+      <h1 class="login-title">Unlock the Budget Dashboard</h1>
+      <p class="login-sub">Invite-based access. Follow us, then invite <strong id="unlock-threshold">2</strong> friends through your link to unlock <strong>30 days free</strong>.</p>
+      <div id="unlock-error" class="login-error"></div>
+      <div class="follow-row">
+        <a class="follow-btn" id="ig-link" href="#" target="_blank" rel="noopener">Follow on Instagram</a>
+        <a class="follow-btn" id="tt-link" href="#" target="_blank" rel="noopener">Follow on TikTok</a>
+      </div>
+      <label class="follow-check">
+        <input type="checkbox" id="follow-attest">
+        <span>I follow @thefinancialtalk on Instagram and TikTok</span>
+      </label>
+      <label class="login-label" for="unlock-email">Email address</label>
+      <input type="email" id="unlock-email" class="login-input" placeholder="you@example.com" autocomplete="email">
+      <button class="login-btn" id="get-link-btn">Get my invite link</button>
+      <button class="login-back" id="to-signin">Already have access? Sign in</button>
     </div>
+
+    <!-- STEP 2: Share (referral link + progress) -->
+    <div id="step-share" style="display:none">
+      <h1 class="login-title">Share to unlock</h1>
+      <p class="login-sub">When <strong id="share-threshold">2</strong> friends join through your link, we'll email your access code.</p>
+      <div id="share-error" class="login-error"></div>
+      <div id="share-success" class="login-success"></div>
+      <label class="login-label">Your invite link</label>
+      <div class="ref-row">
+        <input type="text" id="ref-link" class="login-input" readonly>
+        <button class="ref-copy" id="copy-link-btn" type="button">Copy</button>
+      </div>
+      <button class="login-btn" id="share-btn" style="margin-bottom:14px">Share my link</button>
+      <div class="progress-wrap">
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+        <div class="progress-text" id="progress-text">0 of 2 friends joined</div>
+      </div>
+      <button class="login-btn" id="claim-btn" style="display:none">Send my access code</button>
+      <button class="login-back" id="refresh-progress">Refresh progress</button>
+    </div>
+
+    <!-- STEP 3: Sign in (returning, still-active users) -->
+    <div id="step-signin" style="display:none">
+      <h1 class="login-title">Sign in</h1>
+      <p class="login-sub">Enter the email you used before and we'll send your 6-digit access code.</p>
+      <div id="signin-error" class="login-error"></div>
+      <label class="login-label" for="signin-email">Email address</label>
+      <input type="email" id="signin-email" class="login-input" placeholder="you@example.com" autocomplete="email">
+      <button class="login-btn" id="signin-btn">Send access code</button>
+      <button class="login-back" id="to-unlock">← Need access? Unlock here</button>
+    </div>
+
+    <!-- STEP 4: OTP -->
     <div id="step-otp" style="display:none">
       <h1 class="login-title">Check your email</h1>
       <p class="login-sub">We sent a 6-digit code to <strong id="otp-email-display"></strong>. It expires in 10 minutes.</p>
@@ -660,10 +717,17 @@ const BudgetAuth = (() => {
     return new TextDecoder().decode(plain);
   }
 
+  async function register(email, follows, ref) {
+    const res = await fetch(`${BASE}/access-register`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,follows,ref})});
+    const d = await res.json();
+    if (!res.ok) { const e=new Error(d.error||'Could not register'); e.code=d.code; e.info=d; throw e; }
+    return d;
+  }
+
   async function sendOTP(email) {
     const res = await fetch(`${BASE}/auth-send-otp`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})});
     const d = await res.json();
-    if (!res.ok) throw new Error(d.error||'Could not send code');
+    if (!res.ok) { const e=new Error(d.error||'Could not send code'); e.code=d.code; e.info=d; throw e; }
     return d;
   }
 
@@ -703,7 +767,7 @@ const BudgetAuth = (() => {
   }
 
   function logout() { clearSession(); window.location.reload(); }
-  return {sendOTP,verifyOTP,loadData,saveData,analyse,isLoggedIn,getSession,logout};
+  return {register,sendOTP,verifyOTP,loadData,saveData,analyse,isLoggedIn,getSession,logout};
 })();
 
 // ─── Categories ───────────────────────────────────────────────────────────────
@@ -1471,62 +1535,128 @@ dz.addEventListener('dragleave',()=>dz.classList.remove('drag-over'));
 dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('drag-over');handleFile(e.dataTransfer.files[0]);});
 
 // ─── Auth UI ──────────────────────────────────────────────────────────────────
-const loginGate =document.getElementById('login-gate');
-const dashboard =document.getElementById('dashboard');
-const stepEmail =document.getElementById('step-email');
-const stepOtp   =document.getElementById('step-otp');
-const emailInput=document.getElementById('email-input');
-const otpInput  =document.getElementById('otp-input');
-const emailErr  =document.getElementById('email-error');
-const otpErr    =document.getElementById('otp-error');
+// Social handles — EDIT these two URLs to your real Instagram / TikTok profiles.
+const IG_URL = 'https://instagram.com/thefinancialtalk';
+const TT_URL = 'https://tiktok.com/@thefinancialtalk';
 
-function showEmailErr(msg){emailErr.textContent=msg;emailErr.classList.add('show');}
-function clearEmailErr(){emailErr.classList.remove('show');}
-function showOtpErr(msg){otpErr.textContent=msg;otpErr.classList.add('show');}
-function clearOtpErr(){otpErr.classList.remove('show');}
+const loginGate  = document.getElementById('login-gate');
+const dashboard  = document.getElementById('dashboard');
+const stepUnlock = document.getElementById('step-unlock');
+const stepShare  = document.getElementById('step-share');
+const stepSignin = document.getElementById('step-signin');
+const stepOtp    = document.getElementById('step-otp');
+const otpInput   = document.getElementById('otp-input');
 
-document.getElementById('send-code-btn').addEventListener('click',async()=>{
-  clearEmailErr();
-  const email=emailInput.value.trim();
-  if (!email||!email.includes('@')){showEmailErr('Enter a valid email address.');return;}
-  const btn=document.getElementById('send-code-btn');
-  btn.disabled=true;btn.textContent='Sending…';
+// Referral code from the invite URL (?ref=CODE)
+const REF = (new URLSearchParams(location.search).get('ref') || '').trim().toUpperCase() || null;
+let pendingEmail = '';   // email a code was last sent to
+
+document.getElementById('ig-link').href = IG_URL;
+document.getElementById('tt-link').href = TT_URL;
+
+function showStep(el){ [stepUnlock,stepShare,stepSignin,stepOtp].forEach(s=>s.style.display='none'); el.style.display='block'; }
+function setErr(id,msg){ const e=document.getElementById(id); if(!e)return; e.textContent=msg||''; e.classList.toggle('show',!!msg); }
+
+// Render the Share step from an access-register response
+function renderShare(state){
+  const link = `${location.origin}/budget?ref=${state.referralCode}`;
+  document.getElementById('ref-link').value = link;
+  document.getElementById('share-threshold').textContent = state.threshold;
+  const have = Math.min(state.referralCount, state.threshold);
+  document.getElementById('progress-fill').style.width = Math.round(100*have/state.threshold)+'%';
+  document.getElementById('progress-text').textContent = `${state.referralCount} of ${state.threshold} friends joined`;
+  const claim = document.getElementById('claim-btn'), ok = document.getElementById('share-success');
+  if (state.active || state.eligible){
+    claim.style.display='block';
+    ok.textContent = "You're unlocked! Send yourself a code to sign in.";
+    ok.classList.add('show');
+  } else {
+    claim.style.display='none';
+    ok.classList.remove('show');
+  }
+}
+
+// Request an OTP; if the account is locked/expired, bounce to the Share flow.
+async function requestCode(email, errId){
+  setErr(errId,'');
+  pendingEmail = email;
   try {
     await BudgetAuth.sendOTP(email);
-    document.getElementById('otp-email-display').textContent=email;
-    stepEmail.style.display='none';stepOtp.style.display='block';otpInput.focus();
-  } catch(e) {
-    showEmailErr(e.message||'Could not send code. Try again.');
-    btn.disabled=false;btn.textContent='Send access code';
+    document.getElementById('otp-email-display').textContent = email;
+    showStep(stepOtp); otpInput.value=''; otpInput.focus();
+  } catch(e){
+    if (e.code==='locked' || e.code==='not_registered'){
+      try { renderShare(await BudgetAuth.register(email, true, REF)); showStep(stepShare); setErr('share-error', e.message); }
+      catch(_){ setErr(errId, e.message); }
+    } else {
+      setErr(errId, e.message||'Could not send code.');
+    }
   }
+}
+
+// STEP 1 — get invite link
+document.getElementById('get-link-btn').addEventListener('click', async ()=>{
+  setErr('unlock-error','');
+  const email = document.getElementById('unlock-email').value.trim();
+  const follows = document.getElementById('follow-attest').checked;
+  if (!email || !email.includes('@')){ setErr('unlock-error','Enter a valid email address.'); return; }
+  if (!follows){ setErr('unlock-error','Please confirm you follow us on Instagram and TikTok.'); return; }
+  const b=document.getElementById('get-link-btn'); b.disabled=true; b.textContent='Creating your link…';
+  try {
+    pendingEmail = email;
+    const state = await BudgetAuth.register(email, true, REF);
+    renderShare(state);
+    showStep(stepShare);
+    if (state.active || state.eligible) await requestCode(email, 'share-error');
+  } catch(e){ setErr('unlock-error', e.message||'Could not create your link.'); }
+  finally { b.disabled=false; b.textContent='Get my invite link'; }
 });
 
-document.getElementById('verify-btn').addEventListener('click',async()=>{
-  clearOtpErr();
-  const email=emailInput.value.trim();
+// STEP 2 — share / copy / refresh / claim
+document.getElementById('copy-link-btn').addEventListener('click', ()=>{
+  const inp=document.getElementById('ref-link'); inp.select();
+  navigator.clipboard && navigator.clipboard.writeText(inp.value);
+  const b=document.getElementById('copy-link-btn'); b.textContent='Copied!'; setTimeout(()=>b.textContent='Copy',1500);
+});
+document.getElementById('share-btn').addEventListener('click', async ()=>{
+  const url=document.getElementById('ref-link').value;
+  const text="I'm using The Financial Talk Budget Dashboard — join through my link and we both unlock it:";
+  if (navigator.share){ try{ await navigator.share({title:'The Financial Talk', text, url}); }catch(e){} }
+  else { const inp=document.getElementById('ref-link'); inp.select(); navigator.clipboard && navigator.clipboard.writeText(url);
+    const b=document.getElementById('share-btn'); b.textContent='Link copied — paste it anywhere!'; setTimeout(()=>b.textContent='Share my link',2000); }
+});
+document.getElementById('refresh-progress').addEventListener('click', async ()=>{
+  if(!pendingEmail) return;
+  try { renderShare(await BudgetAuth.register(pendingEmail, true, REF)); }catch(e){}
+});
+document.getElementById('claim-btn').addEventListener('click', ()=> requestCode(pendingEmail, 'share-error'));
+
+// STEP 3 — returning sign-in
+document.getElementById('signin-btn').addEventListener('click', ()=>{
+  const email=document.getElementById('signin-email').value.trim();
+  if (!email || !email.includes('@')){ setErr('signin-error','Enter a valid email address.'); return; }
+  requestCode(email, 'signin-error');
+});
+document.getElementById('to-signin').addEventListener('click', ()=>{ setErr('signin-error',''); showStep(stepSignin); });
+document.getElementById('to-unlock').addEventListener('click', ()=>{ setErr('unlock-error',''); showStep(stepUnlock); });
+
+// STEP 4 — verify code
+document.getElementById('verify-btn').addEventListener('click', async ()=>{
+  setErr('otp-error','');
   const otp=otpInput.value.replace(/\D/g,'');
-  if (otp.length!==6){showOtpErr('Enter the 6-digit code from your email.');return;}
-  const btn=document.getElementById('verify-btn');
-  btn.disabled=true;btn.textContent='Verifying…';
+  if (otp.length!==6){ setErr('otp-error','Enter the 6-digit code from your email.'); return; }
+  const b=document.getElementById('verify-btn'); b.disabled=true; b.textContent='Verifying…';
   try {
-    await BudgetAuth.verifyOTP(email,otp);
+    await BudgetAuth.verifyOTP(pendingEmail, otp);
     document.getElementById('otp-success').classList.add('show');
     await initDashboard();
-  } catch(e){
-    showOtpErr(e.message||'Incorrect or expired code.');
-    btn.disabled=false;btn.textContent='Unlock dashboard';
-  }
+  } catch(e){ setErr('otp-error', e.message||'Incorrect or expired code.'); b.disabled=false; b.textContent='Unlock dashboard'; }
 });
-
-otpInput.addEventListener('input',()=>{
-  const clean=otpInput.value.replace(/\D/g,'');
-  otpInput.value=clean;
+otpInput.addEventListener('input', ()=>{
+  const clean=otpInput.value.replace(/\D/g,''); otpInput.value=clean;
   if (clean.length===6) document.getElementById('verify-btn').click();
 });
-
-document.getElementById('back-btn').addEventListener('click',()=>{
-  stepOtp.style.display='none';stepEmail.style.display='block';otpInput.value='';clearOtpErr();
-});
+document.getElementById('back-btn').addEventListener('click', ()=>{ otpInput.value=''; setErr('otp-error',''); showStep(stepUnlock); });
 
 // ─── Dashboard boot ───────────────────────────────────────────────────────────
 async function initDashboard() {

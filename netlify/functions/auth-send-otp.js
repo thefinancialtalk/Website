@@ -3,11 +3,14 @@
 // POST { email: "user@example.com" }
 
 const { createClient } = require('@supabase/supabase-js');
+const crypto = require('crypto');
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_SERVICE_KEY   // service role key — never expose to browser
 );
+
+const THRESHOLD = parseInt(process.env.REFERRAL_THRESHOLD || '2', 10);
 
 function generateOTP() {
   return String(Math.floor(100000 + Math.random() * 900000));
@@ -21,9 +24,48 @@ exports.handler = async (event) => {
   let email;
   try {
     ({ email } = JSON.parse(event.body));
+    email = String(email || '').trim().toLowerCase();
     if (!email || !email.includes('@')) throw new Error('Invalid email');
   } catch {
     return { statusCode: 400, body: JSON.stringify({ error: 'Valid email required' }) };
+  }
+
+  // ── Access gate ────────────────────────────────────────────────
+  // Only registered users who are currently active (within their 30-day
+  // window) or have earned enough referrals to unlock may receive a code.
+  const userId = crypto.createHash('sha256').update(email).digest('hex');
+  const { data: user } = await supabase
+    .from('users')
+    .select('referral_count, referrals_at_last_grant, access_expires_at')
+    .eq('id', userId)
+    .maybeSingle();
+
+  if (!user) {
+    return {
+      statusCode: 403,
+      body: JSON.stringify({
+        error: 'This email is not registered yet. Get your invite link first, then invite friends to unlock.',
+        code: 'not_registered'
+      })
+    };
+  }
+
+  const active   = user.access_expires_at && new Date(user.access_expires_at) > new Date();
+  const progress = user.referral_count - user.referrals_at_last_grant;
+  const eligible = progress >= THRESHOLD;
+
+  if (!active && !eligible) {
+    const needed = Math.max(0, THRESHOLD - progress);
+    return {
+      statusCode: 403,
+      body: JSON.stringify({
+        error: `Access locked — invite ${needed} more friend${needed === 1 ? '' : 's'} through your link to unlock.`,
+        code: 'locked',
+        needed,
+        have: Math.max(0, progress),
+        threshold: THRESHOLD
+      })
+    };
   }
 
   const otp        = generateOTP();
