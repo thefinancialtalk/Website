@@ -299,7 +299,9 @@ const TRANSLATIONS = {
       units: { year: "yr", years: "yrs", month: "mo", months: "mos" },
       gate: {
         title: "Unlock the free calculators",
-        body: "Pop in your email for instant access to both tools — plus occasional bilingual money tips you can actually use.",
+        body: "Pop in your name and email for instant access to both tools — plus occasional bilingual money tips you can actually use.",
+        nameLabel: "First name",
+        namePlaceholder: "First name",
         emailLabel: "Email address",
         placeholder: "you@email.com",
         button: "Unlock access",
@@ -673,7 +675,9 @@ const TRANSLATIONS = {
       units: { year: "año", years: "años", month: "mes", months: "meses" },
       gate: {
         title: "Desbloquea las calculadoras gratis",
-        body: "Déjanos tu correo y accede al instante a ambas herramientas — además de consejos de dinero bilingües que sí puedes usar.",
+        body: "Déjanos tu nombre y correo y accede al instante a ambas herramientas — además de consejos de dinero bilingües que sí puedes usar.",
+        nameLabel: "Nombre",
+        namePlaceholder: "Nombre",
         emailLabel: "Correo electrónico",
         placeholder: "tu@correo.com",
         button: "Desbloquear acceso",

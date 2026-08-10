@@ -1122,12 +1122,9 @@ body.preloading { overflow: hidden; }
 }
 .calc-gate-inner h3 { font-size: 1.35rem; margin-bottom: 8px; }
 .calc-gate-inner > p { color: var(--color-text-muted); font-size: 0.95rem; margin: 0 0 18px; }
-.calc-gate-form { display: flex; gap: 10px; flex-wrap: wrap; }
-.calc-gate-form .form-input { flex: 1 1 180px; }
-.calc-gate-form .btn { flex: 0 0 auto; }
+.calc-gate-form { display: flex; flex-direction: column; gap: 10px; }
+.calc-gate-form .form-input { width: 100%; }
+.calc-gate-form .btn { width: 100%; }
 .calc-gate-note { font-size: 0.78rem; color: var(--color-text-muted); margin: 12px 0 0; }
 .calc-gate-error { color: #b3261e; font-size: 0.85rem; margin: 10px 0 0; }
-@media (max-width: 480px) {
-  .calc-gate-form .btn { flex: 1 1 100%; }
-}
 

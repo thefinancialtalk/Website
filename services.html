@@ -168,6 +168,8 @@
             <h3 data-i18n="calc.gate.title">Unlock the free calculators</h3>
             <p data-i18n="calc.gate.body">Enter your email for instant access to both tools.</p>
             <form class="calc-gate-form" data-calc-gate-form action="https://formspree.io/f/xzdnyodk" method="POST">
+              <label class="sr-only" for="calc-gate-name" data-i18n="calc.gate.nameLabel">First name</label>
+              <input class="form-input" type="text" id="calc-gate-name" name="first_name" required autocomplete="given-name" placeholder="First name" data-i18n-attr="placeholder:calc.gate.namePlaceholder" />
               <label class="sr-only" for="calc-gate-email" data-i18n="calc.gate.emailLabel">Email address</label>
               <input class="form-input" type="email" id="calc-gate-email" name="email" required autocomplete="email" placeholder="you@email.com" data-i18n-attr="placeholder:calc.gate.placeholder" />
               <input type="hidden" name="_subject" value="New calculator unlock — The Financial Talk" />
