@@ -15,6 +15,7 @@ const TRANSLATIONS = {
       about: "About",
       services: "Services",
       resources: "Resources",
+      getInvolved: "Get Involved",
       contact: "Contact",
       cta: "Book a Consultation",
     },
@@ -263,6 +264,43 @@ const TRANSLATIONS = {
         },
       ],
     },
+    getInvolved: {
+      hero: {
+        eyebrow: "Get Involved",
+        title: "Join the movement",
+        subtitle:
+          "The Financial Talk is more than coaching — it's a community. There are many ways to be part of it.",
+      },
+      intro:
+        "Whether you have an hour to give or an ongoing passion to share, your time and energy help bring financial confidence to more people. Here's how you can get involved.",
+      ways: [
+        {
+          tag: "Events",
+          title: "Volunteer at Events",
+          desc: "Lend a hand at workshops, talks, and community gatherings — greeting attendees, helping set up, and making everyone feel welcome.",
+        },
+        {
+          tag: "Community",
+          title: "Networking",
+          desc: "Connect us with community groups, employers, and organizations who'd benefit from bilingual financial education.",
+        },
+        {
+          tag: "Spread the word",
+          title: "Marketing & Ambassadors",
+          desc: "Share our content, refer friends and family, or become a brand ambassador who champions financial literacy in your circles.",
+        },
+        {
+          tag: "Partnerships",
+          title: "Partnerships",
+          desc: "Represent an organization or business? Let's explore workshops, sponsorships, and collaborations that uplift our community.",
+        },
+      ],
+      cta: {
+        title: "Want to help out?",
+        subtitle: "Tell us how you'd like to get involved and we'll take it from there.",
+        button: "Get in Touch",
+      },
+    },
     contact: {
       hero: {
         eyebrow: "Contact",
@@ -306,6 +344,7 @@ const TRANSLATIONS = {
       about: "Nosotras",
       services: "Servicios",
       resources: "Recursos",
+      getInvolved: "Participa",
       contact: "Contacto",
       cta: "Agenda una Consulta",
     },
@@ -553,6 +592,43 @@ const TRANSLATIONS = {
           button: "Regístrate Gratis",
         },
       ],
+    },
+    getInvolved: {
+      hero: {
+        eyebrow: "Participa",
+        title: "Únete al movimiento",
+        subtitle:
+          "The Financial Talk es más que asesoría — es una comunidad. Hay muchas formas de ser parte de ella.",
+      },
+      intro:
+        "Ya sea que tengas una hora para dar o una pasión continua para compartir, tu tiempo y energía ayudan a llevar confianza financiera a más personas. Así puedes participar.",
+      ways: [
+        {
+          tag: "Eventos",
+          title: "Voluntariado en Eventos",
+          desc: "Echa una mano en talleres, charlas y encuentros comunitarios — recibiendo a las personas, ayudando a preparar y haciendo que todos se sientan bienvenidos.",
+        },
+        {
+          tag: "Comunidad",
+          title: "Networking",
+          desc: "Conéctanos con grupos comunitarios, empleadores y organizaciones que se beneficiarían de la educación financiera bilingüe.",
+        },
+        {
+          tag: "Corre la voz",
+          title: "Marketing y Embajadores",
+          desc: "Comparte nuestro contenido, refiere a amistades y familiares, o conviértete en embajador de marca que impulsa la educación financiera en tu círculo.",
+        },
+        {
+          tag: "Alianzas",
+          title: "Alianzas",
+          desc: "¿Representas a una organización o negocio? Exploremos talleres, patrocinios y colaboraciones que impulsen a nuestra comunidad.",
+        },
+      ],
+      cta: {
+        title: "¿Quieres ayudar?",
+        subtitle: "Cuéntanos cómo te gustaría participar y nosotros nos encargamos del resto.",
+        button: "Ponte en Contacto",
+      },
     },
     contact: {
       hero: {

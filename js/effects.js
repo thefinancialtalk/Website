@@ -17,8 +17,8 @@
 
     var bar = pre.querySelector(".preloader-bar span");
     var pct = pre.querySelector(".preloader-pct");
-    var duration = reduce ? 500 : 5200; // count 0 -> 100 over ~5.2s
-    var holdMs = reduce ? 0 : 750;      // linger on 100% so it's clearly seen
+    var duration = reduce ? 500 : 3200; // count 0 -> 100 over ~3.2s
+    var holdMs = reduce ? 0 : 650;      // linger on 100% so it's clearly seen
     var start = null;
     var done = false;
 
