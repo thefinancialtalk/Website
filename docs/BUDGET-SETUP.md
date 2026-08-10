@@ -21,13 +21,18 @@ netlify/
     ai-analyse.js         ← calls Claude API, returns analysis
 supabase/
   schema.sql              ← run once in Supabase SQL editor
-js/
-  budget-auth.js          ← client-side auth + encryption module
-budget.html               ← the dashboard page (drop into site root)
-netlify.toml              ← add to your existing netlify.toml
+budget.html               ← the complete, self-contained dashboard page
+                            (auth + AES-256-GCM encryption are inlined —
+                            no separate js/budget-auth.js needed)
+netlify.toml              ← merged into the repo's existing netlify.toml
 package.json              ← Netlify Functions dependencies
-SETUP.md                  ← this file
+docs/BUDGET-SETUP.md      ← this file
 ```
+
+> **Note:** In this repo the files above are already committed on the
+> `claude/financial-talk-setup-5050fx` branch and `budget.html` is complete —
+> you do not need to copy files or paste in dashboard JS. Steps 1–5 (external
+> accounts + Netlify environment variables) are the only setup left.
 
 ---
 
@@ -93,78 +98,41 @@ Copy the output → `JWT_SECRET`. Keep it private — changing it invalidates al
 
 ---
 
-## Step 6 — Add files to your GitHub repository
+## Step 6 — Files are already in the repo
 
-In your local clone of `thefinancialtalk/Website`:
+All of the files are already committed on the `claude/financial-talk-setup-5050fx`
+branch — the functions in `netlify/functions/`, `supabase/schema.sql`,
+`package.json`, the merged `netlify.toml`, and the **complete** `budget.html`.
 
-```bash
-# Copy the function files
-cp -r netlify/functions/ ./netlify/functions/
+`budget.html` is self-contained and final:
+- The auth + AES-256-GCM encryption module is inlined (no separate
+  `js/budget-auth.js`).
+- The full dashboard logic (CSV import + column mapping, category tables,
+  ledger, Income/Savings/Debt/Trends/Alerts tabs, targets modal, period
+  navigation) is present.
+- `saveData()` is the cloud version (local backup + debounced cloud save via
+  `scheduleSave()`), and the demo/seed data block has been removed so cloud
+  data loads instead.
 
-# Copy the client JS
-mkdir -p js
-cp js/budget-auth.js ./js/
-
-# Copy the dashboard page
-cp budget.html ./budget.html
-
-# Copy or merge package.json
-cp package.json ./package.json
-
-# Merge netlify.toml (if you already have one, add the [functions] block
-# and the [[headers]] and [[redirects]] sections manually)
-```
-
-**Important — finish the dashboard JS:**
-
-`budget.html` contains a note at the bottom of the `<script>` block:
-
-```
-// Paste the full JS block from budget_dashboard.html here,
-// replacing saveData() with the cloud version.
-```
-
-Do this:
-1. Open `budget_dashboard.html` (your Phase 3 dashboard file).
-2. Copy everything between `<script>` and `</script>` (the JS only — not the tags).
-3. Paste it at that marked location in `budget.html`.
-4. Find the `saveData()` function and replace its body:
-
-```js
-// BEFORE (Phase 3 version):
-function saveData() {
-  try {
-    localStorage.setItem('bd_txns', JSON.stringify(allTransactions));
-    localStorage.setItem('bd_targets', JSON.stringify(targets));
-    localStorage.setItem('bd_accounts', JSON.stringify(accounts));
-    localStorage.setItem('bd_savings_accts', JSON.stringify(savingsAccts));
-  } catch(e) { showToast('Storage full'); }
-}
-
-// AFTER (cloud version):
-function saveData() {
-  // Keep a local backup in case of network issues
-  try {
-    localStorage.setItem('bd_txns_backup', JSON.stringify(allTransactions));
-  } catch(e) {}
-  // Schedule debounced cloud save
-  scheduleSave();
-}
-```
-
-5. Remove the demo data block at the bottom (the `if (allTransactions.length === 0)` block) — cloud data loads instead.
+There is nothing to copy or paste — once Steps 1–5 (accounts + Netlify
+environment variables) are done and the branch is deployed, the page works.
 
 ---
 
 ## Step 7 — Add a link to the dashboard from your site
 
-In whatever page you want to link from (e.g. your main navigation):
+The dashboard is **not** linked from the site navigation yet — add the link
+only after you have completed Steps 1–5 and confirmed the flow works (Step 9),
+so visitors never reach a non-functional page.
+
+When ready, add to your main navigation (e.g. in `index.html` and the other
+pages' `<nav class="main-nav">`):
 
 ```html
-<a href="/budget">Budget Dashboard</a>
+<a href="/budget" data-i18n="nav.budget">Budget</a>
 ```
 
-Or in your Decap CMS navigation config, add the page manually.
+The `/budget` → `/budget.html` redirect is already configured in `netlify.toml`.
 
 ---
 
