@@ -13,11 +13,11 @@ const TRANSLATIONS = {
     nav: {
       home: "Home",
       about: "About",
-      services: "Services",
+      services: "Tools",
       resources: "Resources",
       getInvolved: "Get Involved",
       contact: "Contact",
-      cta: "Book a Consultation",
+      cta: "Get in touch",
     },
     lang: { label: "Language" },
     theme: {
@@ -297,6 +297,15 @@ const TRANSLATIONS = {
         growthLabel: "Growth",
       },
       units: { year: "yr", years: "yrs", month: "mo", months: "mos" },
+      gate: {
+        title: "Unlock the free calculators",
+        body: "Pop in your email for instant access to both tools — plus occasional bilingual money tips you can actually use.",
+        emailLabel: "Email address",
+        placeholder: "you@email.com",
+        button: "Unlock access",
+        note: "No spam — unsubscribe anytime.",
+        error: "Something went wrong. Please try again.",
+      },
       disclaimer:
         "These calculators give general educational estimates only and aren't financial advice. Your actual results will vary.",
     },
@@ -346,7 +355,7 @@ const TRANSLATIONS = {
       schedule: {
         eyebrow: "Schedule",
         title: "Book your consultation",
-        subtitle: "Pick a day and session type below — pricing is shown at checkout.",
+        subtitle: "Pick a day and session type below — your first consultation is free.",
       },
       card: {
         title: "Get in touch",
@@ -378,11 +387,11 @@ const TRANSLATIONS = {
     nav: {
       home: "Inicio",
       about: "Nosotras",
-      services: "Servicios",
+      services: "Herramientas",
       resources: "Recursos",
       getInvolved: "Participa",
       contact: "Contacto",
-      cta: "Agenda una Consulta",
+      cta: "Hablemos",
     },
     lang: { label: "Idioma" },
     theme: {
@@ -662,6 +671,15 @@ const TRANSLATIONS = {
         growthLabel: "Ganancia",
       },
       units: { year: "año", years: "años", month: "mes", months: "meses" },
+      gate: {
+        title: "Desbloquea las calculadoras gratis",
+        body: "Déjanos tu correo y accede al instante a ambas herramientas — además de consejos de dinero bilingües que sí puedes usar.",
+        emailLabel: "Correo electrónico",
+        placeholder: "tu@correo.com",
+        button: "Desbloquear acceso",
+        note: "Sin spam — cancela cuando quieras.",
+        error: "Algo salió mal. Inténtalo de nuevo.",
+      },
       disclaimer:
         "Estas calculadoras ofrecen estimaciones educativas generales y no son asesoría financiera. Tus resultados reales pueden variar.",
     },
@@ -711,7 +729,7 @@ const TRANSLATIONS = {
       schedule: {
         eyebrow: "Agenda",
         title: "Reserva tu consulta",
-        subtitle: "Elige un día y el tipo de sesión abajo — el precio se muestra al reservar.",
+        subtitle: "Elige un día y el tipo de sesión abajo — tu primera consulta es gratis.",
       },
       card: {
         title: "Ponte en contacto",

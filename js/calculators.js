@@ -184,4 +184,44 @@
   root.addEventListener("input", renderAll);
   document.addEventListener("ft:langchange", renderAll);
   renderAll();
+
+  /* ---------- Email unlock gate ---------- */
+  var lock = document.querySelector("[data-calc-lock]");
+  var UNLOCK_KEY = "ft_calc_unlocked";
+
+  function unlock() {
+    if (lock) lock.classList.remove("is-locked");
+  }
+
+  if (lock && localStorage.getItem(UNLOCK_KEY) === "1") unlock();
+
+  var gateForm = document.querySelector("[data-calc-gate-form]");
+  if (gateForm) {
+    gateForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var btn = gateForm.querySelector('button[type="submit"]');
+      var errEl = document.querySelector("[data-calc-gate-error]");
+      var label = btn ? btn.textContent : "";
+      if (errEl) errEl.hidden = true;
+      if (btn) { btn.disabled = true; btn.textContent = "…"; }
+
+      fetch(gateForm.action, {
+        method: "POST",
+        body: new FormData(gateForm),
+        headers: { Accept: "application/json" },
+      })
+        .then(function (r) {
+          if (!r.ok) throw new Error("submit failed");
+          localStorage.setItem(UNLOCK_KEY, "1");
+          unlock();
+        })
+        .catch(function () {
+          if (errEl) {
+            errEl.textContent = t("calc.gate.error");
+            errEl.hidden = false;
+          }
+          if (btn) { btn.disabled = false; btn.textContent = label; }
+        });
+    });
+  }
 })();
