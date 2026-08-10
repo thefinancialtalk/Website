@@ -148,8 +148,8 @@ section { padding: 96px 0; }
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 16px 24px;
-  max-width: 1320px;
+  padding: 16px 40px;
+  max-width: none;
 }
 
 .logo {
