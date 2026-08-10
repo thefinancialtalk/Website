@@ -264,6 +264,42 @@ const TRANSLATIONS = {
         },
       ],
     },
+    calc: {
+      eyebrow: "Free tools",
+      title: "Plan it out",
+      subtitle: "Two quick calculators to help you picture your next move — no sign-up needed.",
+      tabs: {
+        debt: "Debt Payoff",
+        invest: "Investment Growth",
+      },
+      debt: {
+        intro: "See how long it takes to become debt-free and what the interest really costs.",
+        balance: "Current balance",
+        rate: "Interest rate (APR %)",
+        payment: "Monthly payment",
+        payoffTime: "Time to debt-free",
+        payoffDate: "Debt-free by",
+        totalInterest: "Total interest paid",
+        totalPaid: "Total you'll pay",
+        warning:
+          "Your monthly payment is too low to cover the interest, so the balance would keep growing. Try a higher payment.",
+      },
+      invest: {
+        intro: "See how steady contributions can grow over time with compound returns.",
+        initial: "Starting amount",
+        monthly: "Monthly contribution",
+        rate: "Annual return (%)",
+        years: "Years invested",
+        futureValue: "Projected value",
+        totalContributions: "Total you put in",
+        totalGrowth: "Growth earned",
+        contribLabel: "Contributions",
+        growthLabel: "Growth",
+      },
+      units: { year: "yr", years: "yrs", month: "mo", months: "mos" },
+      disclaimer:
+        "These calculators give general educational estimates only and aren't financial advice. Your actual results will vary.",
+    },
     getInvolved: {
       hero: {
         eyebrow: "Get Involved",
@@ -592,6 +628,42 @@ const TRANSLATIONS = {
           button: "Regístrate Gratis",
         },
       ],
+    },
+    calc: {
+      eyebrow: "Herramientas gratis",
+      title: "Planifícalo",
+      subtitle: "Dos calculadoras rápidas para visualizar tu próximo paso — sin registrarte.",
+      tabs: {
+        debt: "Pago de Deudas",
+        invest: "Crecimiento de Inversión",
+      },
+      debt: {
+        intro: "Descubre cuánto tardarás en salir de deudas y lo que realmente cuestan los intereses.",
+        balance: "Saldo actual",
+        rate: "Tasa de interés (TAE %)",
+        payment: "Pago mensual",
+        payoffTime: "Tiempo para saldar",
+        payoffDate: "Sin deudas para",
+        totalInterest: "Interés total pagado",
+        totalPaid: "Total que pagarás",
+        warning:
+          "Tu pago mensual es muy bajo para cubrir los intereses, así que el saldo seguiría creciendo. Prueba con un pago mayor.",
+      },
+      invest: {
+        intro: "Descubre cómo las aportaciones constantes crecen con el interés compuesto.",
+        initial: "Monto inicial",
+        monthly: "Aportación mensual",
+        rate: "Rendimiento anual (%)",
+        years: "Años invertidos",
+        futureValue: "Valor proyectado",
+        totalContributions: "Total aportado",
+        totalGrowth: "Ganancia generada",
+        contribLabel: "Aportaciones",
+        growthLabel: "Ganancia",
+      },
+      units: { year: "año", years: "años", month: "mes", months: "meses" },
+      disclaimer:
+        "Estas calculadoras ofrecen estimaciones educativas generales y no son asesoría financiera. Tus resultados reales pueden variar.",
     },
     getInvolved: {
       hero: {

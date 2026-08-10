@@ -104,6 +104,68 @@
     </div>
   </section>
 
+  <section class="decor-section" id="tools">
+    <span class="bg-blob bg-blob--accent" data-parallax="0.15" style="width:240px;height:240px;top:-30px;left:-70px;" aria-hidden="true"></span>
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-i18n="calc.eyebrow">Free tools</span>
+        <h2 class="section-title" data-i18n="calc.title">Plan it out</h2>
+        <p class="section-subtitle" data-i18n="calc.subtitle">Two quick calculators to help you picture your next move.</p>
+      </div>
+
+      <div class="calc" data-calc data-reveal="scale">
+        <div class="calc-tabs" role="tablist" aria-label="Calculators">
+          <button type="button" class="calc-tab is-active" role="tab" aria-selected="true" tabindex="0" id="calc-tab-debt" aria-controls="calc-panel-debt" data-calc-tab="debt" data-i18n="calc.tabs.debt">Debt Payoff</button>
+          <button type="button" class="calc-tab" role="tab" aria-selected="false" tabindex="-1" id="calc-tab-invest" aria-controls="calc-panel-invest" data-calc-tab="invest" data-i18n="calc.tabs.invest">Investment Growth</button>
+        </div>
+
+        <div class="calc-panel is-active" id="calc-panel-debt" role="tabpanel" aria-labelledby="calc-tab-debt" data-calc-panel="debt">
+          <p class="calc-intro" data-i18n="calc.debt.intro">See how long it takes to become debt-free.</p>
+          <div class="calc-fields">
+            <div class="form-field">
+              <label class="form-label" for="debt-balance" data-i18n="calc.debt.balance">Current balance</label>
+              <div class="calc-input calc-input--prefix"><span class="calc-affix">$</span><input class="form-input" type="number" id="debt-balance" min="0" step="any" inputmode="decimal" value="5000" /></div>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="debt-rate" data-i18n="calc.debt.rate">Interest rate (APR %)</label>
+              <div class="calc-input calc-input--suffix"><input class="form-input" type="number" id="debt-rate" min="0" step="any" inputmode="decimal" value="19.99" /><span class="calc-affix">%</span></div>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="debt-payment" data-i18n="calc.debt.payment">Monthly payment</label>
+              <div class="calc-input calc-input--prefix"><span class="calc-affix">$</span><input class="form-input" type="number" id="debt-payment" min="0" step="any" inputmode="decimal" value="250" /></div>
+            </div>
+          </div>
+          <div class="calc-results" data-calc-results="debt" aria-live="polite"></div>
+        </div>
+
+        <div class="calc-panel" id="calc-panel-invest" role="tabpanel" aria-labelledby="calc-tab-invest" data-calc-panel="invest" hidden>
+          <p class="calc-intro" data-i18n="calc.invest.intro">See how steady contributions can grow over time.</p>
+          <div class="calc-fields">
+            <div class="form-field">
+              <label class="form-label" for="invest-initial" data-i18n="calc.invest.initial">Starting amount</label>
+              <div class="calc-input calc-input--prefix"><span class="calc-affix">$</span><input class="form-input" type="number" id="invest-initial" min="0" step="any" inputmode="decimal" value="1000" /></div>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="invest-monthly" data-i18n="calc.invest.monthly">Monthly contribution</label>
+              <div class="calc-input calc-input--prefix"><span class="calc-affix">$</span><input class="form-input" type="number" id="invest-monthly" min="0" step="any" inputmode="decimal" value="200" /></div>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="invest-rate" data-i18n="calc.invest.rate">Annual return (%)</label>
+              <div class="calc-input calc-input--suffix"><input class="form-input" type="number" id="invest-rate" min="0" step="any" inputmode="decimal" value="7" /><span class="calc-affix">%</span></div>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="invest-years" data-i18n="calc.invest.years">Years invested</label>
+              <div class="calc-input"><input class="form-input" type="number" id="invest-years" min="0" step="any" inputmode="decimal" value="20" /></div>
+            </div>
+          </div>
+          <div class="calc-results" data-calc-results="invest" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <p class="calc-disclaimer text-center" data-i18n="calc.disclaimer">These calculators give general educational estimates only.</p>
+    </div>
+  </section>
+
   <section class="decor-section">
     <span class="bg-blob bg-blob--secondary" data-parallax="0.12" style="width:260px;height:260px;top:-30px;right:-70px;" aria-hidden="true"></span>
     <div class="container">
@@ -198,5 +260,6 @@
 <script src="js/i18n.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/main.js"></script>
+<script src="js/calculators.js"></script>
 </body>
 </html>
