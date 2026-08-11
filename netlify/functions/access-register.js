@@ -132,7 +132,7 @@ exports.handler = async (event) => {
 
     if (insErr) {
       console.error('Insert error:', insErr);
-      return { statusCode: 500, body: JSON.stringify({ error: 'Could not register. Try again.' }) };
+      return { statusCode: 500, body: JSON.stringify({ error: 'Could not register. Try again.', debug: insErr.message, code: insErr.code, hint: insErr.hint, details: insErr.details }) };
     }
     row = inserted;
 
