@@ -17,6 +17,26 @@ function base64url(buf) {
   return buf.toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
 }
 
+// Resolve which Resend Audience to add newsletter opt-ins to.
+// Uses RESEND_AUDIENCE_ID if provided; otherwise auto-discovers the account's
+// first (default) audience so nothing has to be configured by hand. Cached at
+// module scope so a warm function doesn't re-list on every sign-in.
+let _cachedAudienceId;
+async function getResendAudienceId() {
+  if (process.env.RESEND_AUDIENCE_ID) return process.env.RESEND_AUDIENCE_ID;
+  if (_cachedAudienceId !== undefined) return _cachedAudienceId;
+  try {
+    const res = await fetch('https://api.resend.com/audiences', {
+      headers: { 'Authorization': `Bearer ${process.env.RESEND_API_KEY}` }
+    });
+    const json = await res.json();
+    _cachedAudienceId = (json && json.data && json.data[0] && json.data[0].id) || null;
+  } catch {
+    _cachedAudienceId = null;
+  }
+  return _cachedAudienceId;
+}
+
 function signJWT(payload) {
   const header  = base64url(Buffer.from(JSON.stringify({ alg: 'HS256', typ: 'JWT' })));
   const body    = base64url(Buffer.from(JSON.stringify(payload)));
@@ -81,19 +101,23 @@ exports.handler = async (event) => {
   if (newsletterOptIn === true) userRow.newsletter_opt_in = true;
   await supabase.from('users').upsert(userRow, { onConflict: 'id' });
 
-  // Optional: mirror opted-in emails into a Resend Audience so the newsletter
-  // list builds itself. Skipped entirely if RESEND_AUDIENCE_ID isn't set, so
-  // the app runs fine without any extra configuration.
-  if (newsletterOptIn === true && process.env.RESEND_API_KEY && process.env.RESEND_AUDIENCE_ID) {
+  // Mirror opted-in emails into a Resend Audience so the newsletter list builds
+  // itself. No configuration required: if RESEND_AUDIENCE_ID isn't set we look up
+  // the account's default audience automatically. All non-fatal — a failure here
+  // never blocks a sign-in.
+  if (newsletterOptIn === true && process.env.RESEND_API_KEY) {
     try {
-      await fetch(`https://api.resend.com/audiences/${process.env.RESEND_AUDIENCE_ID}/contacts`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.RESEND_API_KEY}`
-        },
-        body: JSON.stringify({ email, unsubscribed: false })
-      });
+      const audienceId = await getResendAudienceId();
+      if (audienceId) {
+        await fetch(`https://api.resend.com/audiences/${audienceId}/contacts`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${process.env.RESEND_API_KEY}`
+          },
+          body: JSON.stringify({ email, unsubscribed: false })
+        });
+      }
     } catch (e) {
       console.error('Resend audience sync failed (non-fatal):', e);
     }
