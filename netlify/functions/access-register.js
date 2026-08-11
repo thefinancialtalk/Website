@@ -47,7 +47,7 @@ async function notifyUnlocked(email) {
         'Authorization': `Bearer ${process.env.RESEND_API_KEY}`
       },
       body: JSON.stringify({
-        from:    'The Financial Talk <noreply@thefinancialtalk.ca>', // update to your verified domain
+        from:    'The Financial Talk <noreply@thefinancialtalk.com>', // must be a Resend-verified domain
         to:      [email],
         subject: "You've unlocked the Budget Dashboard 🎉",
         html: `

@@ -89,7 +89,7 @@ exports.handler = async (event) => {
       'Authorization': `Bearer ${process.env.RESEND_API_KEY}`
     },
     body: JSON.stringify({
-      from:    'Budget Dashboard <noreply@thefinancialtalk.ca>',  // update to your verified domain
+      from:    'The Financial Talk <noreply@thefinancialtalk.com>',  // must be a Resend-verified domain
       to:      [email],
       subject: 'Your Budget Dashboard access code',
       html: `
