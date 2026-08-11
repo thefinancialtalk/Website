@@ -325,6 +325,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 .target-label{font-size:13px;color:var(--text-2);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .target-input{width:90px;font-size:13px;padding:5px 8px;border:1px solid var(--border);border-radius:var(--radius);text-align:right}
 .target-input:focus{outline:none;border-color:var(--accent)}
+.plan-cat{border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px 14px;margin-bottom:12px;background:var(--surface-alt)}
+.plan-cat-hd{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:600;margin-bottom:8px}
+.plan-cat-sum{font-variant-numeric:tabular-nums;color:var(--text-2)}
+.plan-items{display:flex;flex-direction:column;gap:6px;margin-bottom:6px}
+.plan-item{display:grid;grid-template-columns:1fr 130px 84px 28px;gap:6px;align-items:center}
+.plan-label,.plan-sub,.plan-amt{font-size:12px;padding:5px 7px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);min-width:0}
+.plan-amt{text-align:right}
+.plan-label:focus,.plan-sub:focus,.plan-amt:focus{outline:none;border-color:var(--accent)}
+.plan-del{border:1px solid var(--border);background:var(--surface);border-radius:var(--radius);cursor:pointer;color:var(--text-3);font-size:14px;line-height:1;padding:4px 6px}
+.plan-del:hover{color:var(--red-text);border-color:var(--red)}
+.plan-add{font-size:12px;color:var(--accent);background:none;border:1px dashed var(--border);border-radius:var(--radius);padding:5px 10px;cursor:pointer}
+.plan-add:hover{border-color:var(--accent)}
+.l-del{border:none;background:none;cursor:pointer;color:var(--text-3);font-size:14px;line-height:1;margin-left:6px}
+.l-del:hover{color:var(--red-text)}
 .divider{border:none;border-top:1px solid var(--border);margin:16px 0}
 
 /* Toast */
@@ -439,7 +453,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
       </div>
       <div class="topbar-right">
         <div class="account-pills" id="acct-pills"></div>
-        <button class="btn" id="targets-btn">Set targets</button>
+        <button class="btn" id="add-txn-btn">+ Add entry</button>
+        <button class="btn" id="targets-btn">Plan budget</button>
         <button class="btn" id="accts-btn">Accounts</button>
         <button class="btn btn-ai" id="ai-btn">✦ AI analysis</button>
         <button class="btn btn-primary" id="import-btn">Import CSV</button>
@@ -627,15 +642,33 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
   </div>
 </div>
 
-<!-- TARGETS MODAL -->
+<!-- BUDGET PLANNER MODAL -->
 <div class="modal-backdrop" id="targets-modal">
   <div class="modal">
-    <div class="modal-title">Set bi-weekly budget targets</div>
-    <div class="modal-sub">Enter your target spending per category per two-week period (CAD).</div>
+    <div class="modal-title">Plan your budget</div>
+    <div class="modal-sub">List the bills and expenses you expect each two-week period under each category (e.g. "Cable internet" under Residence). Each category's budget is the total of its items.</div>
     <div class="targets-grid" id="targets-grid"></div>
     <div class="modal-footer">
       <button class="btn" id="targets-cancel">Cancel</button>
-      <button class="btn btn-primary" id="targets-save">Save targets</button>
+      <button class="btn btn-primary" id="targets-save">Save budget</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADD ENTRY MODAL -->
+<div class="modal-backdrop" id="addtxn-modal">
+  <div class="modal">
+    <div class="modal-title">Add an entry</div>
+    <div class="modal-sub">Manually add a single expense or income item. It flows into your totals, trends and alerts just like an imported transaction.</div>
+    <div class="map-row"><div class="map-label">Type</div><select class="map-select" id="at-type"><option value="expense">Expense</option><option value="income">Income</option></select></div>
+    <div class="map-row"><div class="map-label">Date</div><input type="date" class="map-select" id="at-date"></div>
+    <div class="map-row"><div class="map-label">Description</div><input type="text" class="map-select" id="at-desc" placeholder="e.g. Cable internet"></div>
+    <div class="map-row"><div class="map-label">Category</div><select class="map-select" id="at-cat"></select></div>
+    <div class="map-row"><div class="map-label">Amount (CAD)</div><input type="number" class="map-select" id="at-amount" min="0" step="0.01" placeholder="0.00"></div>
+    <div class="map-row"><div class="map-label">Account</div><select class="map-select" id="at-account"></select></div>
+    <div class="modal-footer">
+      <button class="btn" id="at-cancel">Cancel</button>
+      <button class="btn btn-primary" id="at-save">Add entry</button>
     </div>
   </div>
 </div>
@@ -833,6 +866,13 @@ function categorize(desc) {
 const ACCT_COLORS = ['#2563eb','#0d9488','#7c3aed','#d97706','#dc2626','#16a34a','#db2777','#ea580c'];
 let allTransactions = [];
 let targets = {residence:1500,transportation:500,daily_living:900,banking:100,health:200,vacation:300,debt:600};
+let plannedItems = []; // planned budget line items: {id, cat, sub, label, amount}
+const EXPENSE_CATS = Object.keys(CATEGORIES).filter(k=>k!=='income'&&k!=='savings');
+function plannedForCat(ck){ return plannedItems.filter(p=>p.cat===ck); }
+function plannedSubTotal(ck,sk){ return plannedItems.filter(p=>p.cat===ck&&p.sub===sk).reduce((s,p)=>s+(p.amount||0),0); }
+// A category's budget is the sum of its planned items when any exist, otherwise the legacy flat target.
+function catTarget(ck){ const items=plannedForCat(ck); return items.length ? items.reduce((s,p)=>s+(p.amount||0),0) : (targets[ck]||0); }
+function totalTargets(){ return EXPENSE_CATS.reduce((s,ck)=>s+catTarget(ck),0); }
 let accounts = [{id:'all',name:'All accounts',type:'all',color:'#2563eb'},{id:'a1',name:'TD Chequing',type:'chequing',color:'#2563eb'},{id:'a2',name:'Scotiabank Visa',type:'credit',color:'#0d9488'}];
 let savingsAccts = [];
 let alertSettings = {overBudget:{enabled:true,threshold:100},nearBudget:{enabled:true,threshold:85},largeTxn:{enabled:true,threshold:500},noIncome:{enabled:true,threshold:0}};
@@ -872,7 +912,7 @@ function scheduleSave() {
     if (!BudgetAuth.isLoggedIn()) return;
     setSyncStatus('saving');
     try {
-      await BudgetAuth.saveData({transactions:allTransactions,targets,accounts,savingsAccts,alertSettings});
+      await BudgetAuth.saveData({transactions:allTransactions,targets,plannedItems,accounts,savingsAccts,alertSettings});
       setSyncStatus('saved');
       setTimeout(()=>setSyncStatus(''),2000);
     } catch(e) {
@@ -988,7 +1028,7 @@ function renderAccountPills() {
 function renderOverview(txns) {
   const expenses=txns.filter(t=>!t.isCredit&&t.cat!=='income').reduce((s,t)=>s+t.amount,0);
   const income  =txns.filter(t=>t.isCredit||t.cat==='income').reduce((s,t)=>s+t.amount,0);
-  const totalBudget=Object.entries(targets).reduce((s,[,v])=>s+v,0);
+  const totalBudget=totalTargets();
   const net=income-expenses;
   const {end}=getPeriodRange();
   const daysLeft=Math.max(0,Math.ceil((end-new Date())/86400000));
@@ -1017,7 +1057,7 @@ function renderOverview(txns) {
   for (const [ck,cat] of Object.entries(CATEGORIES)) {
     if (ck==='income'||ck==='savings') continue;
     const actual=txns.filter(t=>!t.isCredit&&t.cat===ck).reduce((s,t)=>s+t.amount,0);
-    const target=targets[ck]||0;
+    const target=catTarget(ck);
     const variance=target-actual;
     const pct=target>0?Math.min(100,(actual/target)*100):(actual>0?100:0);
     const bc=pct>=100?'over':pct>=85?'warn':'ok';
@@ -1038,7 +1078,12 @@ function renderOverview(txns) {
       const sw=document.createElement('div');sw.className='sub-rows';
       for (const [sk,sl] of Object.entries(cat.subs)) {
         const sa=txns.filter(t=>t.cat===ck&&t.sub===sk&&!t.isCredit).reduce((s,t)=>s+t.amount,0);
-        sw.innerHTML+=`<div class="sub-row"><span></span><span class="sub-name">${sl}</span><span class="sub-num">${sa>0?fmt(sa):'—'}</span><span class="sub-num">—</span><span class="sub-num">${sa>0?fmt(sa):'—'}</span><span></span></div>`;
+        const st=plannedSubTotal(ck,sk);
+        const sv=st-sa;
+        const vColor=st>0?(sv>=0?'var(--green-text)':'var(--red-text)'):'var(--text-3)';
+        const vText=st>0?((sv>=0?'–':'+')+fmt(Math.abs(sv))):'—';
+        if (sa>0||st>0)
+          sw.innerHTML+=`<div class="sub-row"><span></span><span class="sub-name">${sl}</span><span class="sub-num">${sa>0?fmt(sa):'—'}</span><span class="sub-num">${st>0?fmt(st):'—'}</span><span class="sub-num" style="color:${vColor}">${vText}</span><span></span></div>`;
       }
       block.appendChild(sw);
     }
@@ -1224,7 +1269,7 @@ function renderTrends() {
     const pt=allTransactions.filter(t=>txnInPeriod(t,off)&&txnMatchesAccount(t));
     const spend =pt.filter(t=>!t.isCredit&&t.cat!=='income').reduce((s,t)=>s+t.amount,0);
     const income=pt.filter(t=>t.isCredit||t.cat==='income').reduce((s,t)=>s+t.amount,0);
-    const budget=Object.values(targets).reduce((s,v)=>s+v,0);
+    const budget=totalTargets();
     const {start}=getPeriodRange(off);
     periods.push({off,spend,income,budget,label:fmtDate(start)});
   }
@@ -1260,7 +1305,7 @@ function renderTrends() {
     const pt=allTransactions.filter(t=>txnInPeriod(t,off)&&txnMatchesAccount(t));
     const actual=pt.filter(t=>t.cat===selCat&&!t.isCredit).reduce((s,t)=>s+t.amount,0);
     const {start}=getPeriodRange(off);
-    catPeriods.push({actual,target:targets[selCat]||0,label:fmtDate(start)});
+    catPeriods.push({actual,target:catTarget(selCat),label:fmtDate(start)});
   }
   const maxC=Math.max(...catPeriods.map(p=>Math.max(p.actual,p.target)),1);
   const cB=document.getElementById('trend-bars-cat');
@@ -1295,7 +1340,7 @@ function renderAlertBanners(txns) {
   for (const [ck,cat] of Object.entries(CATEGORIES)) {
     if (ck==='income'||ck==='savings') continue;
     const actual=txns.filter(t=>!t.isCredit&&t.cat===ck).reduce((s,t)=>s+t.amount,0);
-    const target=targets[ck]||0;
+    const target=catTarget(ck);
     if (target===0||actual===0) continue;
     const pct=(actual/target)*100;
     if (alertSettings.overBudget.enabled&&pct>=100) overItems.push({cat:cat.label,actual,target});
@@ -1320,7 +1365,7 @@ function renderAlertsTab(txns) {
   for (const [ck,cat] of Object.entries(CATEGORIES)) {
     if (ck==='income'||ck==='savings') continue;
     const actual=txns.filter(t=>!t.isCredit&&t.cat===ck).reduce((s,t)=>s+t.amount,0);
-    const target=targets[ck]||0;
+    const target=catTarget(ck);
     if (target>0&&actual>0) {
       const pct=(actual/target)*100;
       if (pct>=100) issues.push({severity:'over',label:cat.label+' over budget',detail:fmt(actual)+' spent / '+fmt(target)+' target',icon:'🔴'});
@@ -1381,7 +1426,13 @@ function renderLedger(txns) {
       <div><div class="l-desc">${txn.desc}</div><div class="l-merchant-note">${txn.matched?'Auto-matched':'Review needed'}</div></div>
       <select class="l-cat-select" data-id="${txn.id}"><option value="">— select —</option>${catOpts}</select>
       <span class="l-amt ${txn.isCredit?'credit':'debit'}">${txn.isCredit?'+':''}${fmt(txn.amount)}</span>
-      <span class="l-flag"><span class="badge ${txn.matched?'badge-ok':'badge-warn'}">${txn.matched?'Matched':'Unmatched'}</span></span>`;
+      <span class="l-flag"><span class="badge ${txn.manual?'badge-ok':txn.matched?'badge-ok':'badge-warn'}">${txn.manual?'Manual':txn.matched?'Matched':'Unmatched'}</span><button class="l-del" data-id="${txn.id}" title="Delete entry">×</button></span>`;
+    row.querySelector('.l-del').addEventListener('click',()=>{
+      if (confirm('Delete this entry?')) {
+        allTransactions=allTransactions.filter(x=>String(x.id)!==String(txn.id));
+        saveData();render();
+      }
+    });
     const sel=row.querySelector('select');
     if (txn.cat&&txn.sub) sel.value=txn.cat+'|'+txn.sub;
     sel.addEventListener('change',e=>{
@@ -1396,20 +1447,93 @@ function renderLedger(txns) {
   }
 }
 
-// ─── Targets modal ────────────────────────────────────────────────────────────
+// ─── Budget planner modal ─────────────────────────────────────────────────────
+let planDraft = [];  // working copy edited in the modal; committed on Save
 function openTargets() {
-  const grid=document.getElementById('targets-grid');grid.innerHTML='';
-  for (const [k,cat] of Object.entries(CATEGORIES)) {
-    if (k==='income'||k==='savings') continue;
-    const row=document.createElement('div');row.className='target-row';
-    row.innerHTML=`<span class="target-label">${cat.icon} ${cat.label}</span><input class="target-input" type="number" min="0" step="10" data-cat="${k}" value="${targets[k]||0}">`;
-    grid.appendChild(row);
-  }
+  planDraft = plannedItems.map(p=>({...p}));
+  renderPlanner();
   document.getElementById('targets-modal').classList.add('open');
 }
+function renderPlanner() {
+  const grid=document.getElementById('targets-grid');
+  grid.style.display='block';
+  grid.innerHTML='';
+  for (const ck of EXPENSE_CATS) {
+    const cat=CATEGORIES[ck];
+    const items=planDraft.filter(p=>p.cat===ck);
+    const subOpts=Object.entries(cat.subs).map(([sk,sl])=>`<option value="${sk}">${sl}</option>`).join('');
+    const sec=document.createElement('div');sec.className='plan-cat';
+    const sum=items.reduce((s,p)=>s+(p.amount||0),0);
+    sec.innerHTML=`<div class="plan-cat-hd"><span>${cat.icon} ${cat.label}</span><span class="plan-cat-sum">${fmt(sum)} / period</span></div>`;
+    const wrap=document.createElement('div');wrap.className='plan-items';
+    items.forEach(it=>{
+      const r=document.createElement('div');r.className='plan-item';
+      r.innerHTML=`<input class="plan-label" type="text" placeholder="Item name" value="${(it.label||'').replace(/"/g,'&quot;')}">
+        <select class="plan-sub">${subOpts}</select>
+        <input class="plan-amt" type="number" min="0" step="5" placeholder="0" value="${it.amount||''}">
+        <button class="plan-del" title="Remove">×</button>`;
+      r.querySelector('.plan-sub').value=it.sub||Object.keys(cat.subs)[0];
+      r.querySelector('.plan-label').addEventListener('input',e=>{it.label=e.target.value;});
+      r.querySelector('.plan-sub').addEventListener('change',e=>{it.sub=e.target.value;});
+      r.querySelector('.plan-amt').addEventListener('input',e=>{
+        it.amount=parseFloat(e.target.value)||0;
+        sec.querySelector('.plan-cat-sum').textContent=fmt(planDraft.filter(p=>p.cat===ck).reduce((s,p)=>s+(p.amount||0),0))+' / period';
+      });
+      r.querySelector('.plan-del').addEventListener('click',()=>{const i=planDraft.indexOf(it);if(i>=0)planDraft.splice(i,1);renderPlanner();});
+      wrap.appendChild(r);
+    });
+    sec.appendChild(wrap);
+    const add=document.createElement('button');add.className='plan-add';add.textContent='+ Add item';
+    add.addEventListener('click',()=>{
+      const firstSub=Object.keys(cat.subs)[0];
+      planDraft.push({id:Date.now()+Math.random(),cat:ck,sub:firstSub,label:cat.subs[firstSub],amount:0});
+      renderPlanner();
+    });
+    sec.appendChild(add);
+    grid.appendChild(sec);
+  }
+}
 function saveTargets() {
-  document.querySelectorAll('.target-input').forEach(i=>{targets[i.dataset.cat]=parseFloat(i.value)||0;});
-  saveData();document.getElementById('targets-modal').classList.remove('open');showToast('Targets saved');render();
+  plannedItems = planDraft.filter(p=>(p.amount||0)>0 || (p.label||'').trim());
+  saveData();document.getElementById('targets-modal').classList.remove('open');showToast('Budget saved');render();
+}
+
+// ─── Add entry modal ──────────────────────────────────────────────────────────
+function atBuildCats() {
+  const type=document.getElementById('at-type').value;
+  const sel=document.getElementById('at-cat');
+  if (type==='income') {
+    sel.innerHTML=Object.entries(CATEGORIES.income.subs).map(([sk,sl])=>`<option value="income|${sk}">${sl}</option>`).join('');
+  } else {
+    sel.innerHTML=EXPENSE_CATS.map(ck=>`<optgroup label="${CATEGORIES[ck].label}">`+Object.entries(CATEGORIES[ck].subs).map(([sk,sl])=>`<option value="${ck}|${sk}">${sl}</option>`).join('')+'</optgroup>').join('');
+  }
+}
+function openAddTxn() {
+  document.getElementById('at-type').value='expense';
+  document.getElementById('at-date').value=new Date().toISOString().slice(0,10);
+  document.getElementById('at-desc').value='';
+  document.getElementById('at-amount').value='';
+  atBuildCats();
+  const acctSel=document.getElementById('at-account');
+  const real=accounts.filter(a=>a.id!=='all');
+  acctSel.innerHTML=real.map(a=>`<option value="${a.id}">${a.name}</option>`).join('')||'<option value="">Unassigned</option>';
+  document.getElementById('addtxn-modal').classList.add('open');
+}
+function saveAddTxn() {
+  const type=document.getElementById('at-type').value;
+  const date=document.getElementById('at-date').value||new Date().toISOString().slice(0,10);
+  const desc=document.getElementById('at-desc').value.trim()||'(manual entry)';
+  const val=document.getElementById('at-cat').value||'';
+  const [cat,sub]=val.split('|');
+  const amount=parseFloat(document.getElementById('at-amount').value)||0;
+  const accountId=document.getElementById('at-account').value||'';
+  if (amount<=0){showToast('Enter an amount greater than 0.');return;}
+  allTransactions.push({id:Date.now()+Math.random(),date,desc,cat:cat||'',sub:sub||'',matched:true,amount,isCredit:type==='income',accountId,manual:true});
+  saveData();
+  document.getElementById('addtxn-modal').classList.remove('open');
+  showToast('Entry added');
+  currentOffset=dateToPeriodOffset(new Date(date+'T00:00:00'));
+  render();
 }
 
 // ─── Accounts modal ───────────────────────────────────────────────────────────
@@ -1455,7 +1579,7 @@ document.getElementById('ai-btn').addEventListener('click',async()=>{
   const txns=filterTxns();
   const cats=Object.entries(CATEGORIES).filter(([k])=>k!=='income'&&k!=='savings').map(([k,v])=>{
     const actual=txns.filter(t=>!t.isCredit&&t.cat===k).reduce((s,t)=>s+t.amount,0);
-    const target=targets[k]||0;
+    const target=catTarget(k);
     const pct=target>0?(actual/target)*100:0;
     return {label:v.label,actual,target,variance:target-actual,pct};
   });
@@ -1493,6 +1617,10 @@ document.getElementById('map-confirm').addEventListener('click',confirmMapping);
 document.getElementById('targets-btn').addEventListener('click',openTargets);
 document.getElementById('targets-cancel').addEventListener('click',()=>document.getElementById('targets-modal').classList.remove('open'));
 document.getElementById('targets-save').addEventListener('click',saveTargets);
+document.getElementById('add-txn-btn').addEventListener('click',openAddTxn);
+document.getElementById('at-type').addEventListener('change',atBuildCats);
+document.getElementById('at-cancel').addEventListener('click',()=>document.getElementById('addtxn-modal').classList.remove('open'));
+document.getElementById('at-save').addEventListener('click',saveAddTxn);
 document.getElementById('accts-btn').addEventListener('click',openAcctsModal);
 document.getElementById('accts-done').addEventListener('click',()=>{document.getElementById('accts-modal').classList.remove('open');render();});
 document.getElementById('add-acct-btn').addEventListener('click',()=>{
@@ -1670,6 +1798,7 @@ async function initDashboard() {
     if (cloudData) {
       if (cloudData.transactions)   allTransactions=cloudData.transactions;
       if (cloudData.targets)        targets=cloudData.targets;
+      if (cloudData.plannedItems)   plannedItems=cloudData.plannedItems;
       if (cloudData.accounts)       accounts=cloudData.accounts;
       if (cloudData.savingsAccts)   savingsAccts=cloudData.savingsAccts;
       if (cloudData.alertSettings)  alertSettings=cloudData.alertSettings;
