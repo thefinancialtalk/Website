@@ -877,7 +877,7 @@ a.partner-item:focus-visible { opacity: 1; }
 }
 @keyframes partner-scroll {
   from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  to   { transform: translateX(calc(-1 * var(--partner-shift, 50%))); }
 }
 @media (prefers-reduced-motion: reduce) {
   /* No motion: lay the logos out as a centered, wrapping row instead. */
