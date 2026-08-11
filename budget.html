@@ -87,7 +87,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 .period-btn{background:none;border:none;padding:7px 10px;cursor:pointer;color:var(--text-2);font-size:14px}
 .period-btn:hover{background:var(--surface-alt)}
 .period-label{padding:7px 14px;font-size:13px;font-weight:500;border-left:1px solid var(--border);border-right:1px solid var(--border);white-space:nowrap}
+.range-select{font-size:13px;padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);color:var(--text);cursor:pointer}
+.range-select:focus{outline:none;border-color:var(--accent)}
 .topbar-right{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.app-body{display:flex;gap:20px;align-items:flex-start}
+.app-sidebar{width:190px;flex-shrink:0;position:sticky;top:20px}
+.sidebar-title{font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--text-3);font-weight:600;margin:0 0 8px 4px}
+.app-main{flex:1;min-width:0}
+.app-sidebar .account-pills{flex-direction:column;align-items:stretch;gap:4px}
+.app-sidebar .acct-pill{border-radius:var(--radius);text-align:left;padding:8px 12px;font-size:13px}
 .btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:var(--radius);font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--text);white-space:nowrap}
 .btn:hover{background:var(--surface-alt)}
 .btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
@@ -354,6 +362,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
   .topbar{flex-direction:column;align-items:flex-start}
   .nav-tabs{width:100%}
   .income-grid,.savings-grid,.debt-metrics{grid-template-columns:repeat(2,1fr)}
+  .app-body{flex-direction:column}
+  .app-sidebar{width:100%;position:static}
+  .app-sidebar .account-pills{flex-direction:row;flex-wrap:wrap}
+  .app-sidebar .acct-pill{text-align:center}
 }
 </style>
 </head>
@@ -450,9 +462,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
           <span class="period-label" id="period-label">Loading…</span>
           <button class="period-btn" id="next-btn">&#8250;</button>
         </div>
+        <select class="range-select" id="range-select" title="View range">
+          <option value="1">Bi-weekly</option>
+          <option value="2">Monthly</option>
+          <option value="4">2 months</option>
+          <option value="6">3 months</option>
+        </select>
       </div>
       <div class="topbar-right">
-        <div class="account-pills" id="acct-pills"></div>
         <button class="btn" id="add-txn-btn">+ Add entry</button>
         <button class="btn" id="targets-btn">Plan budget</button>
         <button class="btn" id="accts-btn">Accounts</button>
@@ -460,6 +477,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
         <button class="btn btn-primary" id="import-btn">Import CSV</button>
       </div>
     </div>
+
+    <div class="app-body">
+      <aside class="app-sidebar">
+        <div class="sidebar-title">Accounts</div>
+        <div class="account-pills" id="acct-pills"></div>
+      </aside>
+      <div class="app-main">
 
     <!-- AI Panel -->
     <div class="ai-panel" id="ai-panel" style="display:none">
@@ -621,6 +645,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
         <div id="ledger-body"><div class="ledger-empty">No transactions yet — import a CSV to get started.</div></div>
       </div>
     </div>
+      </div><!-- /app-main -->
+    </div><!-- /app-body -->
   </div>
 </div>
 
@@ -873,6 +899,10 @@ function plannedSubTotal(ck,sk){ return plannedItems.filter(p=>p.cat===ck&&p.sub
 // A category's budget is the sum of its planned items when any exist, otherwise the legacy flat target.
 function catTarget(ck){ const items=plannedForCat(ck); return items.length ? items.reduce((s,p)=>s+(p.amount||0),0) : (targets[ck]||0); }
 function totalTargets(){ return EXPENSE_CATS.reduce((s,ck)=>s+catTarget(ck),0); }
+// The view can span several base (bi-weekly) periods; budgets scale to match.
+let viewPeriods = 1;
+function viewTarget(ck){ return catTarget(ck)*viewPeriods; }
+function totalViewBudget(){ return totalTargets()*viewPeriods; }
 let accounts = [{id:'all',name:'All accounts',type:'all',color:'#2563eb'},{id:'a1',name:'TD Chequing',type:'chequing',color:'#2563eb'},{id:'a2',name:'Scotiabank Visa',type:'credit',color:'#0d9488'}];
 let savingsAccts = [];
 let alertSettings = {overBudget:{enabled:true,threshold:100},nearBudget:{enabled:true,threshold:85},largeTxn:{enabled:true,threshold:500},noIncome:{enabled:true,threshold:0}};
@@ -891,7 +921,10 @@ function fmtDate(d) { return d.toLocaleDateString('en-CA',{month:'short',day:'nu
 function getPeriodRange(off=currentOffset) { const s=getPeriodStart(off); return {start:s,end:new Date(s.getTime()+PERIOD_DAYS*86400000-1)}; }
 function txnInPeriod(t,off=currentOffset) { const {start,end}=getPeriodRange(off); const d=new Date(t.date+'T00:00:00'); return d>=start&&d<=end; }
 function txnMatchesAccount(t) { return activeAccount==='all'||t.accountId===activeAccount; }
-function filterTxns(off=currentOffset) { return allTransactions.filter(t=>txnInPeriod(t,off)&&txnMatchesAccount(t)); }
+// The current view window spans `viewPeriods` base periods starting at currentOffset.
+function getViewRange() { const s=getPeriodStart(currentOffset); return {start:s,end:new Date(s.getTime()+viewPeriods*PERIOD_DAYS*86400000-1)}; }
+function txnInView(t) { const {start,end}=getViewRange(); const d=new Date(t.date+'T00:00:00'); return d>=start&&d<=end; }
+function filterTxns() { return allTransactions.filter(t=>txnInView(t)&&txnMatchesAccount(t)); }
 
 // ─── Cloud sync ───────────────────────────────────────────────────────────────
 function setSyncStatus(state) {
@@ -1014,7 +1047,7 @@ function render() {
 }
 
 function renderPeriodLabel() {
-  const {start,end}=getPeriodRange();
+  const {start,end}=getViewRange();
   document.getElementById('period-label').textContent=fmtDate(start)+' – '+fmtDate(end);
 }
 
@@ -1028,9 +1061,9 @@ function renderAccountPills() {
 function renderOverview(txns) {
   const expenses=txns.filter(t=>!t.isCredit&&t.cat!=='income').reduce((s,t)=>s+t.amount,0);
   const income  =txns.filter(t=>t.isCredit||t.cat==='income').reduce((s,t)=>s+t.amount,0);
-  const totalBudget=totalTargets();
+  const totalBudget=totalViewBudget();
   const net=income-expenses;
-  const {end}=getPeriodRange();
+  const {end}=getViewRange();
   const daysLeft=Math.max(0,Math.ceil((end-new Date())/86400000));
   const rem=totalBudget-expenses;
 
@@ -1057,7 +1090,7 @@ function renderOverview(txns) {
   for (const [ck,cat] of Object.entries(CATEGORIES)) {
     if (ck==='income'||ck==='savings') continue;
     const actual=txns.filter(t=>!t.isCredit&&t.cat===ck).reduce((s,t)=>s+t.amount,0);
-    const target=catTarget(ck);
+    const target=viewTarget(ck);
     const variance=target-actual;
     const pct=target>0?Math.min(100,(actual/target)*100):(actual>0?100:0);
     const bc=pct>=100?'over':pct>=85?'warn':'ok';
@@ -1078,7 +1111,7 @@ function renderOverview(txns) {
       const sw=document.createElement('div');sw.className='sub-rows';
       for (const [sk,sl] of Object.entries(cat.subs)) {
         const sa=txns.filter(t=>t.cat===ck&&t.sub===sk&&!t.isCredit).reduce((s,t)=>s+t.amount,0);
-        const st=plannedSubTotal(ck,sk);
+        const st=plannedSubTotal(ck,sk)*viewPeriods;
         const sv=st-sa;
         const vColor=st>0?(sv>=0?'var(--green-text)':'var(--red-text)'):'var(--text-3)';
         const vText=st>0?((sv>=0?'–':'+')+fmt(Math.abs(sv))):'—';
@@ -1340,7 +1373,7 @@ function renderAlertBanners(txns) {
   for (const [ck,cat] of Object.entries(CATEGORIES)) {
     if (ck==='income'||ck==='savings') continue;
     const actual=txns.filter(t=>!t.isCredit&&t.cat===ck).reduce((s,t)=>s+t.amount,0);
-    const target=catTarget(ck);
+    const target=viewTarget(ck);
     if (target===0||actual===0) continue;
     const pct=(actual/target)*100;
     if (alertSettings.overBudget.enabled&&pct>=100) overItems.push({cat:cat.label,actual,target});
@@ -1365,7 +1398,7 @@ function renderAlertsTab(txns) {
   for (const [ck,cat] of Object.entries(CATEGORIES)) {
     if (ck==='income'||ck==='savings') continue;
     const actual=txns.filter(t=>!t.isCredit&&t.cat===ck).reduce((s,t)=>s+t.amount,0);
-    const target=catTarget(ck);
+    const target=viewTarget(ck);
     if (target>0&&actual>0) {
       const pct=(actual/target)*100;
       if (pct>=100) issues.push({severity:'over',label:cat.label+' over budget',detail:fmt(actual)+' spent / '+fmt(target)+' target',icon:'🔴'});
@@ -1579,7 +1612,7 @@ document.getElementById('ai-btn').addEventListener('click',async()=>{
   const txns=filterTxns();
   const cats=Object.entries(CATEGORIES).filter(([k])=>k!=='income'&&k!=='savings').map(([k,v])=>{
     const actual=txns.filter(t=>!t.isCredit&&t.cat===k).reduce((s,t)=>s+t.amount,0);
-    const target=catTarget(k);
+    const target=viewTarget(k);
     const pct=target>0?(actual/target)*100:0;
     return {label:v.label,actual,target,variance:target-actual,pct};
   });
@@ -1597,7 +1630,7 @@ document.getElementById('ai-btn').addEventListener('click',async()=>{
     const {start}=getPeriodRange(off);
     trends.push({period:fmtDate(start),spent:pt.filter(t=>!t.isCredit&&t.cat!=='income').reduce((s,t)=>s+t.amount,0),income:pt.filter(t=>t.isCredit||t.cat==='income').reduce((s,t)=>s+t.amount,0)});
   }
-  const {start,end}=getPeriodRange();
+  const {start,end}=getViewRange();
   try {
     const analysis=await BudgetAuth.analyse({period:fmtDate(start)+' – '+fmtDate(end),categories:cats,income,net:income.total-expenses,debt:{cc:txns.filter(t=>t.cat==='debt'&&t.sub==='cc_payment'&&!t.isCredit).reduce((s,t)=>s+t.amount,0),student:txns.filter(t=>t.cat==='debt'&&(t.sub==='student_federal'||t.sub==='student_provincial')&&!t.isCredit).reduce((s,t)=>s+t.amount,0),total:txns.filter(t=>t.cat==='debt'&&!t.isCredit).reduce((s,t)=>s+t.amount,0)},trends,lang:aiLang});
     const html=analysis.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/^- (.+)$/gm,'<li>$1</li>').replace(/(<li>[\s\S]*?<\/li>)/g,'<ul>$1</ul>').split('\n\n').map(p=>p.startsWith('<ul>')?p:`<p>${p}</p>`).join('');
@@ -1608,8 +1641,14 @@ document.getElementById('ai-close').addEventListener('click',()=>{document.getEl
 document.querySelectorAll('.ai-lang-btn').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.ai-lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');aiLang=btn.dataset.aiLang;}));
 
 // ─── Event wiring ─────────────────────────────────────────────────────────────
-document.getElementById('prev-btn').addEventListener('click',()=>{currentOffset--;render();});
-document.getElementById('next-btn').addEventListener('click',()=>{currentOffset++;render();});
+document.getElementById('prev-btn').addEventListener('click',()=>{currentOffset-=viewPeriods;render();});
+document.getElementById('next-btn').addEventListener('click',()=>{currentOffset+=viewPeriods;render();});
+document.getElementById('range-select').addEventListener('change',e=>{
+  viewPeriods=parseInt(e.target.value,10)||1;
+  // re-anchor to the current base period so the window includes today
+  currentOffset=dateToPeriodOffset(new Date());
+  render();
+});
 document.getElementById('import-btn').addEventListener('click',()=>document.getElementById('file-input').click());
 document.getElementById('file-input').addEventListener('change',e=>{handleFile(e.target.files[0]);e.target.value='';});
 document.getElementById('map-cancel').addEventListener('click',()=>document.getElementById('map-modal').classList.remove('open'));
