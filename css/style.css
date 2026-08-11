@@ -786,6 +786,8 @@ h1, h2, h3, h4 { letter-spacing: -0.015em; }
 
 /* ---- Intro preloader ---- */
 .preloader { display: none; }
+/* When the loader was shown recently, keep it hidden this visit. */
+.preloader-skip .preloader { display: none !important; }
 .js-enabled .preloader {
   display: flex;
   position: fixed; inset: 0; z-index: 10000;
@@ -828,6 +830,67 @@ body.preloading { overflow: hidden; }
   .preloader-logo { animation: none; }
   .js-enabled .preloader { transition: opacity 0.3s ease; }
   .preloader.is-done { transform: none; }
+}
+
+/* ---- Partner / brand-logo wheel (js/partners.js) ---- */
+.partner-wheel {
+  position: relative;
+  overflow: hidden;
+  padding: 8px 0;
+  /* Fade the logos in and out at the edges instead of a hard cut. */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.partner-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  animation: partner-scroll 42s linear infinite;
+}
+/* Let visitors pause the wheel to read a logo. */
+.partner-wheel:hover .partner-track,
+.partner-wheel:focus-within .partner-track { animation-play-state: paused; }
+.partner-item {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  margin-right: 68px; /* uniform spacing keeps the loop seamless */
+  opacity: 0.75;
+  transition: opacity 0.2s ease;
+}
+a.partner-item:hover,
+a.partner-item:focus-visible { opacity: 1; }
+.partner-logo {
+  max-height: 52px;
+  width: auto;
+  max-width: 190px;
+  object-fit: contain;
+}
+.partner-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+@keyframes partner-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  /* No motion: lay the logos out as a centered, wrapping row instead. */
+  .partner-wheel { -webkit-mask-image: none; mask-image: none; }
+  .partner-track {
+    animation: none;
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px 40px;
+  }
+  .partner-item { margin-right: 0; }
+  .partner-item[aria-hidden="true"] { display: none; } /* drop the loop duplicate */
 }
 
 /* ---- Space starfield canvas (js/effects.js) ---- */

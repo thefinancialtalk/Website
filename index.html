@@ -3,7 +3,20 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<script>document.documentElement.classList.add("js-enabled");</script>
+<script>
+  document.documentElement.classList.add("js-enabled");
+  /* Show the intro preloader only every now and then — not on every visit to
+     Home. If it's been shown within the last 6 hours, skip straight to the
+     page (decided here in <head> so there's no flash of the loader). */
+  try {
+    var _ftLast = +localStorage.getItem("ft_preloader_ts") || 0;
+    if (Date.now() - _ftLast < 6 * 60 * 60 * 1000) {
+      document.documentElement.classList.add("preloader-skip");
+    } else {
+      localStorage.setItem("ft_preloader_ts", String(Date.now()));
+    }
+  } catch (e) {}
+</script>
 <title data-i18n-title="home.hero.title">The Financial Talk</title>
 <meta name="description" content="Bilingual financial coaching rooted in culture." />
 <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png" />
@@ -164,6 +177,16 @@
     </div>
   </section>
 
+  <section class="partner-section" data-partner-section aria-labelledby="partners-heading">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-i18n="home.partners.eyebrow">In good company</span>
+        <h2 class="section-title" id="partners-heading" data-i18n="home.partners.title">Brands &amp; partners we work with</h2>
+      </div>
+    </div>
+    <div class="partner-wheel" data-partner-wheel></div>
+  </section>
+
   <section style="background: var(--color-bg-alt);">
     <div class="container">
       <div class="section-head" data-reveal>
@@ -259,6 +282,7 @@
 <script src="js/main.js"></script>
 <script src="js/effects.js"></script>
 <script src="js/announcements.js"></script>
+<script src="js/partners.js"></script>
 
 <!-- Netlify Identity: handles the login/invite flow for the /admin content
      editor. Harmless if the site isn't on Netlify or Identity isn't set up

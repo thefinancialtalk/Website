@@ -14,6 +14,11 @@
   function initPreloader() {
     var pre = document.querySelector("[data-preloader]");
     if (!pre) return;
+    // Shown recently? The <head> script flagged it — don't run the loader again.
+    if (document.documentElement.classList.contains("preloader-skip")) {
+      if (pre.parentNode) pre.parentNode.removeChild(pre);
+      return;
+    }
 
     var bar = pre.querySelector(".preloader-bar span");
     var pct = pre.querySelector(".preloader-pct");

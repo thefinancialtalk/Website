@@ -94,6 +94,10 @@ const TRANSLATIONS = {
           },
         ],
       },
+      partners: {
+        eyebrow: "In good company",
+        title: "Brands & partners we work with",
+      },
       updates: {
         eyebrow: "Latest updates",
         title: "What's new",
@@ -216,6 +220,10 @@ const TRANSLATIONS = {
           { title: "Build your plan", desc: "We map out a plan around your real goals and life." },
           { title: "Grow with support", desc: "Ongoing sessions and resources keep you on track." },
         ],
+      },
+      partners: {
+        eyebrow: "In good company",
+        title: "Brands & partners we work with",
       },
       cta: {
         title: "Not sure where to start?",
@@ -470,6 +478,10 @@ const TRANSLATIONS = {
           },
         ],
       },
+      partners: {
+        eyebrow: "En buena compañía",
+        title: "Marcas y aliados con los que trabajamos",
+      },
       updates: {
         eyebrow: "Últimas novedades",
         title: "Qué hay de nuevo",
@@ -592,6 +604,10 @@ const TRANSLATIONS = {
           { title: "Creamos tu plan", desc: "Diseñamos un plan según tus metas y tu vida real." },
           { title: "Crece con apoyo", desc: "Sesiones y recursos continuos te mantienen en camino." },
         ],
+      },
+      partners: {
+        eyebrow: "En buena compañía",
+        title: "Marcas y aliados con los que trabajamos",
       },
       cta: {
         title: "¿No sabes por dónde empezar?",
