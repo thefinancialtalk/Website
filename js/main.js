@@ -90,10 +90,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const fadeSections = document.querySelectorAll("main > section");
   if (fadeSections.length && !prefersReducedMotion) {
     // Distance (as a fraction of the viewport height) a section travels while
-    // fading between hidden and fully shown. Larger = slower, gentler fade.
-    const FADE_RANGE = 0.5;
-    // Sections never drop to fully invisible, so nothing abruptly "pops" away.
-    const MIN_OPACITY = 0.15;
+    // fading between hidden and fully shown. Smaller = tighter, heavier fade
+    // that resolves over a shorter scroll distance.
+    const FADE_RANGE = 0.42;
+    // Sections fade almost all the way out at the edges for a heavier feel.
+    const MIN_OPACITY = 0.04;
+    // How far (px) a section drifts up as it fades in, so it "settles" into place.
+    const MAX_SHIFT = 48;
+    // Ease the raw linear progress so sections linger dim, then resolve quickly.
+    const easeInOutCubic = (t) =>
+      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
     fadeSections.forEach((s) => s.classList.add("section-fade"));
 
@@ -107,10 +113,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const enter = (vh - rect.top) / range;
         // ...and OUT as its bottom slides up past the top edge.
         const leave = rect.bottom / range;
-        let o = Math.min(enter, leave);
-        if (o > 1) o = 1;
-        if (o < MIN_OPACITY) o = MIN_OPACITY;
+        let t = Math.min(enter, leave);
+        if (t > 1) t = 1;
+        if (t < 0) t = 0;
+        const eased = easeInOutCubic(t);
+        const o = MIN_OPACITY + (1 - MIN_OPACITY) * eased;
+        // Drift up from below as it resolves; 0 once fully shown.
+        const shift = (1 - eased) * MAX_SHIFT;
         s.style.opacity = o.toFixed(3);
+        s.style.transform = shift > 0.5 ? `translate3d(0, ${shift.toFixed(1)}px, 0)` : "";
       });
       fadeTicking = false;
     };

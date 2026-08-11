@@ -648,7 +648,7 @@ section { padding: 96px 0; }
    keeps the browser compositing on its own layer so the fade stays smooth;
    no CSS transition here on purpose — the opacity tracks scroll position
    directly for a 1:1 feel. */
-.section-fade { will-change: opacity; }
+.section-fade { will-change: opacity, transform; }
 
 @media (prefers-reduced-motion: reduce) {
   .js-enabled [data-reveal] {
@@ -659,7 +659,7 @@ section { padding: 96px 0; }
   [data-parallax] { transform: none !important; }
   /* Section fade is JS-gated off under reduced motion, but hard-guarantee
      full opacity in case any inline opacity was already applied. */
-  .section-fade { opacity: 1 !important; }
+  .section-fade { opacity: 1 !important; transform: none !important; }
 }
 
 /* ---------- Misc utilities ---------- */
