@@ -10,7 +10,6 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_KEY
 );
 
-const THRESHOLD   = parseInt(process.env.REFERRAL_THRESHOLD || '2', 10);
 const ACCESS_DAYS = parseInt(process.env.ACCESS_DAYS || '30', 10);
 
 // Minimal JWT implementation — no external library needed
@@ -65,22 +64,8 @@ exports.handler = async (event) => {
     return { statusCode: 401, body: JSON.stringify({ error: 'Incorrect code' }) };
   }
 
-  // Confirm this user is allowed in (active window, or enough referrals to unlock).
   const userId = crypto.createHash('sha256').update(email.toLowerCase()).digest('hex');
-  const { data: user } = await supabase
-    .from('users')
-    .select('referral_count, referrals_at_last_grant, access_expires_at')
-    .eq('id', userId)
-    .maybeSingle();
-
-  const now      = new Date();
-  const active   = user && user.access_expires_at && new Date(user.access_expires_at) > now;
-  const progress = user ? user.referral_count - user.referrals_at_last_grant : 0;
-  const eligible = progress >= THRESHOLD;
-
-  if (!active && !eligible) {
-    return { statusCode: 403, body: JSON.stringify({ error: 'Access locked — unlock by inviting friends first.', code: 'locked' }) };
-  }
+  const now    = new Date();
 
   // Mark OTP used
   await supabase
@@ -88,23 +73,19 @@ exports.handler = async (event) => {
     .update({ used: true })
     .eq('email', email);
 
-  // Grant a fresh 30-day window on unlock/renewal; leave it untouched for an
-  // already-active user just logging back in.
-  const update = { id: userId, email, last_login: now.toISOString() };
-  if (!active && eligible) {
-    update.access_expires_at       = new Date(now.getTime() + ACCESS_DAYS * 86400 * 1000).toISOString();
-    update.referrals_at_last_grant = user.referral_count;
-  }
-  await supabase.from('users').upsert(update, { onConflict: 'id' });
+  // Grant (or refresh) a 30-day access window on every successful sign-in.
+  const accessExpiresAt = new Date(now.getTime() + ACCESS_DAYS * 86400 * 1000).toISOString();
+  await supabase.from('users').upsert(
+    { id: userId, email, last_login: now.toISOString(), access_expires_at: accessExpiresAt },
+    { onConflict: 'id' }
+  );
 
-  const accessExpiresAt = update.access_expires_at || (user && user.access_expires_at) || null;
-
-  // Issue JWT (24 h expiry)
+  // Issue JWT that stays valid for the access window (30 days)
   const token = signJWT({
     sub:   userId,
     email,
     iat:   Math.floor(Date.now() / 1000),
-    exp:   Math.floor(Date.now() / 1000) + 86400
+    exp:   Math.floor(Date.now() / 1000) + ACCESS_DAYS * 86400
   });
 
   return {
