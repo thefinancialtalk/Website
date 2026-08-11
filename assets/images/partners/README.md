@@ -26,14 +26,19 @@ duplicated behind the scenes so the wheel keeps looping smoothly.
 
 ## File names the site is currently looking for
 
-Drop these in to replace the temporary text placeholders:
+Current status (the file each brand points to in `js/partners.js`):
 
-- `simplii.png`  — Simplii Financial
-- `neo.png`  — Neo Financial
-- `rise-to-thrive.png`  — Rise to Thrive Foundation
-- `cloudtax.png`  — CloudTax
-- `policyme.png`  — PolicyMe
-- `fincon.png`  — FinCon
+- `simplii.svg`  — Simplii Financial ✅ in place
+- `neo.png`  — Neo Financial ✅ in place (logo sits on a white background)
+- `cloudtax.svg`  — CloudTax ✅ in place
+- `policyme.svg`  — PolicyMe ✅ in place
+- `fincon.png`  — FinCon ✅ in place (the round FC icon)
+- `rise-to-thrive.png`  — Rise to Thrive Foundation ⛔ still needed
+  (shows as text until a logo file is added)
 
 Until a matching image file is added, the partner's **name shows as text**, so
 the wheel always looks finished.
+
+Unused extras kept in this folder: `turbotax.svg` (not in the wheel),
+`fincon-white.webp` (white-on-transparent — invisible on a light page) and
+`fincon-event.webp` (an event graphic, not a logo).

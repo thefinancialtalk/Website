@@ -14,11 +14,11 @@
  */
 (function () {
   var PARTNERS = [
-    { name: "Simplii Financial",     logo: "assets/images/partners/simplii.png",       url: "https://www.simplii.com/en/home.html" },
+    { name: "Simplii Financial",     logo: "assets/images/partners/simplii.svg",       url: "https://www.simplii.com/en/home.html" },
     { name: "Neo Financial",         logo: "assets/images/partners/neo.png",           url: "https://www.neofinancial.com/" },
     { name: "Rise to Thrive Foundation", logo: "assets/images/partners/rise-to-thrive.png", url: "https://www.risingtothrive.org/" },
-    { name: "CloudTax",              logo: "assets/images/partners/cloudtax.png",       url: "https://www.cloudtax.ca/" },
-    { name: "PolicyMe",              logo: "assets/images/partners/policyme.png",       url: "https://www.policyme.com/" },
+    { name: "CloudTax",              logo: "assets/images/partners/cloudtax.svg",       url: "https://www.cloudtax.ca/" },
+    { name: "PolicyMe",              logo: "assets/images/partners/policyme.svg",       url: "https://www.policyme.com/" },
     { name: "FinCon",                logo: "assets/images/partners/fincon.png",         url: "https://finconexpo.com/" }
   ];
 
