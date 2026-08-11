@@ -32,6 +32,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 .login-label{display:block;font-size:12px;font-weight:500;color:var(--text-2);margin-bottom:6px}
 .login-input{width:100%;font-size:14px;padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);color:var(--text);margin-bottom:12px}
 .login-input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-bg)}
+.login-optin{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--text-2);line-height:1.45;margin:2px 0 16px;cursor:pointer}
+.login-optin input{margin-top:2px;flex:0 0 auto;width:15px;height:15px;accent-color:var(--accent);cursor:pointer}
+.login-optin-es{color:var(--text-3,#9ca3af)}
 .login-btn{width:100%;padding:11px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius);font-size:14px;font-weight:600;cursor:pointer}
 .login-btn:hover{background:#1d4ed8}
 .login-btn:disabled{opacity:.5;cursor:not-allowed}
@@ -385,6 +388,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
       <div id="email-error" class="login-error"></div>
       <label class="login-label" for="signin-email">Email address</label>
       <input type="email" id="signin-email" class="login-input" placeholder="you@example.com" autocomplete="email">
+      <label class="login-optin">
+        <input type="checkbox" id="signin-optin">
+        <span>Send me occasional money tips &amp; updates from The Financial Talk. <span class="login-optin-es">/ Envíenme consejos y novedades ocasionales.</span></span>
+      </label>
       <button class="login-btn" id="signin-btn">Send access code</button>
     </div>
 
@@ -751,8 +758,8 @@ const BudgetAuth = (() => {
     return d;
   }
 
-  async function verifyOTP(email, otp) {
-    const res = await fetch(`${BASE}/auth-verify-otp`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,otp})});
+  async function verifyOTP(email, otp, newsletterOptIn) {
+    const res = await fetch(`${BASE}/auth-verify-otp`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,otp,newsletterOptIn:!!newsletterOptIn})});
     const d = await res.json();
     if (!res.ok) throw new Error(d.error||'Verification failed');
     saveSession(d.token, d.userId, d.email);
@@ -1696,6 +1703,7 @@ const stepEmail  = document.getElementById('step-email');
 const stepOtp    = document.getElementById('step-otp');
 const otpInput   = document.getElementById('otp-input');
 let pendingEmail = '';   // email a code was last sent to
+let pendingOptIn = false; // newsletter consent captured on the email step
 
 function showStep(el){ [stepEmail,stepOtp].forEach(s=>s.style.display='none'); el.style.display='block'; }
 function setErr(id,msg){ const e=document.getElementById(id); if(!e)return; e.textContent=msg||''; e.classList.toggle('show',!!msg); }
@@ -1717,6 +1725,7 @@ async function requestCode(email, errId){
 document.getElementById('signin-btn').addEventListener('click', ()=>{
   const email=document.getElementById('signin-email').value.trim();
   if (!email || !email.includes('@')){ setErr('email-error','Enter a valid email address.'); return; }
+  pendingOptIn = document.getElementById('signin-optin').checked;
   requestCode(email, 'email-error');
 });
 document.getElementById('signin-email').addEventListener('keydown', e=>{ if(e.key==='Enter') document.getElementById('signin-btn').click(); });
@@ -1728,7 +1737,7 @@ document.getElementById('verify-btn').addEventListener('click', async ()=>{
   if (otp.length!==6){ setErr('otp-error','Enter the 6-digit code from your email.'); return; }
   const b=document.getElementById('verify-btn'); b.disabled=true; b.textContent='Verifying…';
   try {
-    await BudgetAuth.verifyOTP(pendingEmail, otp);
+    await BudgetAuth.verifyOTP(pendingEmail, otp, pendingOptIn);
     document.getElementById('otp-success').classList.add('show');
     await initDashboard();
   } catch(e){ setErr('otp-error', e.message||'Incorrect or expired code.'); b.disabled=false; b.textContent='Unlock dashboard'; }

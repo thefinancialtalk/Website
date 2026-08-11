@@ -33,9 +33,9 @@ exports.handler = async (event) => {
     return { statusCode: 405, body: 'Method not allowed' };
   }
 
-  let email, otp;
+  let email, otp, newsletterOptIn;
   try {
-    ({ email, otp } = JSON.parse(event.body));
+    ({ email, otp, newsletterOptIn } = JSON.parse(event.body));
     if (!email || !otp) throw new Error();
   } catch {
     return { statusCode: 400, body: JSON.stringify({ error: 'email and otp required' }) };
@@ -75,10 +75,29 @@ exports.handler = async (event) => {
 
   // Grant (or refresh) a 30-day access window on every successful sign-in.
   const accessExpiresAt = new Date(now.getTime() + ACCESS_DAYS * 86400 * 1000).toISOString();
-  await supabase.from('users').upsert(
-    { id: userId, email, last_login: now.toISOString(), access_expires_at: accessExpiresAt },
-    { onConflict: 'id' }
-  );
+  const userRow = { id: userId, email, last_login: now.toISOString(), access_expires_at: accessExpiresAt };
+  // Only ever record consent when it's given — never silently un-subscribe someone
+  // who opted in earlier but didn't re-tick the box on a later sign-in.
+  if (newsletterOptIn === true) userRow.newsletter_opt_in = true;
+  await supabase.from('users').upsert(userRow, { onConflict: 'id' });
+
+  // Optional: mirror opted-in emails into a Resend Audience so the newsletter
+  // list builds itself. Skipped entirely if RESEND_AUDIENCE_ID isn't set, so
+  // the app runs fine without any extra configuration.
+  if (newsletterOptIn === true && process.env.RESEND_API_KEY && process.env.RESEND_AUDIENCE_ID) {
+    try {
+      await fetch(`https://api.resend.com/audiences/${process.env.RESEND_AUDIENCE_ID}/contacts`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.RESEND_API_KEY}`
+        },
+        body: JSON.stringify({ email, unsubscribed: false })
+      });
+    } catch (e) {
+      console.error('Resend audience sync failed (non-fatal):', e);
+    }
+  }
 
   // Issue JWT that stays valid for the access window (30 days)
   const token = signJWT({
