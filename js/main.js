@@ -92,36 +92,54 @@ document.addEventListener("DOMContentLoaded", () => {
     // Distance (as a fraction of the viewport height) a section travels while
     // fading between hidden and fully shown. Smaller = tighter, heavier fade
     // that resolves over a shorter scroll distance.
-    const FADE_RANGE = 0.42;
+    const FADE_RANGE = 0.36;
     // Sections fade almost all the way out at the edges for a heavier feel.
-    const MIN_OPACITY = 0.04;
+    const MIN_OPACITY = 0.02;
     // How far (px) a section drifts up as it fades in, so it "settles" into place.
-    const MAX_SHIFT = 48;
+    const MAX_SHIFT = 64;
     // Ease the raw linear progress so sections linger dim, then resolve quickly.
     const easeInOutCubic = (t) =>
       t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
-    fadeSections.forEach((s) => s.classList.add("section-fade"));
+    // Fade targets: the main sections plus the stats grid (the Bilingual /
+    // Culturally Rooted / Judgment-Free badges). The badges get a lead offset
+    // (as a fraction of viewport height) and skip the drift transform, so they
+    // fade out a beat *before* the section above them finishes — and so the
+    // group fade never fights the cards' one-shot scale-in reveal.
+    const targets = [];
+    fadeSections.forEach((s) => {
+      s.classList.add("section-fade");
+      targets.push({ el: s, lead: 0, drift: true });
+    });
+    const statsGrid = document.querySelector(".stats-grid");
+    if (statsGrid) {
+      statsGrid.classList.add("section-fade");
+      targets.push({ el: statsGrid, lead: 0.35, drift: false });
+    }
 
     let fadeTicking = false;
     const updateFades = () => {
       const vh = window.innerHeight;
       const range = vh * FADE_RANGE || 1;
-      fadeSections.forEach((s) => {
-        const rect = s.getBoundingClientRect();
-        // Fade a section IN as its top rises up from the bottom edge...
+      targets.forEach(({ el, lead, drift }) => {
+        const rect = el.getBoundingClientRect();
+        const leadPx = vh * lead;
+        // Fade IN as its top rises up from the bottom edge...
         const enter = (vh - rect.top) / range;
-        // ...and OUT as its bottom slides up past the top edge.
-        const leave = rect.bottom / range;
+        // ...and OUT as its bottom slides up past the top edge. The lead offset
+        // pulls the fade-out earlier so badges clear before the section does.
+        const leave = (rect.bottom - leadPx) / range;
         let t = Math.min(enter, leave);
         if (t > 1) t = 1;
         if (t < 0) t = 0;
         const eased = easeInOutCubic(t);
         const o = MIN_OPACITY + (1 - MIN_OPACITY) * eased;
-        // Drift up from below as it resolves; 0 once fully shown.
-        const shift = (1 - eased) * MAX_SHIFT;
-        s.style.opacity = o.toFixed(3);
-        s.style.transform = shift > 0.5 ? `translate3d(0, ${shift.toFixed(1)}px, 0)` : "";
+        el.style.opacity = o.toFixed(3);
+        if (drift) {
+          // Drift up from below as it resolves; 0 once fully shown.
+          const shift = (1 - eased) * MAX_SHIFT;
+          el.style.transform = shift > 0.5 ? `translate3d(0, ${shift.toFixed(1)}px, 0)` : "";
+        }
       });
       fadeTicking = false;
     };
