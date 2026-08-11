@@ -55,7 +55,7 @@ async function notifyUnlocked(email) {
             <h2 style="font-size:20px;font-weight:600;margin:0 0 8px;">You're unlocked!</h2>
             <p style="color:#6b7280;margin:0 0 24px;font-size:14px;">
               Enough friends joined through your link. Head back to the dashboard,
-              enter this email, and we'll send your access code — good for 30 days.
+              enter this email, and I'll send your access code — good for 30 days.
             </p>
             <div style="text-align:center;margin-bottom:24px;">
               <a href="${SITE_URL}/budget" style="display:inline-block;background:#2563eb;color:#fff;text-decoration:none;font-weight:600;font-size:14px;padding:12px 22px;border-radius:8px;">Open the Budget Dashboard</a>

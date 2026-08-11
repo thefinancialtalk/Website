@@ -96,7 +96,7 @@ const TRANSLATIONS = {
       },
       partners: {
         eyebrow: "In good company",
-        title: "Brands & partners we work with",
+        title: "Brands & partners I work with",
       },
       updates: {
         eyebrow: "Latest updates",
@@ -126,13 +126,13 @@ const TRANSLATIONS = {
           },
           {
             q: "Do you offer workshops for groups?",
-            a: "Absolutely. I run bilingual group workshops for teams, community organizations, and families on budgeting, credit, and investing — reach out and we'll tailor one.",
+            a: "Absolutely. I run bilingual group workshops for teams, community organizations, and families on budgeting, credit, and investing — reach out and I'll tailor one.",
           },
         ],
       },
       ctaBanner: {
         title: "Ready to write your own money story?",
-        subtitle: "Your first consultation is on us — let's talk about where you want to go.",
+        subtitle: "Your first consultation is on me — let's talk about where you want to go.",
         button: "Book a Free Consultation",
       },
     },
@@ -169,8 +169,8 @@ const TRANSLATIONS = {
           "My mission is to transform complex financial concepts into clear, graceful, and manageable stepping stones. By replacing uncertainty with structured knowledge, I help individuals and families build lasting security, financial independence, and genuine peace of mind.",
       },
       values: {
-        eyebrow: "What guides us",
-        title: "Our values",
+        eyebrow: "What guides me",
+        title: "My values",
         items: [
           { title: "Cultural Pride", desc: "Your traditions and your goals can coexist." },
           { title: "Empowerment", desc: "You leave every session with real, usable tools." },
@@ -223,11 +223,11 @@ const TRANSLATIONS = {
       },
       partners: {
         eyebrow: "In good company",
-        title: "Brands & partners we work with",
+        title: "Brands & partners I work with",
       },
       cta: {
         title: "Not sure where to start?",
-        subtitle: "Book a free consultation and we'll figure it out together.",
+        subtitle: "Book a free consultation and I'll figure it out with you.",
         button: "Book a Free Consultation",
       },
     },
@@ -337,12 +337,12 @@ const TRANSLATIONS = {
         {
           tag: "Community",
           title: "Networking",
-          desc: "Connect us with community groups, employers, and organizations who'd benefit from bilingual financial education.",
+          desc: "Connect me with community groups, employers, and organizations who'd benefit from bilingual financial education.",
         },
         {
           tag: "Spread the word",
           title: "Marketing & Ambassadors",
-          desc: "Share our content, refer friends and family, or become a brand ambassador who champions financial literacy in your circles.",
+          desc: "Share my content, refer friends and family, or become a brand ambassador who champions financial literacy in your circles.",
         },
         {
           tag: "Partnerships",
@@ -352,7 +352,7 @@ const TRANSLATIONS = {
       ],
       cta: {
         title: "Want to help out?",
-        subtitle: "Tell us how you'd like to get involved and we'll take it from there.",
+        subtitle: "Tell me how you'd like to get involved and I'll take it from there.",
         button: "Get in Touch",
       },
     },
@@ -369,7 +369,7 @@ const TRANSLATIONS = {
       },
       card: {
         title: "Get in touch",
-        body: "Send a message with a bit about your goals, and we'll get back to you soon.",
+        body: "Send a message with a bit about your goals, and I'll get back to you soon.",
       },
       form: {
         nameLabel: "Name",
@@ -396,7 +396,7 @@ const TRANSLATIONS = {
     },
     nav: {
       home: "Inicio",
-      about: "Nosotras",
+      about: "Sobre mí",
       services: "Herramientas",
       resources: "Recursos",
       getInvolved: "Participa",
@@ -480,7 +480,7 @@ const TRANSLATIONS = {
       },
       partners: {
         eyebrow: "En buena compañía",
-        title: "Marcas y aliados con los que trabajamos",
+        title: "Marcas y aliados con los que trabajo",
       },
       updates: {
         eyebrow: "Últimas novedades",
@@ -510,7 +510,7 @@ const TRANSLATIONS = {
           },
           {
             q: "¿Ofreces talleres para grupos?",
-            a: "¡Claro! Ofrezco talleres grupales bilingües para equipos, organizaciones comunitarias y familias sobre presupuesto, crédito e inversión — escríbeme y lo diseñamos a tu medida.",
+            a: "¡Claro! Ofrezco talleres grupales bilingües para equipos, organizaciones comunitarias y familias sobre presupuesto, crédito e inversión — escríbeme y lo diseño a tu medida.",
           },
         ],
       },
@@ -522,7 +522,7 @@ const TRANSLATIONS = {
     },
     about: {
       hero: {
-        eyebrow: "Nosotras",
+        eyebrow: "Sobre mí",
         title: "Empoderando tu Futuro Financiero",
         subtitle:
           "Un enfoque bicultural sobre el dinero que honra de dónde vienes y hacia dónde vas.",
@@ -553,8 +553,8 @@ const TRANSLATIONS = {
           "Mi misión es transformar conceptos financieros complejos en pasos claros, elegantes y manejables. Al reemplazar la incertidumbre con conocimiento estructurado, ayudo a personas y familias a construir seguridad duradera, independencia financiera y verdadera tranquilidad.",
       },
       values: {
-        eyebrow: "Lo que nos guía",
-        title: "Nuestros valores",
+        eyebrow: "Lo que me guía",
+        title: "Mis valores",
         items: [
           { title: "Orgullo Cultural", desc: "Tus tradiciones y tus metas pueden coexistir." },
           { title: "Empoderamiento", desc: "Sales de cada sesión con herramientas reales y útiles." },
@@ -607,11 +607,11 @@ const TRANSLATIONS = {
       },
       partners: {
         eyebrow: "En buena compañía",
-        title: "Marcas y aliados con los que trabajamos",
+        title: "Marcas y aliados con los que trabajo",
       },
       cta: {
         title: "¿No sabes por dónde empezar?",
-        subtitle: "Agenda una consulta gratuita y lo resolvemos juntas.",
+        subtitle: "Agenda una consulta gratuita y te ayudo a resolverlo.",
         button: "Agenda una Consulta Gratis",
       },
     },
@@ -721,12 +721,12 @@ const TRANSLATIONS = {
         {
           tag: "Comunidad",
           title: "Networking",
-          desc: "Conéctanos con grupos comunitarios, empleadores y organizaciones que se beneficiarían de la educación financiera bilingüe.",
+          desc: "Conéctame con grupos comunitarios, empleadores y organizaciones que se beneficiarían de la educación financiera bilingüe.",
         },
         {
           tag: "Corre la voz",
           title: "Marketing y Embajadores",
-          desc: "Comparte nuestro contenido, refiere a amistades y familiares, o conviértete en embajador de marca que impulsa la educación financiera en tu círculo.",
+          desc: "Comparte mi contenido, refiere a amistades y familiares, o conviértete en embajador de marca que impulsa la educación financiera en tu círculo.",
         },
         {
           tag: "Alianzas",
@@ -736,7 +736,7 @@ const TRANSLATIONS = {
       ],
       cta: {
         title: "¿Quieres ayudar?",
-        subtitle: "Cuéntanos cómo te gustaría participar y nosotros nos encargamos del resto.",
+        subtitle: "Cuéntame cómo te gustaría participar y yo me encargo del resto.",
         button: "Ponte en Contacto",
       },
     },
@@ -753,7 +753,7 @@ const TRANSLATIONS = {
       },
       card: {
         title: "Ponte en contacto",
-        body: "Envía un mensaje contándonos un poco sobre tus metas y te responderemos pronto.",
+        body: "Envía un mensaje contándome un poco sobre tus metas y te responderé pronto.",
       },
       form: {
         nameLabel: "Nombre",

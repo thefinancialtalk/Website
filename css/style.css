@@ -644,6 +644,12 @@ section { padding: 96px 0; }
 }
 .js-enabled [data-reveal="scale"].is-visible { transform: translateY(0) scale(1); }
 
+/* Scroll-linked section fade (opacity set per-frame in main.js). The hint
+   keeps the browser compositing on its own layer so the fade stays smooth;
+   no CSS transition here on purpose — the opacity tracks scroll position
+   directly for a 1:1 feel. */
+.section-fade { will-change: opacity; }
+
 @media (prefers-reduced-motion: reduce) {
   .js-enabled [data-reveal] {
     opacity: 1;
@@ -651,6 +657,9 @@ section { padding: 96px 0; }
     transition: none;
   }
   [data-parallax] { transform: none !important; }
+  /* Section fade is JS-gated off under reduced motion, but hard-guarantee
+     full opacity in case any inline opacity was already applied. */
+  .section-fade { opacity: 1 !important; }
 }
 
 /* ---------- Misc utilities ---------- */

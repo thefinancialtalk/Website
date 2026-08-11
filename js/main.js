@@ -82,6 +82,49 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("resize", onParallaxScroll);
   }
 
+  // Scroll-linked section fade. Each top-level section is fully opaque while
+  // it sits in the middle of the screen and gently fades toward the top and
+  // bottom edges — so the section you're scrolling away from fades out while
+  // the next one fades in as it rolls into view. Purely decorative, so it's
+  // skipped entirely for prefers-reduced-motion.
+  const fadeSections = document.querySelectorAll("main > section");
+  if (fadeSections.length && !prefersReducedMotion) {
+    // Distance (as a fraction of the viewport height) a section travels while
+    // fading between hidden and fully shown. Larger = slower, gentler fade.
+    const FADE_RANGE = 0.5;
+    // Sections never drop to fully invisible, so nothing abruptly "pops" away.
+    const MIN_OPACITY = 0.15;
+
+    fadeSections.forEach((s) => s.classList.add("section-fade"));
+
+    let fadeTicking = false;
+    const updateFades = () => {
+      const vh = window.innerHeight;
+      const range = vh * FADE_RANGE || 1;
+      fadeSections.forEach((s) => {
+        const rect = s.getBoundingClientRect();
+        // Fade a section IN as its top rises up from the bottom edge...
+        const enter = (vh - rect.top) / range;
+        // ...and OUT as its bottom slides up past the top edge.
+        const leave = rect.bottom / range;
+        let o = Math.min(enter, leave);
+        if (o > 1) o = 1;
+        if (o < MIN_OPACITY) o = MIN_OPACITY;
+        s.style.opacity = o.toFixed(3);
+      });
+      fadeTicking = false;
+    };
+    const onFadeScroll = () => {
+      if (!fadeTicking) {
+        window.requestAnimationFrame(updateFades);
+        fadeTicking = true;
+      }
+    };
+    updateFades();
+    window.addEventListener("scroll", onFadeScroll, { passive: true });
+    window.addEventListener("resize", onFadeScroll);
+  }
+
   // FAQ accordion — open one, close the rest (single-open behavior).
   const faqItems = document.querySelectorAll("[data-faq] details");
   faqItems.forEach((item) => {
