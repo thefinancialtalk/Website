@@ -23,10 +23,9 @@
     <nav class="main-nav" data-nav>
       <a href="index.html" data-i18n="nav.home">Home</a>
       <a href="about.html" data-i18n="nav.about">About</a>
-      <a href="services.html" aria-current="page" data-i18n="nav.services">Services</a>
+      <a href="services.html" aria-current="page" data-i18n="nav.services">Tools</a>
       <a href="get-involved.html" data-i18n="nav.getInvolved">Get Involved</a>
-      <a href="contact.html" data-i18n="nav.contact">Contact</a>
-      <a href="contact.html#book" class="btn btn-outline" data-i18n="nav.cta" style="padding:10px 22px;">Book a Consultation</a>
+      <a href="contact.html" class="btn btn-outline" data-i18n="nav.cta" style="padding:10px 22px;">Get in touch</a>
       <div class="nav-theme-row">
         <span class="nav-theme-label" data-i18n="theme.label">Color palette</span>
         <div class="theme-switcher" data-theme-switcher></div>
@@ -89,7 +88,7 @@
       </div>
       <div class="steps">
         <div class="step" data-reveal="scale">
-          <h3 data-i18n="services.process.steps.0.title">Book a call</h3>
+          <h3 data-i18n="services.process.steps.0.title">Book a meeting</h3>
           <p data-i18n="services.process.steps.0.desc">Desc</p>
         </div>
         <div class="step" data-reveal="scale">
@@ -101,6 +100,90 @@
           <p data-i18n="services.process.steps.2.desc">Desc</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="decor-section" id="tools">
+    <span class="bg-blob bg-blob--accent" data-parallax="0.15" style="width:240px;height:240px;top:-30px;left:-70px;" aria-hidden="true"></span>
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-i18n="calc.eyebrow">Free tools</span>
+        <h2 class="section-title" data-i18n="calc.title">Plan it out</h2>
+        <p class="section-subtitle" data-i18n="calc.subtitle">Two quick calculators to help you picture your next move.</p>
+      </div>
+
+      <div class="calc-lock is-locked" data-calc-lock data-reveal="scale">
+      <div class="calc" data-calc>
+        <div class="calc-tabs" role="tablist" aria-label="Calculators">
+          <button type="button" class="calc-tab is-active" role="tab" aria-selected="true" tabindex="0" id="calc-tab-debt" aria-controls="calc-panel-debt" data-calc-tab="debt" data-i18n="calc.tabs.debt">Debt Payoff</button>
+          <button type="button" class="calc-tab" role="tab" aria-selected="false" tabindex="-1" id="calc-tab-invest" aria-controls="calc-panel-invest" data-calc-tab="invest" data-i18n="calc.tabs.invest">Investment Growth</button>
+        </div>
+
+        <div class="calc-panel is-active" id="calc-panel-debt" role="tabpanel" aria-labelledby="calc-tab-debt" data-calc-panel="debt">
+          <p class="calc-intro" data-i18n="calc.debt.intro">See how long it takes to become debt-free.</p>
+          <div class="calc-fields">
+            <div class="form-field">
+              <label class="form-label" for="debt-balance" data-i18n="calc.debt.balance">Current balance</label>
+              <div class="calc-input calc-input--prefix"><span class="calc-affix">$</span><input class="form-input" type="number" id="debt-balance" min="0" step="any" inputmode="decimal" value="5000" /></div>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="debt-rate" data-i18n="calc.debt.rate">Interest rate (APR %)</label>
+              <div class="calc-input calc-input--suffix"><input class="form-input" type="number" id="debt-rate" min="0" step="any" inputmode="decimal" value="19.99" /><span class="calc-affix">%</span></div>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="debt-payment" data-i18n="calc.debt.payment">Monthly payment</label>
+              <div class="calc-input calc-input--prefix"><span class="calc-affix">$</span><input class="form-input" type="number" id="debt-payment" min="0" step="any" inputmode="decimal" value="250" /></div>
+            </div>
+          </div>
+          <div class="calc-results" data-calc-results="debt" aria-live="polite"></div>
+        </div>
+
+        <div class="calc-panel" id="calc-panel-invest" role="tabpanel" aria-labelledby="calc-tab-invest" data-calc-panel="invest" hidden>
+          <p class="calc-intro" data-i18n="calc.invest.intro">See how steady contributions can grow over time.</p>
+          <div class="calc-fields">
+            <div class="form-field">
+              <label class="form-label" for="invest-initial" data-i18n="calc.invest.initial">Starting amount</label>
+              <div class="calc-input calc-input--prefix"><span class="calc-affix">$</span><input class="form-input" type="number" id="invest-initial" min="0" step="any" inputmode="decimal" value="1000" /></div>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="invest-monthly" data-i18n="calc.invest.monthly">Monthly contribution</label>
+              <div class="calc-input calc-input--prefix"><span class="calc-affix">$</span><input class="form-input" type="number" id="invest-monthly" min="0" step="any" inputmode="decimal" value="200" /></div>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="invest-rate" data-i18n="calc.invest.rate">Annual return (%)</label>
+              <div class="calc-input calc-input--suffix"><input class="form-input" type="number" id="invest-rate" min="0" step="any" inputmode="decimal" value="7" /><span class="calc-affix">%</span></div>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="invest-years" data-i18n="calc.invest.years">Years invested</label>
+              <div class="calc-input"><input class="form-input" type="number" id="invest-years" min="0" step="any" inputmode="decimal" value="20" /></div>
+            </div>
+          </div>
+          <div class="calc-results" data-calc-results="invest" aria-live="polite"></div>
+        </div>
+      </div>
+
+        <div class="calc-gate" data-calc-gate>
+          <div class="calc-gate-inner">
+            <span class="calc-gate-icon" aria-hidden="true">🔒</span>
+            <h3 data-i18n="calc.gate.title">Unlock the free calculators</h3>
+            <p data-i18n="calc.gate.body">Enter your email for instant access to both tools.</p>
+            <form class="calc-gate-form" data-calc-gate-form action="https://formspree.io/f/xzdnyodk" method="POST">
+              <label class="sr-only" for="calc-gate-name" data-i18n="calc.gate.nameLabel">First name</label>
+              <input class="form-input" type="text" id="calc-gate-name" name="first_name" required autocomplete="given-name" placeholder="First name" data-i18n-attr="placeholder:calc.gate.namePlaceholder" />
+              <label class="sr-only" for="calc-gate-email" data-i18n="calc.gate.emailLabel">Email address</label>
+              <input class="form-input" type="email" id="calc-gate-email" name="email" required autocomplete="email" placeholder="you@email.com" data-i18n-attr="placeholder:calc.gate.placeholder" />
+              <input type="hidden" name="_subject" value="New calculator unlock — The Financial Talk" />
+              <input type="hidden" name="source" value="Calculator unlock (Tools page)" />
+              <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+              <button type="submit" class="btn btn-primary" data-i18n="calc.gate.button">Unlock access</button>
+            </form>
+            <p class="calc-gate-error" data-calc-gate-error role="alert" hidden></p>
+            <p class="calc-gate-note" data-i18n="calc.gate.note">No spam — unsubscribe anytime.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="calc-disclaimer text-center" data-i18n="calc.disclaimer">These calculators give general educational estimates only.</p>
     </div>
   </section>
 
@@ -150,6 +233,16 @@
     </div>
   </section>
 
+  <section class="partner-section" data-partner-section aria-labelledby="partners-heading" style="background: var(--color-bg-alt);">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" data-i18n="services.partners.eyebrow">In good company</span>
+        <h2 class="section-title" id="partners-heading" data-i18n="services.partners.title">Brands &amp; partners we work with</h2>
+      </div>
+    </div>
+    <div class="partner-wheel" data-partner-wheel></div>
+  </section>
+
   <section>
     <div class="cta-banner" data-reveal="scale">
       <h2 data-i18n="services.cta.title">Not sure where to start?</h2>
@@ -172,7 +265,7 @@
           <h4 data-i18n="nav.home">Site</h4>
           <ul>
             <li><a href="about.html" data-i18n="nav.about">About</a></li>
-            <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+            <li><a href="services.html" data-i18n="nav.services">Tools</a></li>
             <li><a href="get-involved.html" data-i18n="nav.getInvolved">Get Involved</a></li>
             <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
           </ul>
@@ -198,5 +291,7 @@
 <script src="js/i18n.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/main.js"></script>
+<script src="js/calculators.js"></script>
+<script src="js/partners.js"></script>
 </body>
 </html>

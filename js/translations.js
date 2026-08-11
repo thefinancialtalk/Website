@@ -13,11 +13,11 @@ const TRANSLATIONS = {
     nav: {
       home: "Home",
       about: "About",
-      services: "Services",
+      services: "Tools",
       resources: "Resources",
       getInvolved: "Get Involved",
       contact: "Contact",
-      cta: "Book a Consultation",
+      cta: "Get in touch",
     },
     lang: { label: "Language" },
     theme: {
@@ -93,6 +93,10 @@ const TRANSLATIONS = {
             role: "New homeowner",
           },
         ],
+      },
+      partners: {
+        eyebrow: "In good company",
+        title: "Brands & partners we work with",
       },
       updates: {
         eyebrow: "Latest updates",
@@ -217,6 +221,10 @@ const TRANSLATIONS = {
           { title: "Grow with support", desc: "Ongoing sessions and resources keep you on track." },
         ],
       },
+      partners: {
+        eyebrow: "In good company",
+        title: "Brands & partners we work with",
+      },
       cta: {
         title: "Not sure where to start?",
         subtitle: "Book a free consultation and we'll figure it out together.",
@@ -264,6 +272,53 @@ const TRANSLATIONS = {
         },
       ],
     },
+    calc: {
+      eyebrow: "Free tools",
+      title: "Plan it out",
+      subtitle: "Two quick calculators to help you picture your next move — no sign-up needed.",
+      tabs: {
+        debt: "Debt Payoff",
+        invest: "Investment Growth",
+      },
+      debt: {
+        intro: "See how long it takes to become debt-free and what the interest really costs.",
+        balance: "Current balance",
+        rate: "Interest rate (APR %)",
+        payment: "Monthly payment",
+        payoffTime: "Time to debt-free",
+        payoffDate: "Debt-free by",
+        totalInterest: "Total interest paid",
+        totalPaid: "Total you'll pay",
+        warning:
+          "Your monthly payment is too low to cover the interest, so the balance would keep growing. Try a higher payment.",
+      },
+      invest: {
+        intro: "See how steady contributions can grow over time with compound returns.",
+        initial: "Starting amount",
+        monthly: "Monthly contribution",
+        rate: "Annual return (%)",
+        years: "Years invested",
+        futureValue: "Projected value",
+        totalContributions: "Total you put in",
+        totalGrowth: "Growth earned",
+        contribLabel: "Contributions",
+        growthLabel: "Growth",
+      },
+      units: { year: "yr", years: "yrs", month: "mo", months: "mos" },
+      gate: {
+        title: "Unlock the free calculators",
+        body: "Pop in your name and email for instant access to both tools — plus occasional bilingual money tips you can actually use.",
+        nameLabel: "First name",
+        namePlaceholder: "First name",
+        emailLabel: "Email address",
+        placeholder: "you@email.com",
+        button: "Unlock access",
+        note: "No spam — unsubscribe anytime.",
+        error: "Something went wrong. Please try again.",
+      },
+      disclaimer:
+        "These calculators give general educational estimates only and aren't financial advice. Your actual results will vary.",
+    },
     getInvolved: {
       hero: {
         eyebrow: "Get Involved",
@@ -310,7 +365,7 @@ const TRANSLATIONS = {
       schedule: {
         eyebrow: "Schedule",
         title: "Book your consultation",
-        subtitle: "Pick a day and session type below — pricing is shown at checkout.",
+        subtitle: "Pick a day and session type below — your first consultation is free.",
       },
       card: {
         title: "Get in touch",
@@ -342,11 +397,11 @@ const TRANSLATIONS = {
     nav: {
       home: "Inicio",
       about: "Nosotras",
-      services: "Servicios",
+      services: "Herramientas",
       resources: "Recursos",
       getInvolved: "Participa",
       contact: "Contacto",
-      cta: "Agenda una Consulta",
+      cta: "Hablemos",
     },
     lang: { label: "Idioma" },
     theme: {
@@ -422,6 +477,10 @@ const TRANSLATIONS = {
             role: "Nueva propietaria de casa",
           },
         ],
+      },
+      partners: {
+        eyebrow: "En buena compañía",
+        title: "Marcas y aliados con los que trabajamos",
       },
       updates: {
         eyebrow: "Últimas novedades",
@@ -546,6 +605,10 @@ const TRANSLATIONS = {
           { title: "Crece con apoyo", desc: "Sesiones y recursos continuos te mantienen en camino." },
         ],
       },
+      partners: {
+        eyebrow: "En buena compañía",
+        title: "Marcas y aliados con los que trabajamos",
+      },
       cta: {
         title: "¿No sabes por dónde empezar?",
         subtitle: "Agenda una consulta gratuita y lo resolvemos juntas.",
@@ -593,6 +656,53 @@ const TRANSLATIONS = {
         },
       ],
     },
+    calc: {
+      eyebrow: "Herramientas gratis",
+      title: "Planifícalo",
+      subtitle: "Dos calculadoras rápidas para visualizar tu próximo paso — sin registrarte.",
+      tabs: {
+        debt: "Pago de Deudas",
+        invest: "Crecimiento de Inversión",
+      },
+      debt: {
+        intro: "Descubre cuánto tardarás en salir de deudas y lo que realmente cuestan los intereses.",
+        balance: "Saldo actual",
+        rate: "Tasa de interés (TAE %)",
+        payment: "Pago mensual",
+        payoffTime: "Tiempo para saldar",
+        payoffDate: "Sin deudas para",
+        totalInterest: "Interés total pagado",
+        totalPaid: "Total que pagarás",
+        warning:
+          "Tu pago mensual es muy bajo para cubrir los intereses, así que el saldo seguiría creciendo. Prueba con un pago mayor.",
+      },
+      invest: {
+        intro: "Descubre cómo las aportaciones constantes crecen con el interés compuesto.",
+        initial: "Monto inicial",
+        monthly: "Aportación mensual",
+        rate: "Rendimiento anual (%)",
+        years: "Años invertidos",
+        futureValue: "Valor proyectado",
+        totalContributions: "Total aportado",
+        totalGrowth: "Ganancia generada",
+        contribLabel: "Aportaciones",
+        growthLabel: "Ganancia",
+      },
+      units: { year: "año", years: "años", month: "mes", months: "meses" },
+      gate: {
+        title: "Desbloquea las calculadoras gratis",
+        body: "Déjanos tu nombre y correo y accede al instante a ambas herramientas — además de consejos de dinero bilingües que sí puedes usar.",
+        nameLabel: "Nombre",
+        namePlaceholder: "Nombre",
+        emailLabel: "Correo electrónico",
+        placeholder: "tu@correo.com",
+        button: "Desbloquear acceso",
+        note: "Sin spam — cancela cuando quieras.",
+        error: "Algo salió mal. Inténtalo de nuevo.",
+      },
+      disclaimer:
+        "Estas calculadoras ofrecen estimaciones educativas generales y no son asesoría financiera. Tus resultados reales pueden variar.",
+    },
     getInvolved: {
       hero: {
         eyebrow: "Participa",
@@ -639,7 +749,7 @@ const TRANSLATIONS = {
       schedule: {
         eyebrow: "Agenda",
         title: "Reserva tu consulta",
-        subtitle: "Elige un día y el tipo de sesión abajo — el precio se muestra al reservar.",
+        subtitle: "Elige un día y el tipo de sesión abajo — tu primera consulta es gratis.",
       },
       card: {
         title: "Ponte en contacto",

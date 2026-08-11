@@ -1,2 +1,38 @@
 [build]
   publish = "."
+  # No build step — static site.
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"   # faster builds, tree-shakes unused imports
+
+# Redirect /budget to the dashboard page (clean URL)
+[[redirects]]
+  from   = "/budget"
+  to     = "/budget.html"
+  status = 200
+
+# Security headers for the budget page
+[[headers]]
+  for = "/budget.html"
+  [headers.values]
+    X-Frame-Options         = "DENY"
+    X-Content-Type-Options  = "nosniff"
+    Referrer-Policy         = "strict-origin-when-cross-origin"
+    Permissions-Policy      = "camera=(), microphone=(), geolocation=()"
+    Content-Security-Policy = """
+      default-src 'self';
+      script-src 'self' 'unsafe-inline';
+      style-src 'self' 'unsafe-inline';
+      connect-src 'self' https://*.supabase.co https://api.resend.com https://api.anthropic.com;
+      font-src 'self';
+      img-src 'self' data:;
+    """
+
+# CORS headers for the serverless functions
+[[headers]]
+  for = "/.netlify/functions/*"
+  [headers.values]
+    Access-Control-Allow-Origin  = "https://thefinancialtalk.netlify.app"
+    Access-Control-Allow-Headers = "Content-Type, Authorization"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"

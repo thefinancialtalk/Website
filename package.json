@@ -1,0 +1,17 @@
+{
+  "name": "thefinancialtalk-budget",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Netlify Functions for the Budget Dashboard feature",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0"
+  },
+  "notes": {
+    "resend": "No npm package needed — we call the Resend REST API directly with fetch (built into Node 18+)",
+    "anthropic": "No npm package needed — we call the Anthropic REST API directly with fetch",
+    "jwt": "No library needed — minimal HS256 implementation included in the function files"
+  }
+}
