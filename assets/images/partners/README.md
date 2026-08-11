@@ -28,12 +28,12 @@ duplicated behind the scenes so the wheel keeps looping smoothly.
 
 Drop these in to replace the temporary text placeholders:
 
-- `rise-to-thrive.png`
-- `cloudtax.png`
-- `neo.png`
-- `policyme.png`
-- `walletifai.png`
-- `drop.png`
+- `simplii.png`  — Simplii Financial
+- `neo.png`  — Neo Financial
+- `rise-to-thrive.png`  — Rise to Thrive Foundation
+- `cloudtax.png`  — CloudTax
+- `policyme.png`  — PolicyMe
+- `fincon.png`  — FinCon
 
 Until a matching image file is added, the partner's **name shows as text**, so
 the wheel always looks finished.
