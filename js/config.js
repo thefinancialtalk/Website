@@ -7,6 +7,13 @@ const SITE_CONFIG = {
   defaultLanguage: "en", // "en" | "es" — flip to "es" to make Spanish the default
   supportedLanguages: ["en", "es"],
   defaultTheme: "midnight-plum-gold",
+  // The color palette follows the language so visitors can tell at a glance
+  // which language they're viewing. English keeps the purple/gold brand;
+  // Spanish shifts to a warm red/gold. Swap an id below to retone a language.
+  languageThemes: {
+    en: "midnight-plum-gold",
+    es: "fuchsia-gold",
+  },
 };
 
 const THEMES = [
