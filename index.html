@@ -18,7 +18,7 @@
   } catch (e) {}
 </script>
 <title data-i18n-title="home.hero.title">The Financial Talk</title>
-<meta name="description" content="Bilingual financial coaching rooted in culture." />
+<meta name="description" content="Bilingual financial education rooted in culture." />
 <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png" />
 <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
@@ -26,6 +26,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="css/style.css" />
+<script src="js/config.js"></script>
+<script src="js/theme-boot.js"></script>
 </head>
 <body>
 
@@ -46,9 +48,9 @@
     <nav class="main-nav" data-nav>
       <a href="index.html" aria-current="page" data-i18n="nav.home">Home</a>
       <a href="about.html" data-i18n="nav.about">About</a>
+      <a href="whats-new.html" data-i18n="nav.whatsNew">What's new</a>
       <a href="services.html" data-i18n="nav.services">Tools</a>
       <a href="get-involved.html" data-i18n="nav.getInvolved">Get Involved</a>
-      <a href="contact.html" class="btn btn-outline" data-i18n="nav.cta" style="padding:10px 22px;">Get in touch</a>
       <div class="nav-theme-row">
         <span class="nav-theme-label" data-i18n="theme.label">Color palette</span>
         <div class="theme-switcher" data-theme-switcher></div>
@@ -56,6 +58,7 @@
     </nav>
 
     <div class="header-actions">
+      <a href="contact.html" class="btn btn-outline header-cta" data-i18n="nav.cta">Get in touch</a>
       <div class="lang-switcher" role="group" aria-label="Language">
         <button type="button" data-lang-option="en">EN</button>
         <button type="button" data-lang-option="es">ES</button>
@@ -74,9 +77,8 @@
     <span class="hero-blob hero-blob-a" data-parallax="0.12" aria-hidden="true"></span>
     <span class="hero-blob hero-blob-b" data-parallax="-0.08" aria-hidden="true"></span>
     <div class="container hero-inner">
-      <span class="eyebrow" data-i18n="home.hero.eyebrow">Financial coaching, rooted in culture</span>
-      <h1 data-i18n-html="home.hero.titleHtml">Your money story, told in <span class="accent">your own voice.</span></h1>
-      <p class="hero-subtitle" data-i18n="home.hero.subtitle">Bilingual financial coaching.</p>
+      <h1 class="eyebrow" data-i18n-html="home.hero.titleHtml">Your money story, told in <span class="accent">your own voice.</span></h1>
+      <p class="hero-subtitle" data-i18n="home.hero.subtitle">Bilingual financial education.</p>
       <div class="hero-actions">
         <a href="https://www.instagram.com/thefinancialtalk" target="_blank" rel="noopener noreferrer" class="btn btn-primary" aria-label="Instagram">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
@@ -94,7 +96,7 @@
     <div class="stats-grid">
       <div class="stat-card" data-reveal="scale">
         <h3 data-i18n="home.stats.0.title">Bilingual</h3>
-        <p data-i18n="home.stats.0.desc">Coaching available in English and Spanish</p>
+        <p data-i18n="home.stats.0.desc">Education available in English and Spanish</p>
       </div>
       <div class="stat-card" data-reveal="scale">
         <h3 data-i18n="home.stats.1.title">Culturally Rooted</h3>
@@ -114,8 +116,7 @@
         <img src="assets/images/home-about.jpg" data-i18n-attr="alt:home.about.photoAlt" alt="Financial coach portrait" width="1200" height="1500" loading="lazy" />
       </div>
       <div data-reveal>
-        <span class="eyebrow" data-i18n="home.about.eyebrow">Meet your coach</span>
-        <h2 class="section-title" data-i18n="home.about.title">Breaking cycles. Building legacies.</h2>
+        <h2 class="eyebrow" data-i18n="home.about.title">Breaking cycles. Building legacies.</h2>
         <p data-i18n="home.about.body">Placeholder about text.</p>
         <a href="about.html" class="btn btn-outline" data-i18n="home.about.cta">Read the full story</a>
       </div>
@@ -125,8 +126,7 @@
   <section style="background: var(--color-bg-alt);">
     <div class="container">
       <div class="section-head" data-reveal>
-        <span class="eyebrow" data-i18n="home.services.eyebrow">How we work together</span>
-        <h2 class="section-title" data-i18n="home.services.title">Support for every stage of your money journey</h2>
+        <h2 class="eyebrow" data-i18n="home.services.title">Support for every stage of your money journey</h2>
         <p class="section-subtitle" data-i18n="home.services.subtitle">From your first budget to your first investment portfolio.</p>
       </div>
       <div class="card-grid is-centered">
@@ -134,7 +134,7 @@
           <div class="card-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           </div>
-          <h3 data-i18n="home.services.items.0.title">1:1 Coaching</h3>
+          <h3 data-i18n="home.services.items.0.title">1:1 Education</h3>
           <p data-i18n="home.services.items.0.desc">Personalized sessions.</p>
         </div>
         <div class="card" data-reveal="scale">
@@ -154,8 +154,7 @@
   <section>
     <div class="container">
       <div class="section-head" data-reveal>
-        <span class="eyebrow" data-i18n="home.testimonials.eyebrow">Community voices</span>
-        <h2 class="section-title" data-i18n="home.testimonials.title">Real stories, real progress</h2>
+        <h2 class="eyebrow" data-i18n="home.testimonials.title">Real stories, real progress</h2>
       </div>
       <div class="card-grid">
         <div class="testimonial-card" data-reveal="scale">
@@ -180,30 +179,17 @@
   <section class="partner-section" data-partner-section aria-labelledby="partners-heading">
     <div class="container">
       <div class="section-head" data-reveal>
-        <span class="eyebrow" data-i18n="home.partners.eyebrow">In good company</span>
-        <h2 class="section-title" id="partners-heading" data-i18n="home.partners.title">Brands &amp; partners I work with</h2>
+        <h2 class="eyebrow" id="partners-heading" data-i18n="home.partners.title">Brands &amp; partners I work with</h2>
       </div>
     </div>
     <div class="partner-wheel" data-partner-wheel></div>
-  </section>
-
-  <section style="background: var(--color-bg-alt);">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow" data-i18n="home.updates.eyebrow">Latest updates</span>
-        <h2 class="section-title" data-i18n="home.updates.title">What's new</h2>
-      </div>
-      <div class="card-grid" data-announcements-list></div>
-      <p class="notice text-center" data-announcements-empty hidden data-i18n="home.updates.empty">No announcements yet — check back soon.</p>
-    </div>
   </section>
 
   <section class="decor-section faq-section" style="background: var(--color-bg-alt);">
     <span class="bg-blob bg-blob--secondary" data-parallax="0.12" style="width:240px;height:240px;top:-30px;right:-70px;" aria-hidden="true"></span>
     <div class="container">
       <div class="section-head" data-reveal>
-        <span class="eyebrow" data-i18n="home.faq.eyebrow">FAQ</span>
-        <h2 class="section-title" data-i18n="home.faq.title">Questions? Answered.</h2>
+        <h2 class="eyebrow" data-i18n="home.faq.title">Questions? Answered.</h2>
         <p class="section-subtitle" data-i18n="home.faq.subtitle">The things people usually ask before we start working together.</p>
       </div>
       <div class="faq-list" data-faq>
@@ -235,8 +221,8 @@
     <span class="bg-blob bg-blob--accent" data-parallax="-0.1" style="width:240px;height:240px;bottom:-40px;right:-60px;" aria-hidden="true"></span>
     <div class="cta-banner" data-reveal="scale">
       <h2 data-i18n="home.ctaBanner.title">Ready to write your own money story?</h2>
-      <p data-i18n="home.ctaBanner.subtitle">Your first consultation is on me.</p>
-      <a href="contact.html#book" class="btn btn-primary" data-i18n="home.ctaBanner.button">Book a Free Consultation</a>
+      <p data-i18n="home.ctaBanner.subtitle">Let's talk about where you want to go.</p>
+      <a href="contact.html#book" class="btn btn-primary" data-i18n="home.ctaBanner.button">Book a Consultation</a>
     </div>
   </section>
 
@@ -247,13 +233,14 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <a href="index.html" class="logo"><img class="logo-mark" src="assets/images/logo-mark.png" alt="The Financial Talk" /> <span data-i18n="brand.name">The Financial Talk</span></a>
-        <p data-i18n="footer.tagline">Financial coaching, rooted in culture.</p>
+        <p data-i18n="footer.tagline">Financial education, rooted in culture.</p>
       </div>
       <div class="footer-links">
         <div class="footer-col">
           <h4 data-i18n="nav.home">Site</h4>
           <ul>
             <li><a href="about.html" data-i18n="nav.about">About</a></li>
+            <li><a href="whats-new.html" data-i18n="nav.whatsNew">What's new</a></li>
             <li><a href="services.html" data-i18n="nav.services">Tools</a></li>
             <li><a href="get-involved.html" data-i18n="nav.getInvolved">Get Involved</a></li>
             <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
@@ -275,7 +262,6 @@
   </div>
 </footer>
 
-<script src="js/config.js"></script>
 <script src="js/translations.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/theme.js"></script>

@@ -147,9 +147,10 @@ Not built into the pages yet — two options depending on what's needed:
 - **Just showing events/dates**: create a Google Calendar, then
   **Settings → Integrate calendar → Embed code**, and send me that embed
   code (or the calendar's public URL) to drop into the site.
-- **Letting people book time**: sign up for Calendly's free tier, and
-  send me your scheduling link — I'll wire it in as a "Book a
-  Consultation" button/widget on the Services or Contact page.
+- **Letting people book time**: create a Google Calendar **Appointment
+  schedule**, then use its **Share → booking page link** and send it to
+  me — I'll wire it into the Contact page's booking section. (Currently
+  live on the Contact page.)
 
 Either (or both) can be added once you have the account set up — no code
 changes needed on your end beyond sending me the link.

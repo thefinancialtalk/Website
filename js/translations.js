@@ -13,11 +13,25 @@ const TRANSLATIONS = {
     nav: {
       home: "Home",
       about: "About",
+      whatsNew: "What's new",
       services: "Tools",
       resources: "Resources",
       getInvolved: "Get Involved",
       contact: "Contact",
       cta: "Get in touch",
+    },
+    whatsNew: {
+      hero: {
+        eyebrow: "What's new",
+        title: "What's new",
+        subtitle: "News, announcements, and the latest from The Financial Talk.",
+      },
+      empty: "No announcements yet — check back soon.",
+      tiktok: {
+        title: "Latest on TikTok",
+        subtitle: "Quick money tips and stories from The Financial Talk.",
+        cta: "Follow @thefinancialtalk on TikTok",
+      },
     },
     lang: { label: "Language" },
     theme: {
@@ -29,34 +43,34 @@ const TRANSLATIONS = {
     },
     home: {
       hero: {
-        eyebrow: "Financial coaching, rooted in culture",
+        eyebrow: "Your money story, told in your own voice.",
         title: "Your money story, told in your own voice.",
         titleHtml: "Your money story, told in <span class=\"accent\">your own voice.</span>",
         subtitle:
-          "Bilingual financial coaching that blends smart modern money tools with the values your family raised you on — so you can build wealth without losing who you are.",
+          "Bilingual financial education that blends smart modern money tools with the values your family raised you on — so you can build wealth without losing who you are.",
         ctaPrimary: "Book a Consultation",
         ctaSecondary: "Explore Services",
         trust: ["Bilingual (EN / ES)", "Judgment-free space", "Culturally rooted"],
       },
       stats: [
-        { title: "Bilingual", desc: "Coaching available in English and Spanish" },
+        { title: "Bilingual", desc: "Education available in English and Spanish" },
         { title: "Culturally Rooted", desc: "Advice that respects family and community values" },
         { title: "Judgment-Free", desc: "A safe space to ask every money question" },
       ],
       about: {
-        eyebrow: "Meet your coach",
+        eyebrow: "Breaking cycles. Building legacies.",
         title: "Breaking cycles. Building legacies.",
         body: "This space was built for women who grew up hearing that money wasn't something we talked about — and who are ready to change that story for the next generation. Here you'll find practical tools, honest conversations, and a community that gets it.",
         cta: "Read the full story",
         photoAlt: "Portrait of Nathaly, founder of The Financial Talk, smiling, holding a laptop",
       },
       services: {
-        eyebrow: "How we work together",
+        eyebrow: "Support for every stage of your money journey",
         title: "Support for every stage of your money journey",
         subtitle: "From your first budget to your first investment portfolio.",
         items: [
           {
-            title: "1:1 Coaching",
+            title: "1:1 Education",
             desc: "Personalized sessions to build a plan around your real life and goals.",
           },
           {
@@ -71,7 +85,7 @@ const TRANSLATIONS = {
         cta: "See all services",
       },
       testimonials: {
-        eyebrow: "Community voices",
+        eyebrow: "Real stories, real progress",
         title: "Real stories, real progress",
         items: [
           {
@@ -82,7 +96,7 @@ const TRANSLATIONS = {
           },
           {
             quote:
-              "“Having coaching in Spanish for my mom and English for me meant we could finally plan together.”",
+              "“Having financial education in Spanish for my mom and English for me meant we could finally plan together.”",
             name: "Vanessa M.",
             role: "First-generation graduate",
           },
@@ -95,22 +109,22 @@ const TRANSLATIONS = {
         ],
       },
       partners: {
-        eyebrow: "In good company",
+        eyebrow: "Brands & partners I work with",
         title: "Brands & partners I work with",
       },
       updates: {
-        eyebrow: "Latest updates",
+        eyebrow: "What's new",
         title: "What's new",
         empty: "No announcements yet — check back soon.",
       },
       faq: {
-        eyebrow: "FAQ",
+        eyebrow: "Questions? Answered.",
         title: "Questions? Answered.",
         subtitle: "The things people usually ask before we start working together.",
         items: [
           {
             q: "Do I need to be “good with money” to start?",
-            a: "Not at all. Most people I work with feel behind or overwhelmed — that's exactly why coaching helps. We start wherever you are, with zero judgment.",
+            a: "Not at all. Most people I work with feel behind or overwhelmed — that's exactly what this education is for. We start wherever you are, with zero judgment.",
           },
           {
             q: "Can we meet in Spanish?",
@@ -118,7 +132,7 @@ const TRANSLATIONS = {
           },
           {
             q: "How much does it cost?",
-            a: "It depends on the format you choose. The easiest way to see options and pricing is to book a free consultation — session types and prices are shown when you pick a time.",
+            a: "It depends on the format you choose. The easiest way to see options and pricing is to book a consultation — session types and prices are shown when you pick a time.",
           },
           {
             q: "What happens on the first call?",
@@ -132,36 +146,37 @@ const TRANSLATIONS = {
       },
       ctaBanner: {
         title: "Ready to write your own money story?",
-        subtitle: "Your first consultation is on me — let's talk about where you want to go.",
-        button: "Book a Free Consultation",
+        subtitle: "Let's talk about where you want to go — and how I can help you get there.",
+        button: "Book a Consultation",
       },
     },
     about: {
       hero: {
-        eyebrow: "About",
+        eyebrow: "Empowering Your Financial Future",
         title: "Empowering Your Financial Future",
         subtitle:
           "A bicultural approach to money that honors where you come from and where you're going.",
       },
       story: {
-        eyebrow: "My story",
+        eyebrow: "Welcome — I'm glad you're here",
         title: "Welcome — I'm glad you're here",
         intro1:
           "Ten years ago, I embarked on a transformative journey by immigrating from the vibrant coastal city of Guayaquil, Ecuador, to Canada. Relocating to a new country required immense resilience, as I adapted to an unfamiliar culture and economic system. Rather than viewing these initial challenges as barriers, I embraced them as opportunities for personal growth.",
         intro2:
-          "To build a strong foundation for my future, I dedicated myself to academic excellence, earning a Bachelor of Business Economics with Honours. This rigorous programme deepened my understanding of market dynamics, economic theory, and fiscal structures. More importantly, it ignited my passion for financial empowerment and revealed the vital role that financial literacy plays in personal stability.",
+          "To build a strong foundation for my future, I dedicated myself to academic excellence, earning a Bachelor of Business Economics with Honours. This rigorous programme deepened my understanding of market dynamics, economic theory, and fiscal structures. More importantly, it ignited my passion for financial empowerment and revealed the vital role that financial literacy plays in personal stability. Alongside my bachelor's degree, I hold a certification in Advanced Financial Advice from the Canadian Securities Institute, and I am working toward becoming a Certified Financial Planner (CFP).",
         photoAlt: "Portrait of Nathaly, founder of The Financial Talk, smiling, seated",
         masteringTitle: "Mastering the landscape",
         masteringBody:
-          "Navigating an unfamiliar economic system presented a steep learning curve. My determination drove me to thoroughly master the intricacies of Canadian personal finance, including:",
+          "A new money system was a lot to learn. I took my time and learned how money really works in Canada, step by step:",
         masteringItems: [
-          "<strong>Taxation:</strong> optimizing personal taxation strategies under federal and provincial frameworks.",
-          "<strong>Retirement planning:</strong> maximizing government pension programmes and private savings plans.",
-          "<strong>Wealth building:</strong> navigating smart, strategic investment vehicles tailored to individual goals.",
-          "<strong>Real estate:</strong> securing homeownership, marked by the proud milestone of buying my first home in Canada.",
+          "<strong>Debt:</strong> I paid off my student loan, credit cards, and other debt before it could eat into my income.",
+          "<strong>Growing my money:</strong> I learned to invest with intention and put my money to work toward my goals.",
+          "<strong>Buying a home:</strong> I learned the path to ownership and bought my own first home here.",
+          "<strong>Taxes:</strong> I learned to file the right way and keep more of what I earned.",
+          "<strong>Retirement:</strong> I built a plan that makes the most of government and personal savings programs.",
         ],
         masteringClose:
-          "Achieving these milestones served as tangible proof that dedication yields success. It also confirmed my true calling: guiding others through the exact financial system I worked so hard to understand.",
+          "Reaching these goals showed me that steady effort pays off. It also showed me my purpose: helping others understand the same system I worked so hard to learn.",
         missionTitle: "My mission and vision",
         missionBody1:
           "Today, I pour my heart into uplifting both the broader Canadian community and my cherished Latino community. I believe that financial clarity should be accessible to everyone, regardless of their background.",
@@ -169,7 +184,7 @@ const TRANSLATIONS = {
           "My mission is to transform complex financial concepts into clear, graceful, and manageable stepping stones. By replacing uncertainty with structured knowledge, I help individuals and families build lasting security, financial independence, and genuine peace of mind.",
       },
       values: {
-        eyebrow: "What guides me",
+        eyebrow: "My values",
         title: "My values",
         items: [
           { title: "Cultural Pride", desc: "Your traditions and your goals can coexist." },
@@ -186,14 +201,14 @@ const TRANSLATIONS = {
     },
     services: {
       hero: {
-        eyebrow: "Services",
+        eyebrow: "Ways to work together",
         title: "Ways to work together",
         subtitle: "Choose the format that fits your life right now — you can always add more later.",
       },
       items: [
         {
           tag: "Most popular",
-          title: "1:1 Coaching",
+          title: "1:1 Education",
           desc: "Six-session packages covering budgeting, debt, credit, and goal-setting, tailored to you.",
         },
         {
@@ -213,27 +228,27 @@ const TRANSLATIONS = {
         },
       ],
       process: {
-        eyebrow: "How it works",
+        eyebrow: "Three simple steps",
         title: "Three simple steps",
         steps: [
-          { title: "Book a call", desc: "We start with a free, no-pressure consultation." },
+          { title: "Book a call", desc: "We start with a relaxed, no-pressure consultation." },
           { title: "Build your plan", desc: "We map out a plan around your real goals and life." },
           { title: "Grow with support", desc: "Ongoing sessions and resources keep you on track." },
         ],
       },
       partners: {
-        eyebrow: "In good company",
+        eyebrow: "Brands & partners I work with",
         title: "Brands & partners I work with",
       },
       cta: {
         title: "Not sure where to start?",
-        subtitle: "Book a free consultation and I'll figure it out with you.",
-        button: "Book a Free Consultation",
+        subtitle: "Book a consultation and I'll figure it out with you.",
+        button: "Book a Consultation",
       },
     },
     resources: {
       hero: {
-        eyebrow: "Resources",
+        eyebrow: "Tools I Recommend",
         title: "Tools I Recommend",
         subtitle: "Financial products I actually use and trust.",
       },
@@ -243,7 +258,7 @@ const TRANSLATIONS = {
         {
           tag: "Banking",
           title: "Simplii Financial",
-          desc: "A no-fee digital bank account from CIBC. Get a welcome bonus when you sign up with my link.",
+          desc: "One of the lowest-fee digital bank accounts, from CIBC. Get a welcome bonus when you sign up with my link.",
           button: "Open an Account",
         },
         {
@@ -273,7 +288,7 @@ const TRANSLATIONS = {
       ],
     },
     calc: {
-      eyebrow: "Free tools",
+      eyebrow: "Plan it out",
       title: "Plan it out",
       subtitle: "Two quick calculators to help you picture your next move — no sign-up needed.",
       tabs: {
@@ -321,10 +336,10 @@ const TRANSLATIONS = {
     },
     getInvolved: {
       hero: {
-        eyebrow: "Get Involved",
+        eyebrow: "Join the movement",
         title: "Join the movement",
         subtitle:
-          "The Financial Talk is more than coaching — it's a community. There are many ways to be part of it.",
+          "The Financial Talk is more than education — it's a community. There are many ways to be part of it.",
       },
       intro:
         "Whether you have an hour to give or an ongoing passion to share, your time and energy help bring financial confidence to more people. Here's how you can get involved.",
@@ -358,14 +373,14 @@ const TRANSLATIONS = {
     },
     contact: {
       hero: {
-        eyebrow: "Contact",
+        eyebrow: "Let's talk money, your way",
         title: "Let's talk money, your way",
         subtitle: "Reach out in whichever language feels most comfortable — English or Spanish.",
       },
       schedule: {
-        eyebrow: "Schedule",
+        eyebrow: "Book your consultation",
         title: "Book your consultation",
-        subtitle: "Pick a day and session type below — your first consultation is free.",
+        subtitle: "Consultation — $50 CAD · Savings & Investments consultation — $100 CAD. Pick a day and time below.",
       },
       card: {
         title: "Get in touch",
@@ -383,7 +398,7 @@ const TRANSLATIONS = {
       },
     },
     footer: {
-      tagline: "Financial coaching, rooted in culture.",
+      tagline: "Financial education, rooted in culture.",
       rights: "All rights reserved.",
       placeholderNotice: "",
     },
@@ -397,11 +412,25 @@ const TRANSLATIONS = {
     nav: {
       home: "Inicio",
       about: "Sobre mí",
+      whatsNew: "Novedades",
       services: "Herramientas",
       resources: "Recursos",
       getInvolved: "Participa",
       contact: "Contacto",
       cta: "Hablemos",
+    },
+    whatsNew: {
+      hero: {
+        eyebrow: "Novedades",
+        title: "Novedades",
+        subtitle: "Noticias, anuncios y lo más reciente de The Financial Talk.",
+      },
+      empty: "Aún no hay anuncios — vuelve pronto.",
+      tiktok: {
+        title: "Lo más reciente en TikTok",
+        subtitle: "Consejos rápidos de dinero e historias de The Financial Talk.",
+        cta: "Sigue a @thefinancialtalk en TikTok",
+      },
     },
     lang: { label: "Idioma" },
     theme: {
@@ -413,34 +442,34 @@ const TRANSLATIONS = {
     },
     home: {
       hero: {
-        eyebrow: "Asesoría financiera, con raíces culturales",
+        eyebrow: "La historia de tu dinero, contada con tu propia voz.",
         title: "La historia de tu dinero, contada con tu propia voz.",
         titleHtml: "La historia de tu dinero, contada <span class=\"accent\">con tu propia voz.</span>",
         subtitle:
-          "Asesoría financiera bilingüe que combina herramientas modernas con los valores que tu familia te enseñó — para que construyas riqueza sin dejar de ser quien eres.",
+          "Educación financiera bilingüe que combina herramientas modernas con los valores que tu familia te enseñó — para que construyas riqueza sin dejar de ser quien eres.",
         ctaPrimary: "Agenda una Consulta",
         ctaSecondary: "Ver Servicios",
         trust: ["Bilingüe (EN / ES)", "Espacio sin juicios", "Con raíces culturales"],
       },
       stats: [
-        { title: "Bilingüe", desc: "Asesoría disponible en inglés y español" },
+        { title: "Bilingüe", desc: "Educación disponible en inglés y español" },
         { title: "Con Raíces Culturales", desc: "Consejos que respetan a la familia y la comunidad" },
         { title: "Sin Juicios", desc: "Un espacio seguro para toda pregunta sobre dinero" },
       ],
       about: {
-        eyebrow: "Conoce a tu asesora",
+        eyebrow: "Rompiendo ciclos. Construyendo legados.",
         title: "Rompiendo ciclos. Construyendo legados.",
         body: "Este espacio se creó para mujeres que crecieron escuchando que el dinero no era tema de conversación — y que están listas para cambiar esa historia para la próxima generación. Aquí encontrarás herramientas prácticas, conversaciones honestas y una comunidad que te entiende.",
         cta: "Lee la historia completa",
         photoAlt: "Retrato de Nathaly, fundadora de The Financial Talk, sonriendo, sosteniendo una laptop",
       },
       services: {
-        eyebrow: "Cómo trabajamos juntas",
+        eyebrow: "Apoyo para cada etapa de tu camino financiero",
         title: "Apoyo para cada etapa de tu camino financiero",
         subtitle: "Desde tu primer presupuesto hasta tu primer portafolio de inversión.",
         items: [
           {
-            title: "Asesoría 1 a 1",
+            title: "Educación 1 a 1",
             desc: "Sesiones personalizadas para crear un plan según tu vida y tus metas reales.",
           },
           {
@@ -455,7 +484,7 @@ const TRANSLATIONS = {
         cta: "Ver todos los servicios",
       },
       testimonials: {
-        eyebrow: "Voces de la comunidad",
+        eyebrow: "Historias reales, progreso real",
         title: "Historias reales, progreso real",
         items: [
           {
@@ -466,7 +495,7 @@ const TRANSLATIONS = {
           },
           {
             quote:
-              "“Tener asesoría en español para mi mamá y en inglés para mí significó que por fin pudimos planear juntas.”",
+              "“Tener educación financiera en español para mi mamá y en inglés para mí significó que por fin pudimos planear juntas.”",
             name: "Vanessa M.",
             role: "Primera generación en graduarse",
           },
@@ -479,22 +508,22 @@ const TRANSLATIONS = {
         ],
       },
       partners: {
-        eyebrow: "En buena compañía",
+        eyebrow: "Marcas y aliados con los que trabajo",
         title: "Marcas y aliados con los que trabajo",
       },
       updates: {
-        eyebrow: "Últimas novedades",
+        eyebrow: "Qué hay de nuevo",
         title: "Qué hay de nuevo",
         empty: "Aún no hay anuncios — vuelve pronto.",
       },
       faq: {
-        eyebrow: "Preguntas frecuentes",
+        eyebrow: "¿Preguntas? Respondidas.",
         title: "¿Preguntas? Respondidas.",
         subtitle: "Lo que la gente suele preguntar antes de comenzar a trabajar juntas.",
         items: [
           {
             q: "¿Necesito ser “buena con el dinero” para empezar?",
-            a: "Para nada. La mayoría de las personas con quienes trabajo se sienten atrasadas o abrumadas — por eso la asesoría ayuda. Empezamos donde estés, sin ningún juicio.",
+            a: "Para nada. La mayoría de las personas con quienes trabajo se sienten atrasadas o abrumadas — por eso la educación ayuda. Empezamos donde estés, sin ningún juicio.",
           },
           {
             q: "¿Podemos reunirnos en español?",
@@ -502,7 +531,7 @@ const TRANSLATIONS = {
           },
           {
             q: "¿Cuánto cuesta?",
-            a: "Depende del formato que elijas. La forma más fácil de ver las opciones y precios es agendar una consulta gratuita — los tipos de sesión y precios se muestran al elegir tu horario.",
+            a: "Depende del formato que elijas. La forma más fácil de ver las opciones y precios es agendar una consulta — los tipos de sesión y precios se muestran al elegir tu horario.",
           },
           {
             q: "¿Qué pasa en la primera llamada?",
@@ -516,36 +545,37 @@ const TRANSLATIONS = {
       },
       ctaBanner: {
         title: "¿Lista para escribir tu propia historia financiera?",
-        subtitle: "Tu primera consulta es gratis — hablemos de hacia dónde quieres ir.",
-        button: "Agenda una Consulta Gratis",
+        subtitle: "Hablemos de hacia dónde quieres ir y de cómo puedo ayudarte.",
+        button: "Agenda una Consulta",
       },
     },
     about: {
       hero: {
-        eyebrow: "Sobre mí",
+        eyebrow: "Empoderando tu Futuro Financiero",
         title: "Empoderando tu Futuro Financiero",
         subtitle:
           "Un enfoque bicultural sobre el dinero que honra de dónde vienes y hacia dónde vas.",
       },
       story: {
-        eyebrow: "Mi historia",
+        eyebrow: "Bienvenida — me alegra que estés aquí",
         title: "Bienvenida — me alegra que estés aquí",
         intro1:
           "Hace diez años emprendí un viaje transformador al emigrar de la vibrante ciudad costera de Guayaquil, Ecuador, a Canadá. Mudarme a un nuevo país exigió una resiliencia inmensa, mientras me adaptaba a una cultura y un sistema económico desconocidos. En lugar de ver esos primeros desafíos como barreras, los abracé como oportunidades de crecimiento personal.",
         intro2:
-          "Para construir una base sólida para mi futuro, me dediqué a la excelencia académica y obtuve una Licenciatura en Economía y Negocios con Honores. Ese riguroso programa profundizó mi comprensión de la dinámica del mercado, la teoría económica y las estructuras fiscales. Más importante aún, encendió mi pasión por el empoderamiento financiero y me reveló el papel vital que la educación financiera juega en la estabilidad personal.",
+          "Para construir una base sólida para mi futuro, me dediqué a la excelencia académica y obtuve una Licenciatura en Economía y Negocios con Honores. Ese riguroso programa profundizó mi comprensión de la dinámica del mercado, la teoría económica y las estructuras fiscales. Más importante aún, encendió mi pasión por el empoderamiento financiero y me reveló el papel vital que la educación financiera juega en la estabilidad personal. Además de mi licenciatura, cuento con una certificación en Asesoría Financiera Avanzada del Canadian Securities Institute, y estoy trabajando para convertirme en Planificadora Financiera Certificada (CFP).",
         photoAlt: "Retrato de Nathaly, fundadora de The Financial Talk, sonriendo, sentada",
         masteringTitle: "Dominando el terreno",
         masteringBody:
-          "Navegar un sistema económico desconocido presentó una curva de aprendizaje empinada. Mi determinación me llevó a dominar a fondo los detalles de las finanzas personales en Canadá, incluyendo:",
+          "Un sistema de dinero nuevo era mucho por aprender. Con calma aprendí cómo funciona de verdad el dinero en Canadá, paso a paso:",
         masteringItems: [
-          "<strong>Impuestos:</strong> optimizar estrategias fiscales personales bajo los marcos federal y provincial.",
-          "<strong>Planificación de la jubilación:</strong> maximizar los programas de pensión del gobierno y los planes de ahorro privados.",
-          "<strong>Construcción de riqueza:</strong> elegir vehículos de inversión inteligentes y estratégicos según cada meta.",
-          "<strong>Bienes raíces:</strong> lograr la compra de vivienda, marcada por el orgulloso hito de comprar mi primera casa en Canadá.",
+          "<strong>Deuda:</strong> pagué mi préstamo estudiantil, mis tarjetas de crédito y otras deudas antes de que consumieran mis ingresos.",
+          "<strong>Hacer crecer mi dinero:</strong> aprendí a invertir con intención y a poner mi dinero a trabajar hacia mis metas.",
+          "<strong>Comprar casa:</strong> aprendí el camino hacia la propiedad y compré mi primera casa aquí.",
+          "<strong>Impuestos:</strong> aprendí a declarar de la forma correcta y a quedarme con más de lo que ganaba.",
+          "<strong>Jubilación:</strong> armé un plan que aprovecha al máximo los programas de ahorro del gobierno y los míos.",
         ],
         masteringClose:
-          "Alcanzar estos logros fue prueba tangible de que la dedicación da frutos. También confirmó mi verdadera vocación: guiar a otras personas por el mismo sistema financiero que tanto me esforcé en entender.",
+          "Alcanzar estas metas me mostró que el esfuerzo constante vale la pena. También me mostró mi propósito: ayudar a otras personas a entender el mismo sistema que tanto me costó aprender.",
         missionTitle: "Mi misión y visión",
         missionBody1:
           "Hoy entrego mi corazón a impulsar tanto a la comunidad canadiense en general como a mi querida comunidad latina. Creo que la claridad financiera debe ser accesible para todos, sin importar su origen.",
@@ -553,7 +583,7 @@ const TRANSLATIONS = {
           "Mi misión es transformar conceptos financieros complejos en pasos claros, elegantes y manejables. Al reemplazar la incertidumbre con conocimiento estructurado, ayudo a personas y familias a construir seguridad duradera, independencia financiera y verdadera tranquilidad.",
       },
       values: {
-        eyebrow: "Lo que me guía",
+        eyebrow: "Mis valores",
         title: "Mis valores",
         items: [
           { title: "Orgullo Cultural", desc: "Tus tradiciones y tus metas pueden coexistir." },
@@ -570,14 +600,14 @@ const TRANSLATIONS = {
     },
     services: {
       hero: {
-        eyebrow: "Servicios",
+        eyebrow: "Formas de trabajar juntas",
         title: "Formas de trabajar juntas",
         subtitle: "Elige el formato que se ajuste a tu vida ahora — siempre puedes agregar más después.",
       },
       items: [
         {
           tag: "Más popular",
-          title: "Asesoría 1 a 1",
+          title: "Educación 1 a 1",
           desc: "Paquetes de seis sesiones sobre presupuesto, deudas, crédito y metas, hechos a tu medida.",
         },
         {
@@ -597,27 +627,27 @@ const TRANSLATIONS = {
         },
       ],
       process: {
-        eyebrow: "Cómo funciona",
+        eyebrow: "Tres pasos sencillos",
         title: "Tres pasos sencillos",
         steps: [
-          { title: "Agenda una llamada", desc: "Comenzamos con una consulta gratuita, sin presión." },
+          { title: "Agenda una llamada", desc: "Comenzamos con una consulta relajada, sin presión." },
           { title: "Creamos tu plan", desc: "Diseñamos un plan según tus metas y tu vida real." },
           { title: "Crece con apoyo", desc: "Sesiones y recursos continuos te mantienen en camino." },
         ],
       },
       partners: {
-        eyebrow: "En buena compañía",
+        eyebrow: "Marcas y aliados con los que trabajo",
         title: "Marcas y aliados con los que trabajo",
       },
       cta: {
         title: "¿No sabes por dónde empezar?",
-        subtitle: "Agenda una consulta gratuita y te ayudo a resolverlo.",
-        button: "Agenda una Consulta Gratis",
+        subtitle: "Agenda una consulta y te ayudo a resolverlo.",
+        button: "Agenda una Consulta",
       },
     },
     resources: {
       hero: {
-        eyebrow: "Recursos",
+        eyebrow: "Herramientas que Recomiendo",
         title: "Herramientas que Recomiendo",
         subtitle: "Productos financieros que realmente uso y en los que confío.",
       },
@@ -627,7 +657,7 @@ const TRANSLATIONS = {
         {
           tag: "Banca",
           title: "Simplii Financial",
-          desc: "Una cuenta bancaria digital sin comisiones de CIBC. Recibe un bono de bienvenida al registrarte con mi enlace.",
+          desc: "Una de las cuentas bancarias digitales con las comisiones más bajas, de CIBC. Recibe un bono de bienvenida al registrarte con mi enlace.",
           button: "Abrir una Cuenta",
         },
         {
@@ -657,7 +687,7 @@ const TRANSLATIONS = {
       ],
     },
     calc: {
-      eyebrow: "Herramientas gratis",
+      eyebrow: "Planifícalo",
       title: "Planifícalo",
       subtitle: "Dos calculadoras rápidas para visualizar tu próximo paso — sin registrarte.",
       tabs: {
@@ -705,10 +735,10 @@ const TRANSLATIONS = {
     },
     getInvolved: {
       hero: {
-        eyebrow: "Participa",
+        eyebrow: "Únete al movimiento",
         title: "Únete al movimiento",
         subtitle:
-          "The Financial Talk es más que asesoría — es una comunidad. Hay muchas formas de ser parte de ella.",
+          "The Financial Talk es más que educación — es una comunidad. Hay muchas formas de ser parte de ella.",
       },
       intro:
         "Ya sea que tengas una hora para dar o una pasión continua para compartir, tu tiempo y energía ayudan a llevar confianza financiera a más personas. Así puedes participar.",
@@ -742,14 +772,14 @@ const TRANSLATIONS = {
     },
     contact: {
       hero: {
-        eyebrow: "Contacto",
+        eyebrow: "Hablemos de dinero, a tu manera",
         title: "Hablemos de dinero, a tu manera",
         subtitle: "Escríbenos en el idioma que te sea más cómodo — inglés o español.",
       },
       schedule: {
-        eyebrow: "Agenda",
+        eyebrow: "Reserva tu consulta",
         title: "Reserva tu consulta",
-        subtitle: "Elige un día y el tipo de sesión abajo — tu primera consulta es gratis.",
+        subtitle: "Consulta — $50 CAD · Consulta de ahorros e inversiones — $100 CAD. Elige un día y una hora abajo.",
       },
       card: {
         title: "Ponte en contacto",
@@ -767,7 +797,7 @@ const TRANSLATIONS = {
       },
     },
     footer: {
-      tagline: "Asesoría financiera, con raíces culturales.",
+      tagline: "Educación financiera, con raíces culturales.",
       rights: "Todos los derechos reservados.",
       placeholderNotice: "",
     },

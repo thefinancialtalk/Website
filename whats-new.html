@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script>document.documentElement.classList.add("js-enabled");</script>
-<title data-i18n-title="about.hero.title">The Financial Talk</title>
+<title data-i18n-title="whatsNew.hero.title">The Financial Talk</title>
 <meta name="description" content="Bilingual financial education rooted in culture." />
 <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png" />
@@ -24,8 +24,8 @@
 
     <nav class="main-nav" data-nav>
       <a href="index.html" data-i18n="nav.home">Home</a>
-      <a href="about.html" aria-current="page" data-i18n="nav.about">About</a>
-      <a href="whats-new.html" data-i18n="nav.whatsNew">What's new</a>
+      <a href="about.html" data-i18n="nav.about">About</a>
+      <a href="whats-new.html" aria-current="page" data-i18n="nav.whatsNew">What's new</a>
       <a href="services.html" data-i18n="nav.services">Tools</a>
       <a href="get-involved.html" data-i18n="nav.getInvolved">Get Involved</a>
       <div class="nav-theme-row">
@@ -50,99 +50,41 @@
 
 <main>
 
-  <section class="page-hero page-hero--about">
+  <section class="page-hero">
     <span class="hero-blob hero-blob-a" data-parallax="0.1" aria-hidden="true"></span>
     <span class="hero-blob hero-blob-b" data-parallax="-0.07" aria-hidden="true"></span>
     <div class="container">
-      <h1 class="eyebrow" data-i18n="about.hero.title">Financial confidence, culturally rooted</h1>
-      <p data-i18n="about.hero.subtitle">A bicultural approach to money.</p>
-    </div>
-  </section>
-
-  <section class="decor-section room-section">
-    <span class="bg-blob bg-blob--secondary" data-parallax="0.15" style="width:260px;height:260px;top:0;right:-90px;" aria-hidden="true"></span>
-    <div class="container">
-      <div class="split story-intro">
-        <div class="story-copy" data-reveal>
-          <h2 class="eyebrow" data-i18n="about.story.title">Welcome — I'm glad you're here</h2>
-          <p data-i18n="about.story.intro1">Placeholder founder story.</p>
-          <p data-i18n="about.story.intro2">Placeholder founder story.</p>
-        </div>
-        <div class="room-photo" data-reveal="scale">
-          <img src="assets/images/about-story.jpg" data-i18n-attr="alt:about.story.photoAlt" alt="Financial coach portrait" width="1200" height="1500" loading="lazy" />
-        </div>
-      </div>
-
-      <div class="story-detail" data-reveal>
-        <h3 data-i18n="about.story.masteringTitle">Mastering the landscape</h3>
-        <p data-i18n="about.story.masteringBody">Placeholder.</p>
-        <ul class="story-list">
-          <li data-i18n-html="about.story.masteringItems.0">Debt</li>
-          <li data-i18n-html="about.story.masteringItems.1">Growing your money</li>
-          <li data-i18n-html="about.story.masteringItems.2">Buying a home</li>
-          <li data-i18n-html="about.story.masteringItems.3">Taxes</li>
-          <li data-i18n-html="about.story.masteringItems.4">Retirement</li>
-        </ul>
-        <p data-i18n="about.story.masteringClose">Placeholder.</p>
-
-        <h3 data-i18n="about.story.missionTitle">My mission and vision</h3>
-        <p data-i18n="about.story.missionBody1">Placeholder.</p>
-        <p data-i18n="about.story.missionBody2">Placeholder.</p>
-      </div>
+      <h1 class="eyebrow" data-i18n="whatsNew.hero.title">What's new</h1>
+      <p data-i18n="whatsNew.hero.subtitle">News, announcements, and the latest from The Financial Talk.</p>
     </div>
   </section>
 
   <section style="background: var(--color-bg-alt);">
     <div class="container">
-      <div class="section-head" data-reveal>
-        <h2 class="eyebrow" data-i18n="about.values.title">My values</h2>
-      </div>
-      <div class="card-grid cols-4">
-        <div class="card" data-reveal="scale">
-          <div class="value-item">
-            <span class="value-dot"></span>
-            <div>
-              <h3 style="font-size:1.05rem;" data-i18n="about.values.items.0.title">Cultural Pride</h3>
-              <p data-i18n="about.values.items.0.desc">Desc</p>
-            </div>
-          </div>
-        </div>
-        <div class="card" data-reveal="scale">
-          <div class="value-item">
-            <span class="value-dot"></span>
-            <div>
-              <h3 style="font-size:1.05rem;" data-i18n="about.values.items.1.title">Empowerment</h3>
-              <p data-i18n="about.values.items.1.desc">Desc</p>
-            </div>
-          </div>
-        </div>
-        <div class="card" data-reveal="scale">
-          <div class="value-item">
-            <span class="value-dot"></span>
-            <div>
-              <h3 style="font-size:1.05rem;" data-i18n="about.values.items.2.title">Community</h3>
-              <p data-i18n="about.values.items.2.desc">Desc</p>
-            </div>
-          </div>
-        </div>
-        <div class="card" data-reveal="scale">
-          <div class="value-item">
-            <span class="value-dot"></span>
-            <div>
-              <h3 style="font-size:1.05rem;" data-i18n="about.values.items.3.title">Bilingual Access</h3>
-              <p data-i18n="about.values.items.3.desc">Desc</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="card-grid" data-announcements-list></div>
+      <p class="notice text-center" data-announcements-empty hidden data-i18n="whatsNew.empty">No announcements yet — check back soon.</p>
     </div>
   </section>
 
   <section>
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <h2 class="eyebrow" data-i18n="whatsNew.tiktok.title">Latest on TikTok</h2>
+        <p class="section-subtitle" data-i18n="whatsNew.tiktok.subtitle">Quick money tips and stories from The Financial Talk.</p>
+      </div>
+      <div class="tiktok-grid" data-tiktok-list></div>
+      <div class="tiktok-follow text-center" data-tiktok-empty hidden>
+        <a href="https://www.tiktok.com/@thefinancialtalk" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="whatsNew.tiktok.cta">Follow @thefinancialtalk on TikTok</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="decor-section">
+    <span class="bg-blob bg-blob--accent" data-parallax="-0.1" style="width:240px;height:240px;bottom:-40px;right:-60px;" aria-hidden="true"></span>
     <div class="cta-banner" data-reveal="scale">
-      <h2 data-i18n="about.cta.title">Let's build your plan together</h2>
-      <p data-i18n="about.cta.subtitle">Reach out and tell me where you're starting from.</p>
-      <a href="contact.html" class="btn btn-primary" data-i18n="about.cta.button">Get in Touch</a>
+      <h2 data-i18n="home.ctaBanner.title">Ready to write your own money story?</h2>
+      <p data-i18n="home.ctaBanner.subtitle">Let's talk about where you want to go.</p>
+      <a href="contact.html#book" class="btn btn-primary" data-i18n="home.ctaBanner.button">Book a Consultation</a>
     </div>
   </section>
 
@@ -186,5 +128,8 @@
 <script src="js/i18n.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/main.js"></script>
+<script src="js/effects.js"></script>
+<script src="js/announcements.js"></script>
+<script src="js/tiktok.js"></script>
 </body>
 </html>
