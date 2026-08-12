@@ -164,10 +164,11 @@ const TRANSLATIONS = {
         masteringBody:
           "A new money system was a lot to learn. I took my time and learned how money really works in Canada, step by step:",
         masteringItems: [
-          "<strong>Taxes:</strong> how to file the right way and keep more of what you earn.",
-          "<strong>Retirement:</strong> how to make the most of government and personal savings plans.",
+          "<strong>Debt:</strong> clear, practical ways to pay down credit cards and loans before they eat into your income.",
           "<strong>Growing your money:</strong> simple, smart ways to invest toward your goals.",
           "<strong>Buying a home:</strong> the steps to owning a home — including buying my own first home here.",
+          "<strong>Taxes:</strong> how to file the right way and keep more of what you earn.",
+          "<strong>Retirement:</strong> how to make the most of government and personal savings plans.",
         ],
         masteringClose:
           "Reaching these goals showed me that steady effort pays off. It also showed me my purpose: helping others understand the same system I worked so hard to learn.",
@@ -557,10 +558,11 @@ const TRANSLATIONS = {
         masteringBody:
           "Un sistema de dinero nuevo era mucho por aprender. Con calma aprendí cómo funciona de verdad el dinero en Canadá, paso a paso:",
         masteringItems: [
-          "<strong>Impuestos:</strong> cómo declarar bien y quedarte con más de lo que ganas.",
-          "<strong>Jubilación:</strong> cómo aprovechar al máximo los planes de ahorro del gobierno y los tuyos.",
+          "<strong>Deuda:</strong> formas claras y prácticas de pagar tarjetas de crédito y préstamos antes de que consuman tus ingresos.",
           "<strong>Hacer crecer tu dinero:</strong> formas simples e inteligentes de invertir hacia tus metas.",
           "<strong>Comprar casa:</strong> los pasos para tener tu propia casa — incluida la compra de mi primera casa aquí.",
+          "<strong>Impuestos:</strong> cómo declarar bien y quedarte con más de lo que ganas.",
+          "<strong>Jubilación:</strong> cómo aprovechar al máximo los planes de ahorro del gobierno y los tuyos.",
         ],
         masteringClose:
           "Alcanzar estas metas me mostró que el esfuerzo constante vale la pena. También me mostró mi propósito: ayudar a otras personas a entender el mismo sistema que tanto me costó aprender.",
