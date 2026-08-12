@@ -265,6 +265,10 @@ section { padding: 96px 0; }
 }
 .nav-toggle span { width: 22px; height: 2px; background: var(--color-text); border-radius: 2px; }
 
+/* "Get in touch" lives in the header on desktop; the copy inside the nav
+   dropdown is only shown once the menu collapses on mobile. */
+.main-nav .nav-cta { display: none; }
+
 .nav-theme-row { display: none; }
 
 @media (max-width: 860px) {
@@ -296,6 +300,11 @@ section { padding: 96px 0; }
   }
   .logo { flex-shrink: 1; min-width: 0; }
 
+  /* Move the CTA off the header row and into the dropdown so the full
+     wordmark fits across the header. */
+  .header-cta { display: none; }
+  .main-nav .nav-cta { display: block; }
+
   .header-actions .lang-switcher { display: inline-flex; }
 
   /* Theme swatches move into the nav dropdown at this width so the
@@ -318,9 +327,6 @@ section { padding: 96px 0; }
 
 @media (max-width: 560px) {
   .header-cta { padding: 8px 14px; font-size: 0.82rem; }
-  /* Drop the wordmark on narrow screens so it doesn't truncate mid-word;
-     the logo mark alone carries the brand next to the CTA + language pills. */
-  .logo span { display: none; }
 }
 
 @media (max-width: 400px) {
