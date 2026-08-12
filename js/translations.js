@@ -375,7 +375,7 @@ const TRANSLATIONS = {
       schedule: {
         eyebrow: "Book your consultation",
         title: "Book your consultation",
-        subtitle: "One-hour consultation — $100 CAD. Pick a day and time below.",
+        subtitle: "Consultation — $50 CAD · Savings & Investments consultation — $100 CAD. Pick a day and time below.",
       },
       card: {
         title: "Get in touch",
@@ -769,7 +769,7 @@ const TRANSLATIONS = {
       schedule: {
         eyebrow: "Reserva tu consulta",
         title: "Reserva tu consulta",
-        subtitle: "Consulta de una hora — $100 CAD. Elige un día y una hora abajo.",
+        subtitle: "Consulta — $50 CAD · Consulta de ahorros e inversiones — $100 CAD. Elige un día y una hora abajo.",
       },
       card: {
         title: "Ponte en contacto",
