@@ -283,7 +283,19 @@ section { padding: 96px 0; }
     transition: transform 0.2s ease, opacity 0.2s ease;
   }
   .main-nav.is-open { transform: translateY(0); opacity: 1; pointer-events: auto; }
-  .nav-toggle { display: flex; }
+
+  /* Hamburger moves to the far left and is pinned to the sticky header so it
+     stays on-screen no matter how wide the rest of the row gets. */
+  .header-inner { padding: 14px 16px 14px 56px; }
+  .nav-toggle {
+    display: flex;
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .logo { flex-shrink: 1; min-width: 0; }
+
   .header-actions .lang-switcher { display: inline-flex; }
 
   /* Theme swatches move into the nav dropdown at this width so the
@@ -306,10 +318,13 @@ section { padding: 96px 0; }
 
 @media (max-width: 560px) {
   .header-cta { padding: 8px 14px; font-size: 0.82rem; }
+  /* Drop the wordmark on narrow screens so it doesn't truncate mid-word;
+     the logo mark alone carries the brand next to the CTA + language pills. */
+  .logo span { display: none; }
 }
 
 @media (max-width: 400px) {
-  .header-inner { gap: 10px; padding: 14px 16px; }
+  .header-inner { gap: 10px; padding: 14px 14px 14px 52px; }
   .logo { font-size: 1rem; gap: 8px; }
   .logo-mark { height: 34px; }
   .header-cta { padding: 7px 11px; font-size: 0.78rem; }
