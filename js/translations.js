@@ -164,7 +164,7 @@ const TRANSLATIONS = {
         masteringBody:
           "A new money system was a lot to learn. I took my time and learned how money really works in Canada, step by step:",
         masteringItems: [
-          "<strong>Debt:</strong> I paid down my credit cards and loans before they could eat into my income.",
+          "<strong>Debt:</strong> I paid off my student loan, credit cards, and other debt before it could eat into my income.",
           "<strong>Growing my money:</strong> I learned to invest with intention and put my money to work toward my goals.",
           "<strong>Buying a home:</strong> I learned the path to ownership and bought my own first home here.",
           "<strong>Taxes:</strong> I learned to file the right way and keep more of what I earned.",
@@ -558,7 +558,7 @@ const TRANSLATIONS = {
         masteringBody:
           "Un sistema de dinero nuevo era mucho por aprender. Con calma aprendí cómo funciona de verdad el dinero en Canadá, paso a paso:",
         masteringItems: [
-          "<strong>Deuda:</strong> pagué mis tarjetas de crédito y préstamos antes de que consumieran mis ingresos.",
+          "<strong>Deuda:</strong> pagué mi préstamo estudiantil, mis tarjetas de crédito y otras deudas antes de que consumieran mis ingresos.",
           "<strong>Hacer crecer mi dinero:</strong> aprendí a invertir con intención y a poner mi dinero a trabajar hacia mis metas.",
           "<strong>Comprar casa:</strong> aprendí el camino hacia la propiedad y compré mi primera casa aquí.",
           "<strong>Impuestos:</strong> aprendí a declarar de la forma correcta y a quedarme con más de lo que ganaba.",
