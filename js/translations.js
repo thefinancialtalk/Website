@@ -13,11 +13,20 @@ const TRANSLATIONS = {
     nav: {
       home: "Home",
       about: "About",
+      whatsNew: "What's new",
       services: "Tools",
       resources: "Resources",
       getInvolved: "Get Involved",
       contact: "Contact",
       cta: "Get in touch",
+    },
+    whatsNew: {
+      hero: {
+        eyebrow: "Latest updates",
+        title: "What's new",
+        subtitle: "News, announcements, and the latest from The Financial Talk.",
+      },
+      empty: "No announcements yet — check back soon.",
     },
     lang: { label: "Language" },
     theme: {
@@ -397,11 +406,20 @@ const TRANSLATIONS = {
     nav: {
       home: "Inicio",
       about: "Sobre mí",
+      whatsNew: "Novedades",
       services: "Herramientas",
       resources: "Recursos",
       getInvolved: "Participa",
       contact: "Contacto",
       cta: "Hablemos",
+    },
+    whatsNew: {
+      hero: {
+        eyebrow: "Últimas novedades",
+        title: "Novedades",
+        subtitle: "Noticias, anuncios y lo más reciente de The Financial Talk.",
+      },
+      empty: "Aún no hay anuncios — vuelve pronto.",
     },
     lang: { label: "Idioma" },
     theme: {

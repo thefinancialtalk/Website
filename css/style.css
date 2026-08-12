@@ -205,6 +205,14 @@ section { padding: 96px 0; }
   gap: 16px;
 }
 
+/* "Get in touch" CTA now lives beside the language switcher in the header
+   actions rather than inside the collapsible nav, so it's always reachable. */
+.header-cta {
+  padding: 10px 22px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
 .lang-switcher {
   display: inline-flex;
   background: var(--color-bg-alt);
@@ -295,10 +303,15 @@ section { padding: 96px 0; }
   }
 }
 
+@media (max-width: 560px) {
+  .header-cta { padding: 8px 14px; font-size: 0.82rem; }
+}
+
 @media (max-width: 400px) {
   .header-inner { gap: 10px; padding: 14px 16px; }
   .logo { font-size: 1rem; gap: 8px; }
   .logo-mark { height: 34px; }
+  .header-cta { padding: 7px 11px; font-size: 0.78rem; }
 }
 
 /* ---------- Hero ---------- */
