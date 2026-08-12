@@ -158,7 +158,7 @@ const TRANSLATIONS = {
         intro1:
           "Ten years ago, I embarked on a transformative journey by immigrating from the vibrant coastal city of Guayaquil, Ecuador, to Canada. Relocating to a new country required immense resilience, as I adapted to an unfamiliar culture and economic system. Rather than viewing these initial challenges as barriers, I embraced them as opportunities for personal growth.",
         intro2:
-          "To build a strong foundation for my future, I dedicated myself to academic excellence, earning a Bachelor of Business Economics with Honours. This rigorous programme deepened my understanding of market dynamics, economic theory, and fiscal structures. More importantly, it ignited my passion for financial empowerment and revealed the vital role that financial literacy plays in personal stability.",
+          "To build a strong foundation for my future, I dedicated myself to academic excellence, earning a Bachelor of Business Economics with Honours. This rigorous programme deepened my understanding of market dynamics, economic theory, and fiscal structures. More importantly, it ignited my passion for financial empowerment and revealed the vital role that financial literacy plays in personal stability. Alongside my bachelor's degree, I hold a certification in Advanced Financial Advice from the Canadian Securities Institute, and I am working toward becoming a Certified Financial Planner (CFP).",
         photoAlt: "Portrait of Nathaly, founder of The Financial Talk, smiling, seated",
         masteringTitle: "Mastering the landscape",
         masteringBody:
@@ -552,7 +552,7 @@ const TRANSLATIONS = {
         intro1:
           "Hace diez años emprendí un viaje transformador al emigrar de la vibrante ciudad costera de Guayaquil, Ecuador, a Canadá. Mudarme a un nuevo país exigió una resiliencia inmensa, mientras me adaptaba a una cultura y un sistema económico desconocidos. En lugar de ver esos primeros desafíos como barreras, los abracé como oportunidades de crecimiento personal.",
         intro2:
-          "Para construir una base sólida para mi futuro, me dediqué a la excelencia académica y obtuve una Licenciatura en Economía y Negocios con Honores. Ese riguroso programa profundizó mi comprensión de la dinámica del mercado, la teoría económica y las estructuras fiscales. Más importante aún, encendió mi pasión por el empoderamiento financiero y me reveló el papel vital que la educación financiera juega en la estabilidad personal.",
+          "Para construir una base sólida para mi futuro, me dediqué a la excelencia académica y obtuve una Licenciatura en Economía y Negocios con Honores. Ese riguroso programa profundizó mi comprensión de la dinámica del mercado, la teoría económica y las estructuras fiscales. Más importante aún, encendió mi pasión por el empoderamiento financiero y me reveló el papel vital que la educación financiera juega en la estabilidad personal. Además de mi licenciatura, cuento con una certificación en Asesoría Financiera Avanzada del Canadian Securities Institute, y estoy trabajando para convertirme en Planificadora Financiera Certificada (CFP).",
         photoAlt: "Retrato de Nathaly, fundadora de The Financial Talk, sonriendo, sentada",
         masteringTitle: "Dominando el terreno",
         masteringBody:
