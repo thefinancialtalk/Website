@@ -375,7 +375,7 @@ const TRANSLATIONS = {
       schedule: {
         eyebrow: "Book your consultation",
         title: "Book your consultation",
-        subtitle: "Pick a day and session type below — pricing is shown when you choose your session.",
+        subtitle: "One-hour consultation — $100 CAD. Pick a day and time below.",
       },
       card: {
         title: "Get in touch",
@@ -769,7 +769,7 @@ const TRANSLATIONS = {
       schedule: {
         eyebrow: "Reserva tu consulta",
         title: "Reserva tu consulta",
-        subtitle: "Elige un día y el tipo de sesión abajo — el precio se muestra al elegir tu sesión.",
+        subtitle: "Consulta de una hora — $100 CAD. Elige un día y una hora abajo.",
       },
       card: {
         title: "Ponte en contacto",
