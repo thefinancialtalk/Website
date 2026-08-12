@@ -162,15 +162,15 @@ const TRANSLATIONS = {
         photoAlt: "Portrait of Nathaly, founder of The Financial Talk, smiling, seated",
         masteringTitle: "Mastering the landscape",
         masteringBody:
-          "Navigating an unfamiliar economic system presented a steep learning curve. My determination drove me to thoroughly master the intricacies of Canadian personal finance, including:",
+          "A new money system was a lot to learn. I took my time and learned how money really works in Canada, step by step:",
         masteringItems: [
-          "<strong>Taxation:</strong> optimizing personal taxation strategies under federal and provincial frameworks.",
-          "<strong>Retirement planning:</strong> maximizing government pension programmes and private savings plans.",
-          "<strong>Wealth building:</strong> navigating smart, strategic investment vehicles tailored to individual goals.",
-          "<strong>Real estate:</strong> securing homeownership, marked by the proud milestone of buying my first home in Canada.",
+          "<strong>Taxes:</strong> how to file the right way and keep more of what you earn.",
+          "<strong>Retirement:</strong> how to make the most of government and personal savings plans.",
+          "<strong>Growing your money:</strong> simple, smart ways to invest toward your goals.",
+          "<strong>Buying a home:</strong> the steps to owning a home — including buying my own first home here.",
         ],
         masteringClose:
-          "Achieving these milestones served as tangible proof that dedication yields success. It also confirmed my true calling: guiding others through the exact financial system I worked so hard to understand.",
+          "Reaching these goals showed me that steady effort pays off. It also showed me my purpose: helping others understand the same system I worked so hard to learn.",
         missionTitle: "My mission and vision",
         missionBody1:
           "Today, I pour my heart into uplifting both the broader Canadian community and my cherished Latino community. I believe that financial clarity should be accessible to everyone, regardless of their background.",
@@ -555,15 +555,15 @@ const TRANSLATIONS = {
         photoAlt: "Retrato de Nathaly, fundadora de The Financial Talk, sonriendo, sentada",
         masteringTitle: "Dominando el terreno",
         masteringBody:
-          "Navegar un sistema económico desconocido presentó una curva de aprendizaje empinada. Mi determinación me llevó a dominar a fondo los detalles de las finanzas personales en Canadá, incluyendo:",
+          "Un sistema de dinero nuevo era mucho por aprender. Con calma aprendí cómo funciona de verdad el dinero en Canadá, paso a paso:",
         masteringItems: [
-          "<strong>Impuestos:</strong> optimizar estrategias fiscales personales bajo los marcos federal y provincial.",
-          "<strong>Planificación de la jubilación:</strong> maximizar los programas de pensión del gobierno y los planes de ahorro privados.",
-          "<strong>Construcción de riqueza:</strong> elegir vehículos de inversión inteligentes y estratégicos según cada meta.",
-          "<strong>Bienes raíces:</strong> lograr la compra de vivienda, marcada por el orgulloso hito de comprar mi primera casa en Canadá.",
+          "<strong>Impuestos:</strong> cómo declarar bien y quedarte con más de lo que ganas.",
+          "<strong>Jubilación:</strong> cómo aprovechar al máximo los planes de ahorro del gobierno y los tuyos.",
+          "<strong>Hacer crecer tu dinero:</strong> formas simples e inteligentes de invertir hacia tus metas.",
+          "<strong>Comprar casa:</strong> los pasos para tener tu propia casa — incluida la compra de mi primera casa aquí.",
         ],
         masteringClose:
-          "Alcanzar estos logros fue prueba tangible de que la dedicación da frutos. También confirmó mi verdadera vocación: guiar a otras personas por el mismo sistema financiero que tanto me esforcé en entender.",
+          "Alcanzar estas metas me mostró que el esfuerzo constante vale la pena. También me mostró mi propósito: ayudar a otras personas a entender el mismo sistema que tanto me costó aprender.",
         missionTitle: "Mi misión y visión",
         missionBody1:
           "Hoy entrego mi corazón a impulsar tanto a la comunidad canadiense en general como a mi querida comunidad latina. Creo que la claridad financiera debe ser accesible para todos, sin importar su origen.",
