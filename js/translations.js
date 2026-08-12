@@ -164,11 +164,11 @@ const TRANSLATIONS = {
         masteringBody:
           "A new money system was a lot to learn. I took my time and learned how money really works in Canada, step by step:",
         masteringItems: [
-          "<strong>Debt:</strong> clear, practical ways to pay down credit cards and loans before they eat into your income.",
-          "<strong>Growing your money:</strong> simple, smart ways to invest toward your goals.",
-          "<strong>Buying a home:</strong> the steps to owning a home — including buying my own first home here.",
-          "<strong>Taxes:</strong> how to file the right way and keep more of what you earn.",
-          "<strong>Retirement:</strong> how to make the most of government and personal savings plans.",
+          "<strong>Debt:</strong> I paid down my credit cards and loans before they could eat into my income.",
+          "<strong>Growing my money:</strong> I learned to invest with intention and put my money to work toward my goals.",
+          "<strong>Buying a home:</strong> I learned the path to ownership and bought my own first home here.",
+          "<strong>Taxes:</strong> I learned to file the right way and keep more of what I earned.",
+          "<strong>Retirement:</strong> I built a plan that makes the most of government and personal savings programs.",
         ],
         masteringClose:
           "Reaching these goals showed me that steady effort pays off. It also showed me my purpose: helping others understand the same system I worked so hard to learn.",
@@ -558,11 +558,11 @@ const TRANSLATIONS = {
         masteringBody:
           "Un sistema de dinero nuevo era mucho por aprender. Con calma aprendí cómo funciona de verdad el dinero en Canadá, paso a paso:",
         masteringItems: [
-          "<strong>Deuda:</strong> formas claras y prácticas de pagar tarjetas de crédito y préstamos antes de que consuman tus ingresos.",
-          "<strong>Hacer crecer tu dinero:</strong> formas simples e inteligentes de invertir hacia tus metas.",
-          "<strong>Comprar casa:</strong> los pasos para tener tu propia casa — incluida la compra de mi primera casa aquí.",
-          "<strong>Impuestos:</strong> cómo declarar bien y quedarte con más de lo que ganas.",
-          "<strong>Jubilación:</strong> cómo aprovechar al máximo los planes de ahorro del gobierno y los tuyos.",
+          "<strong>Deuda:</strong> pagué mis tarjetas de crédito y préstamos antes de que consumieran mis ingresos.",
+          "<strong>Hacer crecer mi dinero:</strong> aprendí a invertir con intención y a poner mi dinero a trabajar hacia mis metas.",
+          "<strong>Comprar casa:</strong> aprendí el camino hacia la propiedad y compré mi primera casa aquí.",
+          "<strong>Impuestos:</strong> aprendí a declarar de la forma correcta y a quedarme con más de lo que ganaba.",
+          "<strong>Jubilación:</strong> armé un plan que aprovecha al máximo los programas de ahorro del gobierno y los míos.",
         ],
         masteringClose:
           "Alcanzar estas metas me mostró que el esfuerzo constante vale la pena. También me mostró mi propósito: ayudar a otras personas a entender el mismo sistema que tanto me costó aprender.",
