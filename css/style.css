@@ -442,6 +442,17 @@ section { padding: 96px 0; }
 @media (max-width: 960px) { .card-grid, .card-grid.cols-4 { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px) { .card-grid, .card-grid.cols-4 { grid-template-columns: 1fr; } }
 
+/* TikTok embeds render as fixed-width players; center them in a flexible row
+   that wraps to fewer columns on narrow screens. */
+.tiktok-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px;
+}
+.tiktok-grid .tiktok-embed { flex: 0 1 325px; }
+.tiktok-follow { margin-top: 8px; }
+
 .card {
   background: var(--color-surface);
   border-radius: var(--radius-md);

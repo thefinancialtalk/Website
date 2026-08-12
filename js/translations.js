@@ -27,6 +27,11 @@ const TRANSLATIONS = {
         subtitle: "News, announcements, and the latest from The Financial Talk.",
       },
       empty: "No announcements yet — check back soon.",
+      tiktok: {
+        title: "Latest on TikTok",
+        subtitle: "Quick money tips and stories from The Financial Talk.",
+        cta: "Follow @thefinancialtalk on TikTok",
+      },
     },
     lang: { label: "Language" },
     theme: {
@@ -421,6 +426,11 @@ const TRANSLATIONS = {
         subtitle: "Noticias, anuncios y lo más reciente de The Financial Talk.",
       },
       empty: "Aún no hay anuncios — vuelve pronto.",
+      tiktok: {
+        title: "Lo más reciente en TikTok",
+        subtitle: "Consejos rápidos de dinero e historias de The Financial Talk.",
+        cta: "Sigue a @thefinancialtalk en TikTok",
+      },
     },
     lang: { label: "Idioma" },
     theme: {
