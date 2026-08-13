@@ -21,9 +21,18 @@ function applyTheme(id) {
   });
 }
 
+function themeIdForLang(lang) {
+  const map = SITE_CONFIG.languageThemes || {};
+  return map[lang] || SITE_CONFIG.defaultTheme;
+}
+
 function initTheme() {
-  const saved = localStorage.getItem(STORAGE_KEY_THEME);
-  applyTheme(saved || SITE_CONFIG.defaultTheme);
+  // The palette is bound to the language: apply the current language's theme
+  // now, then re-apply whenever the language changes (i18n.js dispatches
+  // "ft:langchange"). initLanguage() runs after this and fires that event,
+  // so the theme always ends up matching the active language.
+  document.addEventListener("ft:langchange", (e) => applyTheme(themeIdForLang(e.detail.lang)));
+  applyTheme(themeIdForLang(getCurrentLanguage()));
 }
 
 function renderThemeSwitcher() {
