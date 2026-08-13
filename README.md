@@ -1,156 +1,209 @@
-# The Financial Talk
+# The Financial Talk — website
 
-A modern, bilingual personal-brand site for financial coaching rooted in
-Latina culture. Static HTML/CSS/JS — no build step, no framework, works
-anywhere (GitHub Pages, Netlify, any static host, or just double-click
-`index.html`).
+This is the website for **The Financial Talk** (thefinancialtalk.com): a
+bilingual (English / Spanish) site for financial coaching rooted in Latina
+culture.
 
-## Preview locally
+**This guide is written for the site's owner, not a programmer.** You don't
+need to know how to code to make changes. The idea is simple:
 
-```
-python3 -m http.server 8000
-```
+> You open this project in an AI assistant (like Claude) and describe the
+> change you want in plain English. The AI edits the files for you.
 
-Then open http://localhost:8000.
+The rest of this README tells you **what to say** to get common changes done,
+and **where things live** so the AI (and you) always know what to touch.
 
-## Structure
+---
 
-```
-index.html, about.html, services.html, contact.html
-css/style.css        — all styling, theme via CSS custom properties
-js/config.js          — default language, color palettes
-js/translations.js    — all English/Spanish copy (incl. brand name)
-js/i18n.js             — language-switching engine
-js/theme.js            — color-palette-switching engine
-js/main.js              — nav, scroll reveal, parallax, wiring
-js/announcements.js      — renders content/announcements.json on the homepage
-assets/images/            — photos (see Images below)
-content/announcements.json — homepage "Latest updates" data, edited via /admin
-admin/                       — Decap CMS (content editing dashboard)
-netlify.toml                  — Netlify config (needed for the CMS backend)
-```
+## The one thing to understand first
 
-## Customize
+The website is **static**. That means it's just a set of plain files (pages,
+styling, images, and text) — there's no complicated software running behind
+it. When a file changes, the live site updates automatically a minute or two
+later. So "making a change" always comes down to editing one of the files
+described below.
 
-**Brand name** — set per language in `js/translations.js`'s `brand.name`
-/ `brand.monogram` (English: "The Financial Talk" / "FT"; Spanish: "La
-Charla Financiera" / "CF"). The favicon monogram letter is separate —
-it's a static "F" baked into each page's data-URI favicon, since
-favicons can't switch with the page language.
+Everything you'd normally want to change — the words on a page, a photo, the
+colors, the announcements — lives in a small number of predictable places.
 
-**Copy** — everything is in `js/translations.js`. Every string is
-duplicated under `en` and `es`; edit both to keep languages in sync. The
-About page bio is Nathaly's real story; the three home-page testimonials
-still use realistic-but-placeholder names (Daniela R., Vanessa M., Camila
-T.) and invented quotes — swap in real client testimonials (with their
-permission) when available. There's no contact email yet — the contact
-page currently points people to Instagram/TikTok only; add a real email
-or booking link in `contact.card.body`/the contact page once you have
-one.
+---
 
-**Default language** — set `defaultLanguage` in `js/config.js` to `"es"`
-when Spanish should be the default. A visitor's choice is remembered
-(localStorage) and overrides the default on repeat visits.
+## How to ask an AI to make a change
 
-**Add a language** — add a new top-level key (e.g. `fr`) to
-`TRANSLATIONS` in `js/translations.js` with every string translated, then
-add `"fr"` to `SITE_CONFIG.supportedLanguages` in `js/config.js`. It will
-automatically get a switcher button — add `<button data-lang-option="fr">FR</button>`
-next to the EN/ES buttons in each page's `.lang-switcher`.
+When you talk to Claude (or another AI), you don't need technical words. Just
+be specific about **which page**, **what you see now**, and **what you want
+instead**. Good requests look like this:
 
-**Colors** — four palettes ship by default. `midnight-plum-gold` (Midnight
-#1C1035, Deep Plum #2A1A4E, Violet #5C3FA0, Soft Gold #E8C97A, Body Plum
-#4A3F6B for muted text) is the real brand palette and the default theme;
-Fuchsia & Gold, Terracotta & Turquoise, and Violet & Coral are alternates.
-Switchable live via the swatch picker in the header. Add more by adding
-an entry to the `THEMES` array in `js/config.js` — it appears in the
-picker automatically. Each theme is just a set of CSS custom property
-overrides.
+- *"On the About page, change the sentence that starts 'I help families…' to
+  say '…' instead."*
+- *"On the home page, swap the main photo for the new one I'm attaching."*
+- *"Add a new announcement to the What's new section: title 'Free webinar',
+  message 'Join us March 3rd'."*
+- *"Change the site's main color from purple to a deep teal."*
 
-**Images** — `assets/images/home-about.jpg` and `assets/images/about-story.jpg`
-are the two photos currently used, cropped and color-matched to blend into
-the oval frame (`.room-photo`) on the home and about pages — the section
-background is sampled from the photo's own studio backdrop, so there's no
-visible seam. Three more portraits are in `assets/images/`
-(`extra-purple-standing.jpg`, `extra-black-tan-bg.jpg`,
-`extra-money-throw.jpg`) but not placed on any page yet. Each photo's alt
-text is a translation key (e.g. `home.about.photoAlt` in
-`js/translations.js`).
+Two habits that make everything go smoothly:
 
-**Social links** — Instagram (`@thefinancialtalk`) and TikTok
-(`@thefinancialtalk`) point at the real accounts in the footer/contact
-social icons across every page. The LinkedIn icon has been removed for now
-(no page yet); to re-add it, drop an `<a>` back into each `.social-list`
-block in `index.html`, `about.html`, `services.html`, `resources.html`, and
-`contact.html`.
+1. **Quote the exact words you want changed.** "The line that says X" is much
+   easier to find than "the paragraph near the top."
+2. **The site is bilingual.** Almost every sentence exists twice — once in
+   English, once in Spanish. If you only give the English, just say *"and
+   translate it to Spanish too"* and the AI will handle both. If you have the
+   Spanish wording yourself, give both.
 
-## Contact form (Formspree)
+After the AI makes a change, it will save it and the live site updates on its
+own. You can always ask *"show me what this will look like"* or *"undo that."*
 
-`contact.html` has a real form (name/email/message) that POSTs to
-Formspree, which forwards submissions to an email inbox — no backend
-needed. It's wired but not activated yet:
+---
 
-1. Go to https://formspree.io and sign up using `financialtalk@gmail.com`.
-2. Create a new form. Formspree gives you a form ID / endpoint that looks
-   like `https://formspree.io/f/abcd1234`.
-3. In `contact.html`, find the `<form ... action="https://formspree.io/f/YOUR_FORM_ID">`
-   line and replace `YOUR_FORM_ID` with your real ID.
-4. Formspree's free tier covers 50 submissions/month, which should be
-   plenty for a site like this.
+## Ready-to-use prompts for common changes
 
-Until step 3 is done, the form will fail to submit (the placeholder ID
-isn't real) — happy to make that swap the moment you have the real ID,
-just paste it here.
+Copy one of these, fill in the blanks, and paste it to the AI.
 
-## Content editing (Decap CMS)
+**Change wording on a page**
+> On the `[home / about / services / get involved / contact / what's new]`
+> page, find the text that says "`[paste the current words]`" and change it to
+> "`[the new words]`". Update the Spanish version to match too.
 
-Non-technical editing dashboard, so someone other than a developer can
-post announcements without touching code. This needs the site to be
-hosted on Netlify (git-gateway backend) rather than GitHub Pages — the
-`netlify.toml` file is already there for this.
+**Add or update a homepage announcement** ("Latest updates" / "What's new")
+> Add a new announcement with the title "`[title]`" and the message
+> "`[message]`". Add a Spanish version too: title "`[Spanish title]`", message
+> "`[Spanish message]`".
 
-Setup (one-time, needs to be done in your own Netlify account):
+**Replace a photo**
+> Replace the `[which photo — e.g. the main home page photo]` with the image
+> I'm attaching. Keep it cropped and sized the same way.
 
-1. Go to https://app.netlify.com, sign up/log in, **Add new site → Import
-   an existing project**, and connect the `financial-talk-website` GitHub
-   repo. Leave the build settings as-is (no build command needed).
-2. In the new site's dashboard: **Identity → Enable Identity**.
-3. Still under Identity: **Settings → Registration → set to "Invite
-   only"** (so random people can't sign themselves up as editors).
-4. **Identity → Services → Git Gateway → Enable Git Gateway.** This is
-   what lets Identity users save changes to the GitHub repo without
-   needing their own GitHub account.
-5. **Identity → Invite users** → invite `financialtalk@gmail.com` (or
-   whoever should be able to post updates). They'll get an email to set a
-   password.
-6. Once logged in, the editing dashboard is at
-   `https://YOUR-SITE-NAME.netlify.app/admin/`.
+**Change the site colors**
+> Change the main brand color to `[describe or give a color]`. Show me the
+> options first if there's more than one place it's used.
 
-Right now there's one collection: **Announcements**, which powers the
-"Latest updates" section on the homepage (`content/announcements.json`).
-Each entry has an English title/message and an optional Spanish
-title/message (falls back to English if left blank). More collections
-(e.g. editable page copy) can be added later the same way — just extend
-`admin/config.yml`.
+**Update a social media link**
+> Update the `[Instagram / TikTok]` link across the whole site to point to
+> `[the new profile URL]`.
 
-**Heads up**: once this is live on Netlify, you'll have two working
-copies of the site — the GitHub Pages one and the Netlify one, on
-different URLs. Worth deciding which one is "real" (and pointing your
-actual domain at it, and/or turning the other off) once this is set up,
-so updates made through the CMS actually show up on the site people
-visit.
+**Change consultation prices**
+> On the Contact page, change the consultation prices to `[new prices]`.
+> Update the Spanish version too.
 
-## Calendar
+**Add a whole new page**
+> Add a new page called "`[name]`" to the site, and add it to the top menu.
+> It should have `[describe the content]`. Keep the same look as the other
+> pages and make it bilingual.
 
-Not built into the pages yet — two options depending on what's needed:
+**Fix a typo you spotted**
+> There's a typo on the `[page]` page: it says "`[wrong]`" and should say
+> "`[right]`". Fix the Spanish too if it has the same issue.
 
-- **Just showing events/dates**: create a Google Calendar, then
-  **Settings → Integrate calendar → Embed code**, and send me that embed
-  code (or the calendar's public URL) to drop into the site.
-- **Letting people book time**: create a Google Calendar **Appointment
-  schedule**, then use its **Share → booking page link** and send it to
-  me — I'll wire it into the Contact page's booking section. (Currently
-  live on the Contact page.)
+---
 
-Either (or both) can be added once you have the account set up — no code
-changes needed on your end beyond sending me the link.
+## Where things live (plain-English map)
+
+You rarely need this — the AI knows where to look. It's here so you can follow
+along or double-check.
+
+| If you want to change… | It lives in… |
+| --- | --- |
+| **Any words / text** (English *and* Spanish) | `js/translations.js` — all site copy is here, in one place |
+| **Homepage announcements** ("Latest updates") | `content/announcements.json` (or the `/admin` dashboard — see below) |
+| **Colors / brand palette** | `js/config.js` (the color sets are near the top) |
+| **Which language shows by default** | `js/config.js` (`defaultLanguage`) |
+| **Photos and images** | `assets/images/` |
+| **The overall look and styling** | `css/style.css` |
+| **The pages themselves** (structure/layout) | the `.html` files in the main folder |
+
+### The pages
+
+| Menu label | File | What it is |
+| --- | --- | --- |
+| Home | `index.html` | Landing page |
+| About | `about.html` | Nathaly's story / bio |
+| What's new | `whats-new.html` | Announcements + latest TikTok |
+| Tools | `services.html` | Services + interactive money calculators |
+| Get Involved | `get-involved.html` | Partnership / involvement info |
+| Get in touch | `contact.html` | Contact form + consultation booking |
+
+### The behind-the-scenes files (don't usually need editing)
+
+These make the site work; you can leave them alone unless the AI says
+otherwise: `js/i18n.js` (language switching), `js/theme.js` &
+`js/theme-boot.js` (color switching), `js/main.js` (menus, animations),
+`js/calculators.js` (the money calculators), `js/effects.js`,
+`js/announcements.js`, `js/partners.js`, `js/tiktok.js`, and `netlify.toml`
+(hosting settings).
+
+---
+
+## Two things that are already set up
+
+**Contact form** — The "Get in touch" form on the Contact page is **live**. It
+uses a service called **Formspree**, which emails submissions to
+**thefinancialtalk@gmail.com**. Nothing in the code needs changing for it to
+work. If you ever stop receiving messages, check the Formspree account
+(logged in as thefinancialtalk@gmail.com) — most often it's the free plan's
+50-messages-per-month limit, or a first-time "confirm your email" step that
+was never clicked. The form's ID in the code is `xzdnyodk`.
+
+**Consultation booking** — The Contact page has a Google Calendar booking
+widget so people can pick a time. To change your availability or prices,
+update it in your **Google Calendar appointment settings** — that's separate
+from this website, and changes there show up on the site automatically.
+
+---
+
+## The no-code announcements dashboard (`/admin`)
+
+There's an optional dashboard where you can post homepage announcements
+**without any AI or code** — just log in and type. It's the `admin/` folder
+(built with a tool called Decap CMS).
+
+To use it, it has to be switched on once in your Netlify account (Netlify
+**Identity** + **Git Gateway**, then invite your email as a user). Once that's
+done, you visit `thefinancialtalk.com/admin/` and log in to post updates.
+
+If you'd rather just ask the AI to add announcements for you (the prompt is in
+the list above), you can ignore this entirely — both methods edit the same
+"Latest updates" section.
+
+---
+
+## Built but not turned on yet: the Budget Dashboard
+
+The project contains a **complete but unlaunched** feature: a private "Budget
+Dashboard" where clients could log in and track a budget, with AI-assisted
+analysis. It lives in `budget.html`, the `netlify/functions/` folder, the
+`supabase/` folder, and `docs/BUDGET-SETUP.md`.
+
+**It is not linked anywhere on the live site** — a normal visitor will never
+see it. It only works after connecting outside accounts (Supabase, Resend,
+Anthropic) and adding their keys in Netlify, following `docs/BUDGET-SETUP.md`.
+
+It's being kept for a possible future launch. You can leave it as-is. If you
+ever want to launch it — or decide to remove it — just ask the AI and it'll
+walk you through it.
+
+---
+
+## For a developer / AI: technical notes
+
+- **Stack:** hand-written static HTML/CSS/vanilla JS. No build step, no
+  framework. Open `index.html` directly or run `python3 -m http.server 8000`
+  to preview locally.
+- **Hosting:** Netlify, publishing the repo root. Domain: thefinancialtalk.com.
+  `netlify.toml` holds redirects, security headers for `/budget`, and the
+  serverless-functions config.
+- **i18n:** every user-facing string is a key under `en` and `es` in
+  `js/translations.js`, applied via `data-i18n` attributes by `js/i18n.js`.
+  **When editing copy, always change both languages** to keep them in sync.
+- **Theming:** color palettes are defined in the `THEMES` array in
+  `js/config.js` as CSS-custom-property sets; `js/theme.js` applies them and
+  `js/theme-boot.js` prevents a flash on load. The active palette follows the
+  language (`languageThemes` in `config.js`).
+- **Contact form:** Formspree endpoint `https://formspree.io/f/xzdnyodk` in
+  `contact.html`, delivering to thefinancialtalk@gmail.com. Includes a
+  honeypot (`_gotcha`) and custom `_subject`.
+- **Secrets:** never commit API keys or service credentials into the
+  front-end files. The budget feature's keys live only in Netlify environment
+  variables (see `docs/BUDGET-SETUP.md`).
+- **DNS / email records:** the domain's email-verification DNS records
+  (Mailgun, Google, DMARC, etc.) are unrelated to the site's content — do not
+  touch them when making website changes.
