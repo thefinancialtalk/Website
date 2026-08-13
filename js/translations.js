@@ -1,6 +1,6 @@
 /**
- * Bilingual copy for the whole site.
- * All content below is placeholder/sample copy — replace with real content.
+ * Bilingual copy for the whole site. Every visitor-facing string lives here,
+ * duplicated under `en` and `es` — edit both to keep the languages in sync.
  * Add a new top-level key (e.g. "fr") and translate every string to add a language;
  * then add it to SITE_CONFIG.supportedLanguages in config.js.
  */
@@ -400,7 +400,6 @@ const TRANSLATIONS = {
     footer: {
       tagline: "Financial education, rooted in culture.",
       rights: "All rights reserved.",
-      placeholderNotice: "",
     },
   },
 
@@ -799,7 +798,6 @@ const TRANSLATIONS = {
     footer: {
       tagline: "Educación financiera, con raíces culturales.",
       rights: "Todos los derechos reservados.",
-      placeholderNotice: "",
     },
   },
 };
