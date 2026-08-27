@@ -173,7 +173,6 @@ const TRANSLATIONS = {
           "<strong>Growing my money:</strong> I learned to invest with intention and put my money to work toward my goals.",
           "<strong>Buying a home:</strong> I learned the path to ownership and bought my own first home here.",
           "<strong>Taxes:</strong> I learned to file the right way and keep more of what I earned.",
-          "<strong>Retirement:</strong> I built a plan that makes the most of government and personal savings programs.",
         ],
         masteringClose:
           "Reaching these goals showed me that steady effort pays off. It also showed me my purpose: helping others understand the same system I worked so hard to learn.",
@@ -571,7 +570,6 @@ const TRANSLATIONS = {
           "<strong>Hacer crecer mi dinero:</strong> aprendí a invertir con intención y a poner mi dinero a trabajar hacia mis metas.",
           "<strong>Comprar casa:</strong> aprendí el camino hacia la propiedad y compré mi primera casa aquí.",
           "<strong>Impuestos:</strong> aprendí a declarar de la forma correcta y a quedarme con más de lo que ganaba.",
-          "<strong>Jubilación:</strong> armé un plan que aprovecha al máximo los programas de ahorro del gobierno y los míos.",
         ],
         masteringClose:
           "Alcanzar estas metas me mostró que el esfuerzo constante vale la pena. También me mostró mi propósito: ayudar a otras personas a entender el mismo sistema que tanto me costó aprender.",
