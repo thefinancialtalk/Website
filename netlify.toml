@@ -36,3 +36,28 @@
     Access-Control-Allow-Origin  = "https://thefinancialtalk.netlify.app"
     Access-Control-Allow-Headers = "Content-Type, Authorization"
     Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+
+# Hidden pages (files kept; delete these rules to restore)
+[[redirects]]
+  from   = "/about"
+  to     = "/"
+  status = 302
+  force  = true
+
+[[redirects]]
+  from   = "/about.html"
+  to     = "/"
+  status = 302
+  force  = true
+
+[[redirects]]
+  from   = "/whats-new"
+  to     = "/"
+  status = 302
+  force  = true
+
+[[redirects]]
+  from   = "/whats-new.html"
+  to     = "/"
+  status = 302
+  force  = true

@@ -350,8 +350,8 @@ section { padding: 96px 0; }
   filter: blur(10px);
   pointer-events: none;
 }
-.hero-blob-a { width: 420px; height: 420px; background: var(--color-secondary); opacity: 0.35; top: -140px; right: -100px; }
-.hero-blob-b { width: 320px; height: 320px; background: #ffffff; opacity: 0.12; bottom: -160px; left: -80px; }
+.hero-blob-a { width: 420px; height: 420px; background: var(--color-secondary); opacity: calc(0.35 * var(--blob-fade, 1)); top: -140px; right: -100px; }
+.hero-blob-b { width: 320px; height: 320px; background: #ffffff; opacity: calc(0.12 * var(--blob-fade, 1)); bottom: -160px; left: -80px; }
 .hero-inner {
   position: relative;
   z-index: 1;
@@ -387,7 +387,7 @@ section { padding: 96px 0; }
   position: absolute;
   border-radius: 50%;
   filter: blur(8px);
-  opacity: 0.25;
+  opacity: calc(0.25 * var(--blob-fade, 1));
   pointer-events: none;
   z-index: 0;
 }
@@ -1246,3 +1246,58 @@ a.partner-item:focus-visible { opacity: 1; }
 .calc-gate-note { font-size: 0.78rem; color: var(--color-text-muted); margin: 12px 0 0; }
 .calc-gate-error { color: #b3261e; font-size: 0.85rem; margin: 10px 0 0; }
 
+/* ---------- Events page ---------- */
+.page-hero--events {
+  animation: none;
+  background:
+    radial-gradient(80% 120% at 85% -10%, rgba(232, 201, 122, 0.20), transparent 55%),
+    linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 60%, var(--color-accent) 120%);
+}
+.event-feature {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg, 24px);
+  box-shadow: var(--shadow-lift);
+  overflow: hidden;
+}
+.event-banner { display: block; width: 100%; height: auto; }
+.event-feature-body {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 40px;
+  align-items: center;
+  padding: 40px;
+}
+.event-series { font-family: var(--font-display); font-size: 1.1rem; color: var(--color-text-muted); margin: 0 0 4px; }
+.event-feature-text h3 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); margin: 0 0 8px; }
+.event-date { font-weight: 600; color: var(--color-primary-dark); margin: 0 0 16px; }
+.event-note { font-size: 0.9rem; color: var(--color-text-muted); margin: 0 0 24px; }
+.event-card-img { width: 100%; max-width: 320px; height: auto; justify-self: center; border-radius: 16px; box-shadow: var(--shadow-lift); }
+.event-gallery { columns: 3 280px; column-gap: 20px; margin-top: 8px; }
+.event-tile { margin: 0 0 20px; break-inside: avoid; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lift); background: var(--color-surface); }
+.event-tile img, .event-tile video { display: block; width: 100%; height: auto; }
+@media (max-width: 860px) {
+  .event-feature-body { grid-template-columns: 1fr; padding: 24px; }
+}
+
+/* Upcoming event: dark plum + gold, matching the invitation artwork */
+.event-feature {
+  --ev-plum: #2a1420;
+  --ev-plum-soft: #4a2239;
+  --ev-gold: #d9b878;
+  --ev-cream: #f9f3e6;
+  background: radial-gradient(120% 90% at 85% 0%, var(--ev-plum-soft) 0%, var(--ev-plum) 60%);
+  color: var(--ev-cream);
+}
+.event-feature .card-tag { background: rgba(217, 184, 120, 0.18); color: var(--ev-gold); }
+.event-feature .event-series { color: var(--ev-gold); }
+.event-feature h3 { color: var(--ev-cream); }
+.event-feature .event-date { color: var(--ev-gold); letter-spacing: 0.04em; text-transform: uppercase; }
+.event-feature p { color: rgba(249, 243, 230, 0.86); }
+.event-details { list-style: none; padding: 0; margin: 20px 0 28px; display: grid; gap: 10px; }
+.event-details li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; padding-bottom: 10px; border-bottom: 1px solid rgba(217, 184, 120, 0.25); }
+.event-details span { min-width: 80px; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ev-gold); }
+.event-details strong { color: var(--ev-cream); font-weight: 600; }
+.event-details em { flex-basis: 100%; padding-left: 94px; font-size: 0.85rem; font-style: normal; color: rgba(249, 243, 230, 0.65); }
+.btn-gold { background: var(--ev-gold, #d9b878); color: #2a1420; border: 0; }
+.btn-gold:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); background: #e6c98f; }
+@media (max-width: 860px) { .event-details em { padding-left: 0; } }
