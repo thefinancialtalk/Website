@@ -1303,3 +1303,5 @@ a.partner-item:focus-visible { opacity: 1; }
 @media (max-width: 860px) { .event-details em { padding-left: 0; } }
 
 .events-upcoming { padding-top: 40px; }
+
+.event-feature { max-width: 880px; margin-left: auto; margin-right: auto; }
