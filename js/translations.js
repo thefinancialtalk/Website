@@ -15,6 +15,7 @@ const TRANSLATIONS = {
       about: "About",
       whatsNew: "What's new",
       services: "Tools",
+      events: "Events",
       resources: "Resources",
       getInvolved: "Get Involved",
       contact: "Contact",
@@ -333,6 +334,28 @@ const TRANSLATIONS = {
       disclaimer:
         "These calculators give general educational estimates only and aren't financial advice. Your actual results will vary.",
     },
+    events: {
+      hero: {
+        title: "Events",
+        subtitle: "Come learn, connect, and celebrate with the community.",
+      },
+      featured: {
+        tag: "Upcoming event",
+        title: "Join us at our next event",
+        body: "Full details, the schedule, and RSVP are on our event page.",
+        button: "RSVP on Luma",
+      },
+      collab: {
+        title: "Our event collaborators",
+        subtitle:
+          "Meet the people and brands bringing this event to life. Tap any of them to see their work on Instagram.",
+      },
+      cta: {
+        title: "Want to collaborate on an event?",
+        subtitle: "Tell me about your idea and let's make it happen together.",
+        button: "Get in Touch",
+      },
+    },
     getInvolved: {
       hero: {
         eyebrow: "Join the movement",
@@ -412,6 +435,7 @@ const TRANSLATIONS = {
       about: "Sobre mí",
       whatsNew: "Novedades",
       services: "Herramientas",
+      events: "Eventos",
       resources: "Recursos",
       getInvolved: "Participa",
       contact: "Contacto",
@@ -729,6 +753,28 @@ const TRANSLATIONS = {
       },
       disclaimer:
         "Estas calculadoras ofrecen estimaciones educativas generales y no son asesoría financiera. Tus resultados reales pueden variar.",
+    },
+    events: {
+      hero: {
+        title: "Eventos",
+        subtitle: "Ven a aprender, conectar y celebrar con la comunidad.",
+      },
+      featured: {
+        tag: "Próximo evento",
+        title: "Acompáñanos en nuestro próximo evento",
+        body: "Todos los detalles, el programa y la inscripción están en la página del evento.",
+        button: "Inscríbete en Luma",
+      },
+      collab: {
+        title: "Colaboradores del evento",
+        subtitle:
+          "Conoce a las personas y marcas que hacen posible este evento. Toca cualquiera para ver su trabajo en Instagram.",
+      },
+      cta: {
+        title: "¿Quieres colaborar en un evento?",
+        subtitle: "Cuéntame tu idea y hagámosla realidad juntos.",
+        button: "Hablemos",
+      },
     },
     getInvolved: {
       hero: {

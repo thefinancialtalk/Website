@@ -12,6 +12,13 @@
   to     = "/budget.html"
   status = 200
 
+# Clean URL for the Events page
+[[redirects]]
+  from   = "/events"
+  to     = "/events.html"
+  status = 200
+  force  = true
+
 # Security headers for the budget page
 [[headers]]
   for = "/budget.html"
