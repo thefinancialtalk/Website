@@ -378,15 +378,17 @@ const TRANSLATIONS = {
     speakerEvents: {
       title: "Speaker Events",
       subtitle: "Stages, panels, and conferences where The Financial Talk has shared the mic.",
-    fincon: {
-      tag: "Past event",
-      name: "FinCon 2026",
-      date: "September 16–18, 2026",
-      location: "Palm Springs, California",
-      desc: "Money Nerds Unite: The Financial Talk joined the personal finance community at FinCon 2026.",
-      link: "Visit FinCon",
-      alt: "FinCon 2026, September 16-18, Palm Springs CA, Money Nerds Unite",
-    },
+      fincon: {
+        tag: "Past event",
+        name: "FinCon 2026",
+        date: "September 16–18, 2026",
+        location: "Palm Springs, California",
+        desc: "Money Nerds Unite: The Financial Talk joined the personal finance community at FinCon 2026.",
+        link: "Visit FinCon",
+        alt: "FinCon 2026, September 16-18, Palm Springs CA, Money Nerds Unite",
+        badgeAlt: "Badge of Recognition: Nathaly Minda, speaker at FinCon, September 16, 2026",
+        badgeCaption: "Our founder's Badge of Recognition as a FinCon 2026 speaker.",
+      },
     },
     getInvolved: {
       hero: {
@@ -830,15 +832,17 @@ const TRANSLATIONS = {
     speakerEvents: {
       title: "Eventos como ponente",
       subtitle: "Escenarios, paneles y conferencias donde The Financial Talk ha compartido el micrófono.",
-    fincon: {
-      tag: "Evento pasado",
-      name: "FinCon 2026",
-      date: "16–18 de septiembre de 2026",
-      location: "Palm Springs, California",
-      desc: "Money Nerds Unite: The Financial Talk estuvo con la comunidad de finanzas personales en FinCon 2026.",
-      link: "Visitar FinCon",
-      alt: "FinCon 2026, 16-18 de septiembre, Palm Springs CA, Money Nerds Unite",
-    },
+      fincon: {
+        tag: "Evento pasado",
+        name: "FinCon 2026",
+        date: "16–18 de septiembre de 2026",
+        location: "Palm Springs, California",
+        desc: "Money Nerds Unite: The Financial Talk estuvo con la comunidad de finanzas personales en FinCon 2026.",
+        link: "Visitar FinCon",
+        alt: "FinCon 2026, 16-18 de septiembre, Palm Springs CA, Money Nerds Unite",
+        badgeAlt: "Insignia de Reconocimiento: Nathaly Minda, ponente en FinCon, 16 de septiembre de 2026",
+        badgeCaption: "La Insignia de Reconocimiento de nuestra fundadora como ponente en FinCon 2026.",
+      },
     },
     getInvolved: {
       hero: {

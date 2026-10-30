@@ -1353,3 +1353,7 @@ a.partner-item:focus-visible { opacity: 1; }
 .event-memories-head { margin: 56px auto 32px; }
 
 .main-nav a { white-space: nowrap; }
+
+.past-badge { max-width: 640px; margin: 32px auto 0; text-align: center; }
+.past-badge img { display: block; width: 100%; height: auto; border-radius: 16px; box-shadow: var(--shadow-lift); }
+.past-badge figcaption { margin-top: 12px; font-size: 0.9rem; color: var(--color-text-muted); }
