@@ -1314,3 +1314,38 @@ a.partner-item:focus-visible { opacity: 1; }
 @media (max-width: 640px) { .event-sponsors { padding: 24px 20px; } .event-sponsors-row img { height: 72px; } }
 .event-sponsors-row a { display: inline-flex; transition: transform 0.25s ease; }
 .event-sponsors-row a:hover, .event-sponsors-row a:focus-visible { transform: translateY(-4px); }
+
+/* ---- Events: FinCon past-event feature ---- */
+.past-feature {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  margin: 0 0 32px;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg, 24px);
+  box-shadow: var(--shadow-lift);
+  overflow: hidden;
+}
+.past-feature-art {
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary) 70%, var(--color-accent) 125%);
+  padding: 32px;
+  align-self: stretch;
+  display: flex; align-items: center; justify-content: center;
+}
+.past-feature-art img { display: block; width: 100%; height: auto; }
+.past-feature-text { padding: 36px 40px; }
+.past-feature-text h3 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin: 0 0 6px; }
+.past-feature-place { color: var(--color-text-muted); margin: 0 0 14px; }
+.past-feature-text .btn { margin-top: 8px; }
+@media (max-width: 760px) {
+  .past-feature { grid-template-columns: 1fr; }
+  .past-feature-text { padding: 28px 24px; }
+}
+
+/* ---- Home page: bubbles stay clearly visible ----
+   Elsewhere the bubbles fade in only after the visitor is halfway down the page
+   (--blob-fade, set in js/main.js). On Home they are always shown, and more solid.
+   To make them fainter, lower the opacity numbers below. */
+.page-home .hero-blob-a { opacity: 0.6; }
+.page-home .hero-blob-b { opacity: 0.28; }
+.page-home .bg-blob { opacity: 0.5; }
