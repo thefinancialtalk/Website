@@ -1349,3 +1349,7 @@ a.partner-item:focus-visible { opacity: 1; }
 .page-home .hero-blob-a { opacity: 0.6; }
 .page-home .hero-blob-b { opacity: 0.28; }
 .page-home .bg-blob { opacity: 0.5; }
+
+.event-memories-head { margin: 56px auto 32px; }
+
+.main-nav a { white-space: nowrap; }

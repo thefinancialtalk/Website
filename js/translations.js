@@ -17,6 +17,7 @@ const TRANSLATIONS = {
       services: "Tools",
       resources: "Resources",
       events: "Events",
+      speakerEvents: "Speaker Events",
       getInvolved: "Get Involved",
       contact: "Contact",
       cta: "Get in touch",
@@ -363,16 +364,8 @@ const TRANSLATIONS = {
       },
       past: {
         title: "Past events",
-        subtitle: "A look back at where we've been: FinCon 2026 and Cafecito & Money, our coffee-and-conversation money gatherings with @drinklargo.",
-        fincon: {
-          tag: "Past event",
-          name: "FinCon 2026",
-          date: "September 16–18, 2026",
-          location: "Palm Springs, California",
-          desc: "Money Nerds Unite: The Financial Talk joined the personal finance community at FinCon 2026.",
-          link: "Visit FinCon",
-          alt: "FinCon 2026, September 16-18, Palm Springs CA, Money Nerds Unite",
-        },
+        subtitle: "A look back at Cafecito & Money, our coffee-and-conversation money gatherings with @drinklargo.",
+        memories: "Past Cafecito & Money Memories",
         welcomeAlt: "Welcome to Cafecito & Money, The Financial Talk",
         chalkboardAlt: "Chalkboard sign reading Cafecito & Money, @thefinancialtalk x @drinklargo",
         hostsAlt: "Two hosts smiling together, one holding an iced coffee",
@@ -381,6 +374,19 @@ const TRANSLATIONS = {
         videoCoffee: "Video: a coffee cup and Cafecito & Money treat",
         videoBingo: "Video: Bingo del Dinero activity sheets and pens",
       },
+    },
+    speakerEvents: {
+      title: "Speaker Events",
+      subtitle: "Stages, panels, and conferences where The Financial Talk has shared the mic.",
+    fincon: {
+      tag: "Past event",
+      name: "FinCon 2026",
+      date: "September 16–18, 2026",
+      location: "Palm Springs, California",
+      desc: "Money Nerds Unite: The Financial Talk joined the personal finance community at FinCon 2026.",
+      link: "Visit FinCon",
+      alt: "FinCon 2026, September 16-18, Palm Springs CA, Money Nerds Unite",
+    },
     },
     getInvolved: {
       hero: {
@@ -463,6 +469,7 @@ const TRANSLATIONS = {
       services: "Herramientas",
       resources: "Recursos",
       events: "Eventos",
+      speakerEvents: "Eventos como ponente",
       getInvolved: "Participa",
       contact: "Contacto",
       cta: "Hablemos",
@@ -809,16 +816,8 @@ const TRANSLATIONS = {
       },
       past: {
         title: "Eventos pasados",
-        subtitle: "Un vistazo a dónde hemos estado: FinCon 2026 y Cafecito & Money, nuestros encuentros de dinero y conversación con @drinklargo.",
-        fincon: {
-          tag: "Evento pasado",
-          name: "FinCon 2026",
-          date: "16–18 de septiembre de 2026",
-          location: "Palm Springs, California",
-          desc: "Money Nerds Unite: The Financial Talk estuvo con la comunidad de finanzas personales en FinCon 2026.",
-          link: "Visitar FinCon",
-          alt: "FinCon 2026, 16-18 de septiembre, Palm Springs CA, Money Nerds Unite",
-        },
+        subtitle: "Un vistazo a Cafecito & Money, nuestros encuentros de dinero y conversación con @drinklargo.",
+        memories: "Recuerdos de Cafecito & Money",
         welcomeAlt: "Bienvenidas a Cafecito & Money, The Financial Talk",
         chalkboardAlt: "Pizarra con el texto Cafecito & Money, @thefinancialtalk x @drinklargo",
         hostsAlt: "Dos anfitrionas sonriendo juntas, una con un café helado",
@@ -827,6 +826,19 @@ const TRANSLATIONS = {
         videoCoffee: "Video: una taza de café y un detalle de Cafecito & Money",
         videoBingo: "Video: hojas de la actividad Bingo del Dinero y bolígrafos",
       },
+    },
+    speakerEvents: {
+      title: "Eventos como ponente",
+      subtitle: "Escenarios, paneles y conferencias donde The Financial Talk ha compartido el micrófono.",
+    fincon: {
+      tag: "Evento pasado",
+      name: "FinCon 2026",
+      date: "16–18 de septiembre de 2026",
+      location: "Palm Springs, California",
+      desc: "Money Nerds Unite: The Financial Talk estuvo con la comunidad de finanzas personales en FinCon 2026.",
+      link: "Visitar FinCon",
+      alt: "FinCon 2026, 16-18 de septiembre, Palm Springs CA, Money Nerds Unite",
+    },
     },
     getInvolved: {
       hero: {
