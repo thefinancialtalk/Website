@@ -1301,3 +1301,5 @@ a.partner-item:focus-visible { opacity: 1; }
 .btn-gold { background: var(--ev-gold, #d9b878); color: #2a1420; border: 0; }
 .btn-gold:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); background: #e6c98f; }
 @media (max-width: 860px) { .event-details em { padding-left: 0; } }
+
+.events-upcoming { padding-top: 40px; }
