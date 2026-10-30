@@ -114,21 +114,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const easeInOutCubic = (t) =>
       t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
-    // Fade targets: the main sections plus the stats grid (the Bilingual /
-    // Culturally Rooted / Judgment-Free badges). The badges get a lead offset
-    // (as a fraction of viewport height) and skip the drift transform, so they
-    // fade out a beat *before* the section above them finishes — and so the
-    // group fade never fights the cards' one-shot scale-in reveal.
+    // Fade targets: the main sections. (The stats grid — the Bilingual /
+    // Culturally Rooted / Judgment-Free badges — has its own scroll-start fade
+    // below, so it stays solid white until the visitor begins to scroll.)
     const targets = [];
     fadeSections.forEach((s) => {
       s.classList.add("section-fade");
       targets.push({ el: s, lead: 0, drift: true });
     });
+
+    // Stats badges: fully opaque while the page sits at the top, then fade out
+    // quickly as soon as scrolling starts. Tune with the two numbers below.
     const statsGrid = document.querySelector(".stats-grid");
-    if (statsGrid) {
-      statsGrid.classList.add("section-fade");
-      targets.push({ el: statsGrid, lead: 0.35, drift: false });
-    }
+    const STATS_FADE_START = 24;  // px scrolled before the badges begin to fade
+    const STATS_FADE_RANGE = 0.2; // fade-out distance, as a fraction of viewport height
+    if (statsGrid) statsGrid.classList.add("section-fade");
+    const updateStatsFade = () => {
+      if (!statsGrid) return;
+      const dist = window.innerHeight * STATS_FADE_RANGE || 1;
+      const t = Math.min(1, Math.max(0, (window.scrollY - STATS_FADE_START) / dist));
+      statsGrid.style.opacity = (1 - easeInOutCubic(t)).toFixed(3);
+    };
 
     let fadeTicking = false;
     const updateFades = () => {
@@ -154,6 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
           el.style.transform = shift > 0.5 ? `translate3d(0, ${shift.toFixed(1)}px, 0)` : "";
         }
       });
+      updateStatsFade();
       fadeTicking = false;
     };
     const onFadeScroll = () => {
