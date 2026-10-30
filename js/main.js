@@ -82,6 +82,19 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("resize", onParallaxScroll);
   }
 
+  // Background bubbles stay fully transparent until the visitor is halfway
+  // down the page, then fade in over the next quarter (writes --blob-fade,
+  // which css/style.css multiplies into each blob's opacity).
+  const updateBlobFade = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = max > 0 ? window.scrollY / max : 0;
+    const fade = Math.min(1, Math.max(0, (progress - 0.5) / 0.25));
+    document.documentElement.style.setProperty("--blob-fade", fade.toFixed(2));
+  };
+  updateBlobFade();
+  window.addEventListener("scroll", updateBlobFade, { passive: true });
+  window.addEventListener("resize", updateBlobFade);
+
   // Scroll-linked section fade. Each top-level section is fully opaque while
   // it sits in the middle of the screen and gently fades toward the top and
   // bottom edges — so the section you're scrolling away from fades out while

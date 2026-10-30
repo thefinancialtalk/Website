@@ -24,9 +24,10 @@
 
     <nav class="main-nav" data-nav>
       <a href="index.html" data-i18n="nav.home">Home</a>
-      <a href="about.html" data-i18n="nav.about">About</a>
-      <a href="services.html" data-i18n="nav.services">Tools</a>
+      <!-- HIDDEN: restore later <a href="about.html" data-i18n="nav.about">About</a> -->
+      <!-- HIDDEN: restore later <a href="whats-new.html" data-i18n="nav.whatsNew">What's new</a> -->
       <a href="events.html" aria-current="page" data-i18n="nav.events">Events</a>
+      <a href="services.html" data-i18n="nav.services">Tools</a>
       <a href="get-involved.html" data-i18n="nav.getInvolved">Get Involved</a>
       <a href="contact.html" class="nav-cta" data-i18n="nav.cta">Get in touch</a>
     </nav>
@@ -45,44 +46,80 @@
 </header>
 
 <main>
-
-  <section class="page-hero page-hero--events">
-    <span class="hero-blob hero-blob-a" data-parallax="0.1" aria-hidden="true"></span>
-    <span class="hero-blob hero-blob-b" data-parallax="-0.07" aria-hidden="true"></span>
-    <div class="container">
-      <h1 class="eyebrow" data-i18n="events.hero.title">Events</h1>
-      <p data-i18n="events.hero.subtitle">Come learn, connect, and celebrate with the community.</p>
-    </div>
-  </section>
-
-  <section class="decor-section">
+  <section class="decor-section events-upcoming">
     <span class="bg-blob bg-blob--primary" data-parallax="0.15" style="width:260px;height:260px;top:-40px;left:-90px;" aria-hidden="true"></span>
     <div class="container">
-      <div class="card event-feature" data-reveal="scale">
-        <span class="card-tag" data-i18n="events.featured.tag">Upcoming event</span>
-        <h2 data-i18n="events.featured.title">Join us at our next event</h2>
-        <p data-i18n="events.featured.body">Full details, the schedule, and RSVP are on our event page.</p>
-        <a href="https://luma.com/p79aercz" class="btn btn-primary" target="_blank" rel="noopener noreferrer" data-i18n="events.featured.button">RSVP on Luma</a>
+      <div class="section-head" data-reveal>
+        <h2 class="eyebrow" data-i18n="events.upcoming.title">Upcoming event</h2>
+      </div>
+      <article class="event-feature" data-reveal>
+        <img class="event-banner" src="assets/images/events/upcoming-banner.jpg" data-i18n-attr="alt:events.upcoming.bannerAlt" alt="" width="1600" height="400" />
+        <div class="event-feature-body">
+          <div class="event-feature-text">
+            <span class="card-tag" data-i18n="events.upcoming.tag">Save the date</span>
+            <p class="event-series" data-i18n="events.upcoming.series">Cafecito &amp; Money</p>
+            <h3 data-i18n="events.upcoming.name">Investing Edition</h3>
+            <p class="event-date" data-i18n="events.upcoming.date">Sunday, November 22, 2026</p>
+            <p data-i18n="events.upcoming.desc">A new chapter of Cafecito &amp; Money is on the way, this time all about investing. Are you ready to open the door?</p>
+            <ul class="event-details">
+              <li><span data-i18n="events.upcoming.timeLabel">Time</span><strong data-i18n="events.upcoming.time">2:00 PM – 5:00 PM</strong></li>
+              <li><span data-i18n="events.upcoming.priceLabel">Ticket</span><strong data-i18n="events.upcoming.price">$39.55</strong></li>
+              <li><span data-i18n="events.upcoming.locationLabel">Location</span><strong data-i18n="events.upcoming.location">Clanton Park, Toronto</strong><em data-i18n="events.upcoming.locationNote">Exact address shared after you register.</em></li>
+            </ul>
+            <a href="https://luma.com/p79aercz" class="btn btn-gold" target="_blank" rel="noopener noreferrer" data-i18n="events.upcoming.cta">Register</a>
+          </div>
+          <img class="event-card-img" src="assets/images/events/upcoming-card.jpg" data-i18n-attr="alt:events.upcoming.cardAlt" alt="" width="1080" height="1350" loading="lazy" />
+        </div>
+      </article>
+      <div class="event-sponsors" data-reveal>
+        <h3 class="event-sponsors-title" data-i18n="events.sponsors.title">Event Sponsors</h3>
+        <div class="event-sponsors-row">
+          <a href="https://www.instagram.com/drinklargo" target="_blank" rel="noopener noreferrer"><img src="assets/images/events/sponsor-largo.jpg" alt="Largo" loading="lazy" /></a>
+          <a href="https://www.instagram.com/my_inner_fire_healing" target="_blank" rel="noopener noreferrer"><img src="assets/images/events/sponsor-innerfire.jpg" alt="My Inner Fire" loading="lazy" /></a>
+          <a href="https://www.instagram.com/paolarojas0216" target="_blank" rel="noopener noreferrer"><img src="assets/images/events/sponsor-paola.jpg" alt="Paola Rojas, Life Coach" loading="lazy" /></a>
+          <a href="https://www.instagram.com/miss_nancita_bonita_promotions" target="_blank" rel="noopener noreferrer"><img src="assets/images/events/sponsor-nancita.jpg" alt="Miss Nancita Bonita Promotions" loading="lazy" /></a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="decor-section" style="background: var(--color-bg-alt);">
+  <section style="background: var(--color-bg-alt);">
     <div class="container">
       <div class="section-head" data-reveal>
-        <h2 class="eyebrow" data-i18n="events.collab.title">Our event collaborators</h2>
-        <p class="section-subtitle" data-i18n="events.collab.subtitle">Meet the people and brands bringing this event to life. Tap any of them to see their work on Instagram.</p>
+        <h2 class="eyebrow" data-i18n="events.past.title">Past events</h2>
+        <p class="section-subtitle" data-i18n="events.past.subtitle">A look back at Cafecito &amp; Money, our coffee-and-conversation money gatherings with @drinklargo.</p>
       </div>
-      <!-- Filled in by js/events.js from its COLLABORATORS list. -->
-      <div class="card-grid is-centered collab-grid" data-collab-grid></div>
-    </div>
-  </section>
-
-  <section>
-    <div class="cta-banner" data-reveal="scale">
-      <h2 data-i18n="events.cta.title">Want to collaborate on an event?</h2>
-      <p data-i18n="events.cta.subtitle">Tell me about your idea and let's make it happen together.</p>
-      <a href="contact.html" class="btn btn-primary" data-i18n="events.cta.button">Get in Touch</a>
+      <div class="event-gallery">
+        <figure class="event-tile" data-reveal="scale">
+          <img src="assets/images/events/chalkboard.jpg" data-i18n-attr="alt:events.past.chalkboardAlt" alt="" loading="lazy" />
+        </figure>
+        <figure class="event-tile event-tile--video" data-reveal="scale">
+          <video controls muted playsinline preload="none" poster="assets/video/events/clip-host.jpg" data-i18n-attr="aria-label:events.past.videoHost">
+            <source src="assets/video/events/clip-host.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <figure class="event-tile" data-reveal="scale">
+          <img src="assets/images/events/hosts.jpg" data-i18n-attr="alt:events.past.hostsAlt" alt="" loading="lazy" />
+        </figure>
+        <figure class="event-tile event-tile--video" data-reveal="scale">
+          <video controls muted playsinline preload="none" poster="assets/video/events/clip-coffee.jpg" data-i18n-attr="aria-label:events.past.videoCoffee">
+            <source src="assets/video/events/clip-coffee.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <figure class="event-tile" data-reveal="scale">
+          <img src="assets/images/events/group.jpg" data-i18n-attr="alt:events.past.groupAlt" alt="" loading="lazy" />
+        </figure>
+        <figure class="event-tile event-tile--video" data-reveal="scale">
+          <video controls muted playsinline preload="none" poster="assets/video/events/clip-bingo.jpg" data-i18n-attr="aria-label:events.past.videoBingo">
+            <source src="assets/video/events/clip-bingo.mp4" type="video/mp4" />
+          </video>
+        </figure>
+        <figure class="event-tile event-tile--video" data-reveal="scale">
+          <video controls muted playsinline preload="none" poster="assets/video/events/clip-extra.jpg" data-i18n-attr="aria-label:events.past.videoBingo">
+            <source src="assets/video/events/clip-extra.mp4" type="video/mp4" />
+          </video>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -99,9 +136,10 @@
         <div class="footer-col">
           <h4 data-i18n="nav.home">Site</h4>
           <ul>
-            <li><a href="about.html" data-i18n="nav.about">About</a></li>
-            <li><a href="services.html" data-i18n="nav.services">Tools</a></li>
+            <!-- HIDDEN: restore later <li><a href="about.html" data-i18n="nav.about">About</a></li> -->
+            <!-- HIDDEN: restore later <li><a href="whats-new.html" data-i18n="nav.whatsNew">What's new</a></li> -->
             <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+            <li><a href="services.html" data-i18n="nav.services">Tools</a></li>
             <li><a href="get-involved.html" data-i18n="nav.getInvolved">Get Involved</a></li>
             <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
           </ul>
@@ -124,7 +162,6 @@
 <script src="js/translations.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/theme.js"></script>
-<script src="js/events.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

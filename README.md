@@ -119,7 +119,6 @@ along or double-check.
 | About | `about.html` | Nathaly's story / bio |
 | What's new | `whats-new.html` | Announcements + latest TikTok |
 | Tools | `services.html` | Services + interactive money calculators |
-| Events | `events.html` | Event RSVP + collaborators (edit them in `js/events.js`) |
 | Get Involved | `get-involved.html` | Partnership / involvement info |
 | Get in touch | `contact.html` | Contact form + consultation booking |
 
