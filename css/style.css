@@ -1305,3 +1305,10 @@ a.partner-item:focus-visible { opacity: 1; }
 .events-upcoming { padding-top: 40px; }
 
 .event-feature { max-width: 880px; margin-left: auto; margin-right: auto; }
+
+.event-card-img { max-width: 340px; }
+.event-sponsors { max-width: 880px; margin: 32px auto 0; padding: 28px 32px 32px; background: var(--color-surface); border-radius: var(--radius-lg, 24px); box-shadow: var(--shadow-lift); text-align: center; }
+.event-sponsors-title { font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-text-muted); margin: 0 0 20px; }
+.event-sponsors-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 20px 32px; }
+.event-sponsors-row img { height: 96px; width: auto; max-width: 100%; object-fit: contain; border-radius: 12px; }
+@media (max-width: 640px) { .event-sponsors { padding: 24px 20px; } .event-sponsors-row img { height: 72px; } }

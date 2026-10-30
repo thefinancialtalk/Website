@@ -357,7 +357,10 @@ const TRANSLATIONS = {
         locationNote: "Exact address shared after you register.",
         cta: "Register",
         bannerAlt: "Cafecito & Money, Investing Edition: Are you ready to open the door? Sunday, November 22, 2026",
-        cardAlt: "Cafecito & Money, new chapter, Investing Edition, Sunday November 22",
+        cardAlt: "According to my calculations... you need to invest. Cafecito & Money, Investing Edition, 22.11.2026",
+      },
+      sponsors: {
+        title: "Event Sponsors",
       },
       past: {
         title: "Past events",
@@ -792,7 +795,10 @@ const TRANSLATIONS = {
         locationNote: "La dirección exacta se comparte al registrarte.",
         cta: "Regístrate",
         bannerAlt: "Cafecito & Money, Edición Inversión: ¿Estás lista para abrir la puerta? Domingo 22 de noviembre de 2026",
-        cardAlt: "Cafecito & Money, nuevo capítulo, Edición Inversión, domingo 22 de noviembre",
+        cardAlt: "Según mis cálculos... necesitas invertir. Cafecito & Money, Edición Inversión, 22.11.2026",
+      },
+      sponsors: {
+        title: "Patrocinadores del evento",
       },
       past: {
         title: "Eventos pasados",
